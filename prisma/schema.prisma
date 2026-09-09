@@ -1,0 +1,99 @@
+// Prisma Schema para CARVLAK
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Vehicle {
+  id              String        @id @default(uuid())
+  slug            String        @unique
+  brand           String        // Ej: Toyota, Fiat, BMW, Dongfeng, KTM
+  model           String        // Ej: Hilux, Uno Way, 320i, Box EV, 390 Adventure
+  version         String?       // Ej: SRV 4x4, M-Sport, Highline
+  category        String        // Usados Seleccionados, Eléctricos 0km, Usadas Seleccionadas, Todoterreno
+  year            Int           // Ej: 2022
+  mileage         Int           // Kilómetros, ej: 42000 (0 para 0km)
+  priceUsd        Float         // Precio en USD
+  transmission    String        // Manual, Automática
+  fuel            String        // Nafta, Diésel, Híbrido, Eléctrico
+  condition       String        // Usado Seleccionado, 0km
+  bodyType        String        // SUV, Sedán, Hatchback, Pickup, Moto, Todoterreno
+  location        String        @default("Showroom Montevideo")
+  engine          String?       // Ej: 2.8 Turbo Diésel, 1.0 Fire, Eléctrico 70 kW
+  powerHp         Int?          // Potencia en HP
+  doors           Int?          @default(4)
+  colorExterior   String?
+  colorInterior   String?
+  features        String        // JSON array serializado de equipamiento
+  images          String        // JSON array serializado de URLs
+  status          String        @default("DISPONIBLE") // DISPONIBLE, RESERVADO, VENDIDO
+  isFeatured      Boolean       @default(false)
+  viewsCount      Int           @default(0)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  reservations    Reservation[]
+  leads           Lead[]
+}
+
+model Reservation {
+  id                    String    @id @default(uuid())
+  reservationNumber     String    @unique // Ej: CRV-2026-0901
+  vehicleId             String
+  vehicle               Vehicle   @relation(fields: [vehicleId], references: [id])
+  customerName          String
+  customerEmail         String
+  customerPhone         String
+  customerDocType       String    @default("CI") // CI, RUT, Pasaporte
+  customerDocNumber     String    // Documento de identidad de Uruguay
+  customerAddress       String?
+  depositAmountUsd      Float     @default(500.0) // Monto de la seña (ej. 500 USD)
+  paymentMethod         String    // MERCADO_PAGO, TRANSFERENCIA, TARJETA_SANDBOX
+  paymentStatus         String    @default("PENDIENTE") // PENDIENTE, APROBADO, RECHAZADO, EXPIRADO
+  transferReceiptUrl    String?   // URL o path del comprobante bancario
+  contractTermsAccepted Boolean   @default(true)
+  notes                 String?
+  expiresAt             DateTime  // 72 horas luego de emitido
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+}
+
+model Lead {
+  id                String    @id @default(uuid())
+  type              String    // CONSULTA, TEST_DRIVE, FINANCIACION, TRADE_IN
+  vehicleId         String?
+  vehicle           Vehicle?  @relation(fields: [vehicleId], references: [id])
+  name              String
+  email             String
+  phone             String
+  message           String?
+  preferredDate     DateTime? // Para agendar visita o test drive
+  tradeInData       String?   // JSON con datos del auto a entregar (marca, modelo, año, km, valor min/max, fotos)
+  status            String    @default("NUEVO") // NUEVO, CONTACTADO, EN_NEGOCIACION, CERRADO
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model FinancingPlan {
+  id                    String    @id @default(uuid())
+  bankName              String    // Banco Santander, BBVA Uruguay, Itaú, Scotiabank, Carvlak Propio
+  minDownPaymentPercent Float     // Ej: 20.0
+  maxTermMonths         Int       // Ej: 60
+  annualInterestRate    Float     // TEA en USD, ej: 7.5
+  description           String?
+  requirements          String?   // JSON array de requisitos
+  isActive              Boolean   @default(true)
+}
+
+model AdminUser {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  name          String
+  passwordHash  String
+  role          String    @default("ADMIN") // ADMIN, VENDEDOR
+  createdAt     DateTime  @default(now())
+}
