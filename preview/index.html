@@ -294,6 +294,7 @@
                 <div>
                   <h3 id="heroCarTitle" class="font-bold text-lg text-[#2D3E46]">Chevrolet Celta 1.0 LT</h3>
                   <p id="heroCarSpecs" class="text-xs text-slate-500">2016 • 76.000 km • Hatchback 5P • Blanco</p>
+                  <div id="heroCarKeyBadges" class="flex flex-wrap gap-1.5 mt-1.5 text-[11px]"></div>
                 </div>
                 <div class="text-right">
                   <div id="heroCarOldPrice" class="text-xs text-slate-400 line-through">USD 9.400</div>
@@ -994,6 +995,14 @@
             <span id="modalColor" class="font-bold text-slate-800 text-sm">Rojo</span>
           </div>
           <div>
+            <span class="text-slate-400 block font-medium">Consumo Mixto</span>
+            <span id="modalConsumo" class="font-bold text-slate-800 text-sm">--</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block font-medium">Patente Anual</span>
+            <span id="modalPatente" class="font-bold text-slate-800 text-sm">--</span>
+          </div>
+          <div>
             <span class="text-slate-400 block font-medium">Inspección</span>
             <span class="font-bold text-emerald-700 text-sm">100 Puntos OK</span>
           </div>
@@ -1669,6 +1678,14 @@
                     <option value="vendido">🔴 Vendido</option>
                   </select>
                 </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-slate-600 mb-1">⛽ Consumo Mixto</label>
+                  <input type="text" id="formConsumo" placeholder="Ej: 14.2 km/l" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-medium">
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-slate-600 mb-1">📄 Patente Anual</label>
+                  <input type="text" id="formPatente" placeholder="Ej: $13.000 / año" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-medium">
+                </div>
               </div>
 
               <!-- GESTOR DE FOTOS & ORDEN DEL VEHÍCULO -->
@@ -2340,6 +2357,18 @@
           </div>
         </div>
 
+        <!-- CONSUMO MIXTO Y PATENTE -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">⛽ Consumo Mixto</label>
+            <input type="text" id="quickConsumo" placeholder="Ej: 14.2 km/l" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">📄 Patente</label>
+            <input type="text" id="quickPatente" placeholder="Ej: $13.000 / año" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white">
+          </div>
+        </div>
+
         <!-- VISTA PREVIA RÁPIDA -->
         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center space-x-3">
           <img id="quickPreviewImg" src="" class="w-20 h-16 object-cover rounded-lg border border-slate-200 shadow-sm" alt="Preview">
@@ -2517,6 +2546,17 @@
         const savedStock = localStorage.getItem('carvlak_stock_v6');
         if (savedStock) {
           stockData = JSON.parse(savedStock);
+          // Sincronizar consumo mixto y patente predeterminados si faltan en datos guardados
+          if (Array.isArray(stockData) && Array.isArray(defaultStock)) {
+            const defaultMap = new Map(defaultStock.map(d => [d.id, d]));
+            stockData.forEach(car => {
+              const def = defaultMap.get(car.id);
+              if (def) {
+                if (!car.mixedConsumption && def.mixedConsumption) car.mixedConsumption = def.mixedConsumption;
+                if (!car.patente && def.patente) car.patente = def.patente;
+              }
+            });
+          }
         } else {
           stockData = JSON.parse(JSON.stringify(defaultStock));
           localStorage.setItem('carvlak_stock_v6', JSON.stringify(stockData));
@@ -3074,6 +3114,21 @@
       document.getElementById('modalFuel').textContent = car.fuel;
       document.getElementById('modalBodyType').textContent = car.bodyType || 'Hatchback';
       document.getElementById('modalColor').textContent = car.colorExterior || 'N/D';
+
+      const modalConsumo = document.getElementById('modalConsumo');
+      if (modalConsumo) {
+        modalConsumo.textContent = (car.mixedConsumption && car.mixedConsumption.trim().length > 0)
+          ? car.mixedConsumption
+          : (car.fuel === 'Eléctrico' ? 'Autonomía 400 km' : 'A consultar');
+      }
+      const modalPatente = document.getElementById('modalPatente');
+      if (modalPatente) {
+        let pat = (car.patente && car.patente.trim().length > 0) ? car.patente.trim() : 'A consultar';
+        if (pat !== 'A consultar' && !pat.toLowerCase().includes('año') && !pat.toLowerCase().includes('/')) {
+          pat = `${pat} / año`;
+        }
+        modalPatente.textContent = pat;
+      }
 
       // Galería
       setGalleryMode('photos');
@@ -3821,6 +3876,10 @@
             <td class="py-2.5 px-4">
               <div class="font-bold text-[#2D3E46]">${car.brand} ${car.model}</div>
               <div class="text-[11px] text-slate-500">${car.version || ''}</div>
+              <div class="text-[10px] text-slate-500 mt-0.5 flex flex-wrap gap-1">
+                ${car.mixedConsumption ? `<span class="bg-slate-100 px-1.5 py-0.5 rounded font-medium text-slate-700">⛽ ${car.mixedConsumption}</span>` : ''}
+                ${car.patente ? `<span class="bg-slate-100 px-1.5 py-0.5 rounded font-medium text-slate-700">📄 ${car.patente}</span>` : ''}
+              </div>
             </td>
             <td class="py-2.5 px-4">
               <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">${car.category || 'usados'}</span>
@@ -4110,6 +4169,8 @@
       document.getElementById('vehicleCrudForm').reset();
       document.getElementById('formYear').value = 2022;
       document.getElementById('formStatus').value = 'disponible';
+      if (document.getElementById('formConsumo')) document.getElementById('formConsumo').value = '';
+      if (document.getElementById('formPatente')) document.getElementById('formPatente').value = '';
       
       currentFormPhotos = [];
       renderFormPhotosList();
@@ -4140,6 +4201,8 @@
       document.getElementById('formFuel').value = car.fuel || 'Nafta';
       document.getElementById('formColor').value = car.colorExterior || '';
       document.getElementById('formStatus').value = car.status || 'disponible';
+      if (document.getElementById('formConsumo')) document.getElementById('formConsumo').value = car.mixedConsumption || '';
+      if (document.getElementById('formPatente')) document.getElementById('formPatente').value = car.patente || '';
       
       document.getElementById('formFeatures').value = (car.features || []).join(', ');
 
@@ -4171,6 +4234,8 @@
       const fuel = document.getElementById('formFuel').value;
       const colorExterior = document.getElementById('formColor').value.trim();
       const status = document.getElementById('formStatus').value;
+      const mixedConsumption = (document.getElementById('formConsumo')?.value || '').trim();
+      const patente = (document.getElementById('formPatente')?.value || '').trim();
       
       const images = currentFormPhotos.length > 0 
         ? [...currentFormPhotos] 
@@ -4194,6 +4259,8 @@
           car.fuel = fuel;
           car.colorExterior = colorExterior;
           car.status = status;
+          car.mixedConsumption = mixedConsumption;
+          car.patente = patente;
           car.images = images;
           car.features = features;
           showAdminToast(`✅ Vehículo "${brand} ${model}" actualizado correctamente.`);
@@ -4213,6 +4280,8 @@
           fuel,
           colorExterior: colorExterior || 'N/D',
           status,
+          mixedConsumption,
+          patente,
           features: features.length > 0 ? features : ['Aire acondicionado', 'Dirección asistida', 'Garantía CARVLAK'],
           images
         };
@@ -4907,6 +4976,18 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
 
       const priceEl = document.getElementById('heroCarPrice');
       if (priceEl) priceEl.textContent = `USD ${Number(car.priceUsd).toLocaleString('es-UY')}`;
+
+      const badgesEl = document.getElementById('heroCarKeyBadges');
+      if (badgesEl) {
+        let badgesHtml = '';
+        if (car.mixedConsumption) {
+          badgesHtml += `<span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-semibold flex items-center gap-1">⛽ ${car.mixedConsumption}</span>`;
+        }
+        if (car.patente) {
+          badgesHtml += `<span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-semibold flex items-center gap-1">📄 Patente: ${car.patente}</span>`;
+        }
+        badgesEl.innerHTML = badgesHtml;
+      }
     }
 
     function handleHeroFeaturedCardClick() {
@@ -4973,6 +5054,12 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
 
       const curPriceInput = document.getElementById('quickCurrentPrice');
       if (curPriceInput) curPriceInput.value = `USD $${Number(car.priceUsd).toLocaleString('es-UY')}`;
+
+      const consumoInput = document.getElementById('quickConsumo');
+      if (consumoInput) consumoInput.value = car.mixedConsumption || '';
+
+      const patenteInput = document.getElementById('quickPatente');
+      if (patenteInput) patenteInput.value = car.patente || '';
     }
 
     function setQuickBadgePreset(txt) {
@@ -4985,10 +5072,18 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
       const badgeInput = document.getElementById('quickBadgeText');
       const imgTagInput = document.getElementById('quickImgSubtitle');
       const oldPriceInput = document.getElementById('quickOldPrice');
+      const consumoInput = document.getElementById('quickConsumo');
+      const patenteInput = document.getElementById('quickPatente');
 
       if (!select) return;
       const carId = select.value;
       const car = stockData.find(v => v.id === carId);
+
+      if (car) {
+        if (consumoInput) car.mixedConsumption = consumoInput.value.trim();
+        if (patenteInput) car.patente = patenteInput.value.trim();
+        saveStockToStorage();
+      }
 
       const updated = {
         featuredCarId: carId,
@@ -5352,11 +5447,21 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
 
       // 5. GRILLA DE 4 ESPECIFICACIONES CLAVE (2x2)
       const formattedMileage = is0km ? '0 km (Nuevo)' : `${Number(car.mileage).toLocaleString('es-UY')} km`;
+      const consumoVal = (car.mixedConsumption && car.mixedConsumption.trim().length > 0)
+        ? car.mixedConsumption.trim()
+        : (car.fuel === 'Eléctrico' ? 'Autonomía 400 km' : 'A consultar');
+      let patenteVal = (car.patente && car.patente.trim().length > 0)
+        ? car.patente.trim()
+        : 'A consultar';
+      if (patenteVal !== 'A consultar' && !patenteVal.toLowerCase().includes('año') && !patenteVal.toLowerCase().includes('/')) {
+        patenteVal = `${patenteVal} / año`;
+      }
+
       const specs = [
         { label: 'Kilometraje', val: formattedMileage, icon: '🛣️' },
         { label: 'Transmisión', val: car.transmission || 'Manual', icon: '🕹️' },
-        { label: 'Combustible', val: car.fuel || 'Nafta', icon: '⛽' },
-        { label: 'Garantía', val: 'Taller Propio CARVLAK', icon: '🛡️' }
+        { label: 'Consumo mixto', val: consumoVal, icon: '⛽' },
+        { label: 'Patente', val: patenteVal, icon: '📄' }
       ];
 
       const colWidth = 455;

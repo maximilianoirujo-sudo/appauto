@@ -1,4 +1,4 @@
-﻿// =================================================================
+// =================================================================
 // CATÃLOGO OFICIAL DE 44 VEHÃCULOS CARVLAK (FOTOS HD TIENDANUBE CDN)
 // ExtraÃ­do directamente de https://carvlak.mitiendanube.com
 // 44 Unidades reales en alta resoluciÃ³n (1024x1024px)
@@ -19,6 +19,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$13.000',
     features: ['Motor Fire 1.4 EVO', 'Aire acondicionado', 'DirecciÃ³n hidrÃ¡ulica', 'Vidrios elÃ©ctricos delanteros', 'Faros antiniebla camineros', 'Barras de techo originales'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/fiat-uno-way-2014-blanco-ce4009d9f7d94168a517774703389288-1024-1024.webp',
@@ -50,6 +52,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '',
     features: ['Motor 1.3 16V eficiente', 'Aire acondicionado', 'Doble airbag frontal', 'Frenos ABS + EBD', 'DirecciÃ³n asistida', 'Llantas de aleaciÃ³n'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/faw-n7-2017-blanco-6e03eba2e1b2e3c99117889646778099-1024-1024.webp',
@@ -85,6 +89,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$12.000',
     features: ['Motor 1.5 VCT', 'Gran capacidad de baÃºl familiar', 'Aire acondicionado', 'Frenos ABS', 'Vidrios elÃ©ctricos en las 4 puertas', 'Cierre centralizado con comando'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/faw-oley-26589ebfbcbbc106a017857881393392-1024-1024.webp',
@@ -120,6 +126,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$11.000',
     features: ['Motor 1.0 12V muy econÃ³mico', 'Aire acondicionado', 'DirecciÃ³n asistida', 'Vidrios elÃ©ctricos delanteros', 'Faros camineros antiniebla', 'Excelente maniobrabilidad urbana'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/byf-f0-rojo-3b6ca2b621c5a440a417794684652785-1024-1024.webp',
@@ -154,6 +162,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$25.000',
     features: ['Motor 1.2 K12M 16V de alta durabilidad', 'Aire acondicionado', 'Doble airbag frontal', 'Frenos ABS', 'DirecciÃ³n asistida elÃ©ctrica', 'Rendimiento superior a 18 km/l'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/suzuki-swift-gris-ga-2015-1a51cfbaf61d8ebaa117892319123086-1024-1024.webp',
@@ -188,6 +198,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '14.2 km/l',
+    patente: '$13.000',
     features: ['Motor 1.0 VHCE sÃºper confiable', 'Solo 76.000 km reales comprobables', 'Aire acondicionado', 'Doble airbag + ABS', 'Vidrios elÃ©ctricos delanteros', 'Mantenimiento sumamente econÃ³mico'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chevrolet-celta-lt-rojo-2016-358abbfda490e95ff617883759345906-1024-1024.webp',
@@ -222,6 +234,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$16.000',
     features: ['Motor 1.6 16V 107 HP Ã¡gil y potente', 'Aire acondicionado', 'Doble airbag frontal', 'Frenos ABS', 'Vidrios y espejos elÃ©ctricos', 'Computadora de a bordo'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/nissan-march-2013-blanco-3812ef1d0a5885d17c17847372767640-1024-1024.webp',
@@ -251,6 +265,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Gris',
+    mixedConsumption: '',
+    patente: '$15.000',
     features: ['Motor 1.6 16V K4M', 'Mayor despeje del suelo tipo crossover', 'Barras portaequipaje de techo', 'Aire acondicionado', 'DirecciÃ³n hidrÃ¡ulica', 'Llantas de aleaciÃ³n Stepway'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/renault-sandero-2012-1-6-f0674ff632a5b5641b17726543408559-1024-1024.webp',
@@ -280,6 +296,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$17.000',
     features: ['Caja manual de 6 velocidades para ruta', 'Motor 1.0 SPE/4 78 HP', 'Aire acondicionado', 'Doble airbag + ABS', 'DirecciÃ³n elÃ©ctrica progresiva', 'Vidrios elÃ©ctricos delanteros'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chevrolet-onix-joy-lt-rojo-2018-2-47658a2b428db6d52417882033490317-1024-1024.webp',
@@ -315,6 +333,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$18.000',
     features: ['Unidad 1 seleccionada', 'Enorme baÃºl de 500 litros', 'Caja manual de 6 velocidades', 'Motor 1.0 SPE/4', 'Aire acondicionado', 'Frenos ABS + EBD y doble airbag'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chevrolet-prisma-joy-lt-2018-blanco-542a1a10577181892717815489128025-1024-1024.webp',
@@ -353,6 +373,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$18.000',
     features: ['Unidad 2 seleccionada independiente', 'Capacidad de baÃºl 500 litros', 'Caja manual de 6 velocidades', 'Motor 1.0 SPE/4 eficiente', 'Aire acondicionado', 'Doble airbag + ABS'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chevrolet-prisma-joy-lt-2018-gris-grafito-8ef5ae98f916da1d6717789431859080-1024-1024.webp',
@@ -388,6 +410,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$13.000',
     features: ['Motor 1.8 16V 126 HP con caja de 6 marchas', 'Extraordinario espacio en plazas traseras', 'Climatizador automÃ¡tico bizona', 'Techo solar elÃ©ctrico corredizo', 'Tapizados combinados', 'Llantas de aleaciÃ³n originales'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/nissan-tiida-blanco-2011-2c35c42d5ca158d59c17775817203202-1024-1024.webp',
@@ -419,6 +443,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Rojo',
+    mixedConsumption: '',
+    patente: '$17.000',
     features: ['Unidad 1 color Rojo', 'Motor 1.0 K10B 3 cilindros', 'Consumo rÃ©cord de hasta 20 km por litro', 'Aire acondicionado', 'Doble airbag frontal + ABS', 'Vidrios elÃ©ctricos'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/suzuki-celerio-rojo-2020-3197c76c9b9c4ea27817788666284489-1024-1024.webp',
@@ -454,6 +480,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$18.000',
     features: ['Motor 1.0 SCe 3 cilindros con cadena de distribuciÃ³n', 'Pantalla tÃ¡ctil Media Evolution con Apple CarPlay / Android Auto', 'BaÃºl de 510 litros', '4 Airbags de serie', 'Control de estabilidad ESP', 'Luces diurnas LED C-Shape'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/renault-logan-2021-zen-fece76f7212a2b58ba17863933421416-1024-1024.webp',
@@ -489,6 +517,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '',
     features: ['Pick-up doble cabina 4 puertas 5 plazas', 'Motor 1.6 16V', 'SuspensiÃ³n trasera independiente Multilink', 'Pantalla tÃ¡ctil Media Nav', 'Barras de techo y caja de carga con lona', 'Sensores de reversa'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/renault-oroch-blanca-2018-4fa28ac63ea7fdf31717888846603736-1024-1024.webp',
@@ -524,6 +554,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Gris Plata',
+    mixedConsumption: '',
+    patente: '$17.000',
     features: ['Unidad 2 seleccionada aÃ±o 2019', 'Solo 75.000 km', 'Caja manual de 6 velocidades', 'Motor 1.0 SPE/4', 'Aire acondicionado', 'Doble airbag + frenos ABS'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chevrolet-joy-lt-2019-negro-6b7c5ea49de379d48017855260516902-1024-1024.webp',
@@ -559,6 +591,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'AutomÃ¡tica',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$16.000',
     features: ['Caja AutomÃ¡tica AMT', 'Motor 1.0 K10B', 'Facilidad total de conducciÃ³n urbana', 'Aire acondicionado', 'Doble airbag + ABS', 'Excelente rendimiento de combustible'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/celerio-gris-0219d8fdfdcb20cd8117739339572495-1024-1024.webp',
@@ -588,6 +622,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$16.000',
     features: ['Motor 1.0 3 cilindros EA211', '5 estrellas en seguridad Latin NCAP', 'Aire acondicionado', 'DirecciÃ³n asistida elÃ©ctrica', 'Vidrios elÃ©ctricos delanteros', 'Excelente andar y solidez estructural'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/volkswagen-up-new-2018-fotos-4507e5ede970485f1717775820571109-1024-1024.webp',
@@ -619,6 +655,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$22.000',
     features: ['Motor 1.4 Kappa Dual CVVT 95 HP', 'Pantalla tÃ¡ctil 7 pulgadas con Apple CarPlay y Android Auto', 'CÃ¡mara de retroceso y sensores traseros', 'BaÃºl de 475 litros', 'Vidrios elÃ©ctricos en las 4 puertas', 'Comandos de audio al volante'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/kia-soluto-ex-plus-2020-17223bc5fd993374a717841312269206-1024-1024.webp',
@@ -653,6 +691,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '',
     features: ['EdiciÃ³n Black con detalles y logos oscurecidos', 'AÃ±o 2022 con solo 53.000 km', 'Caja manual de 6 marchas', 'BaÃºl de 500 litros', 'Aire acondicionado', 'Doble airbag frontal + frenos ABS'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chevrolet-joy-plus-gris-2022-75ab82d19c9026048817894918772345-1024-1024.webp',
@@ -686,6 +726,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Rojo',
+    mixedConsumption: '',
+    patente: '$19.000',
     features: ['Motor 0.9 TCe Turbo de origen europeo', 'Tarjeta llave presencial con botÃ³n Start/Stop', 'Pantalla tÃ¡ctil Media Nav', 'Control crucero y limitador de velocidad', 'Llantas de aleaciÃ³n diamantadas 16 pulgadas', 'Luces diurnas LED'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/renault-clio-2015-rojo-d49c8b3d036b7986ae17860477778150-1024-1024.webp',
@@ -722,6 +764,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Negro',
+    mixedConsumption: '',
+    patente: '$20.000',
     features: ['EdiciÃ³n Black con detalles deportivos', 'Motor 1.0 SPE/4 6 marchas', 'Aire acondicionado', 'Doble airbag + ABS', 'DirecciÃ³n asistida', 'Llantas oscurecidas originales'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chevrolet-joy-1-0-blanco-2021-869e38a8e97bea76d817851676080276-1024-1024.webp',
@@ -755,6 +799,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$23.000',
     features: ['Plataforma MQB de Ãºltima generaciÃ³n', 'Motor 1.6 MSI 16V 110 HP', 'Enorme baÃºl de 521 litros', 'Control de estabilidad ESP', '4 Airbags', 'Pantalla Composition Touch con conectividad'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/volkswagen-virtus-2019-998ec00405a65dda2e17864624888082-1024-1024.png',
@@ -789,6 +835,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'AutomÃ¡tica',
     fuel: 'ElÃ©ctrico',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$17.000',
     features: ['Motor 100% ElÃ©ctrico 0km de trabajo', 'Capacidad de carga Ãºtil para fletes y logÃ­stica urbana', 'Costo operativo mÃ­nimo imbatible por km', 'Carga directa a enchufe 220V convencional', 'GarantÃ­a oficial de fÃ¡brica 0km'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/hudson-ebuddy-pickup-46571a4f5473ce951717731680617127-1024-1024.webp',
@@ -817,6 +865,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$22.000',
     features: ['Cabina extendida con espacio de carga interior', 'Motor 1.6 MSI confiable', 'Lona marÃ­tima y protector de caja', 'Frenos de disco en las 4 ruedas', 'Aire acondicionado y direcciÃ³n asistida'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/volkswagen-saveiro-roja-2020-bd01708a9b659255eb17864769169775-1024-1024.webp',
@@ -852,6 +902,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Rojo',
+    mixedConsumption: '',
+    patente: '',
     features: ['Deportivo clÃ¡sico con motor 2.7 V6', 'Butacas deportivas de cuero', 'Doble salida de escape deportiva original', 'Techo solar elÃ©ctrico', 'Llantas de aleaciÃ³n deportivas', 'LÃ­nea de diseÃ±o icÃ³nica'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/hyundai-coupe-tiburon-1bb7714e7aadf15ee417805921222198-1024-1024.webp',
@@ -886,6 +938,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Rojo',
+    mixedConsumption: '',
+    patente: '$21.000',
     features: ['Unidad 2 color Rojo exclusivo', 'Motor 1.6 MSI con 86.000 km', 'Protector de caja y lona', 'Frenos ABS offroad + doble airbag', 'Aire acondicionado', 'Vidrios elÃ©ctricos'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/volkswagen-saveiro-doble-cabina-387415b43bdc4aa7b517867401684039-1024-1024.webp',
@@ -915,6 +969,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$25.000',
     features: ['FabricaciÃ³n 100% JapÃ³n', 'VersiÃ³n GLX tope de gama', 'Motor 1.2 Dualjet 16V de bajÃ­simo consumo', 'Pantalla tÃ¡ctil multimedia con conectividad', 'Climatizador automÃ¡tico', 'Llantas de aleaciÃ³n diamantadas'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/suzuki-swift-azul-glx-c32231549b55d7706217718570930790-1024-1024.webp',
@@ -945,6 +1001,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$25.000',
     features: ['AÃ±o 2022 con 87.000 km', 'Doble cabina 4 puertas 5 plazas', 'SuspensiÃ³n trasera independiente Multilink', 'Lona marÃ­tima y protector de caja', 'Pantalla Media Nav tÃ¡ctil', 'Control crucero y limitador'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/renault-oroch-blanca-2022-aca1c948a47c70b04d17887875452798-1024-1024.webp',
@@ -980,6 +1038,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$25.000',
     features: ['AÃ±o 2025 con solo 17.000 km en garantÃ­a oficial', '6 Airbags de serie (frontales, laterales y cortina)', 'Control de estabilidad ESP + asistente en pendiente', 'Pantalla tÃ¡ctil flotante de 8 pulgadas con CarPlay y Android Auto', 'Computadora de a bordo multifunciÃ³n'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/hyundai-hb20-2025-gris-f1fe1b19b840ca54f417785140487915-1024-1024.webp',
@@ -1014,6 +1074,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '',
     features: ['SUV de porte con solo 32.000 km', 'Motor 1.6 16V', 'Pantalla tÃ¡ctil HD flotante', 'Tapizados en eco-cuero de alta calidad', 'CÃ¡mara de retroceso y sensores', 'Techo solar corredizo'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-04-24-at-11-45-43-am-0d5b73970cecf4250017775665473580-1024-1024.webp',
@@ -1046,6 +1108,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'AutomÃ¡tica',
     fuel: 'ElÃ©ctrico',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '',
     features: ['100% ElÃ©ctrico 0km con 330 km de autonomÃ­a', 'BaterÃ­a LFP de Ãºltima generaciÃ³n', 'Pantalla tÃ¡ctil de 12.8 pulgadas con cuadro digital', 'Manijas exteriores retrÃ¡ctiles ocultas', 'Carga rÃ¡pida DC al 80% en 30 minutos', 'GarantÃ­a oficial de fÃ¡brica 0km'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chatgpt-image-nov-9-2025-12_35_16-pm-84b0be339a5ff1a7c517627025892252-1024-1024.webp',
@@ -1066,6 +1130,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$25.000',
     features: ['Motor 1.6 TwinPower Turbo con tracciÃ³n trasera', 'Modos de conducciÃ³n Sport, Comfort y Eco Pro', 'Arranque por botÃ³n Keyless Start', 'Climatizador automÃ¡tico bizona', 'Llantas de aleaciÃ³n BMW originales'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/bmw-114i-7f980ad598a0fe96ef17797180897931-1024-1024.webp',
@@ -1100,6 +1166,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'AutomÃ¡tica',
     fuel: 'ElÃ©ctrico',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$18.000',
     features: ['AutonomÃ­a extendida de 430 km 100% ElÃ©ctrico 0km', 'Asistencias avanzadas ADAS Nivel 2', 'Estacionamiento automÃ¡tico inteligente', 'Carga rÃ¡pida DC de alta potencia', 'Interior minimalista con terminaciones premium', 'GarantÃ­a oficial de 8 aÃ±os en baterÃ­a'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/dongfeng-nammi-430-272098216b9d7f85a817765284347278-1024-1024.webp',
@@ -1132,6 +1200,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$25.000',
     features: ['Motor 1.4 Boosterjet Turbo de 140 HP y 230 Nm', 'Peso liviano de 970 kg: relaciÃ³n peso/potencia excepcional', 'Butacas deportivas Sport envolventes', 'Doble salida de escape cromada real', 'Pedalera deportiva en aluminio', 'Frenos a disco ventilados en las 4 ruedas'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/suzuki-swift-sport-gris-2023-99c0d2037aedb960be17812108986224-1024-1024.webp',
@@ -1171,6 +1241,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'AutomÃ¡tica',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$44.000',
     features: ['DiseÃ±o premiado con colmillos LED delanteros', 'Peugeot i-Cockpit 3D con volante deportivo compacto', 'Motor 1.2 PureTech Turbo con caja automÃ¡tica secuencial', 'Techo cielo panorÃ¡mico', 'Solo 32.000 km en estado inmaculado'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/peugeot-2008-blanco-1-2-044bd88ef8bb3fcb3217794794423629-1024-1024.webp',
@@ -1206,6 +1278,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'AutomÃ¡tica',
     fuel: 'ElÃ©ctrico',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '',
     features: ['100% ElÃ©ctrico 0km diseÃ±o retro-futurista de vanguardia', 'AutonomÃ­a de 400 km ciclo WLTP', '5 estrellas en seguridad Euro NCAP', 'Pantalla dual widescreen integrada de 20.5 pulgadas', 'Asientos con ajuste elÃ©ctrico, calefacciÃ³n y masaje', 'GarantÃ­a oficial completa de fÃ¡brica 0km'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/gwm-ora-5-a2b4e7026965a2dfaa17885540699350-1024-1024.webp',
@@ -1246,6 +1320,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'Manual',
     fuel: 'DiÃ©sel',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$68.000',
     features: ['TracciÃ³n 4x4 con caja reductora alta/baja y bloqueo', 'Motor 2.8 D-4D Turbo DiÃ©sel de mÃ¡xima durabilidad', 'VersiÃ³n SRV con climatizador y pantalla tÃ¡ctil', 'Estribos laterales, lona y protector de caja', 'La pick-up mÃ¡s demandada y confiable del Uruguay'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/toyota-hilux-srv-2017-a4a3a10fd3f6ee050f17792972418778-1024-1024.webp',
@@ -1280,6 +1356,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'AutomÃ¡tica',
     fuel: 'ElÃ©ctrico',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '',
     features: ['SUV 100% ElÃ©ctrico 0km versiÃ³n Premium', 'AutonomÃ­a de 400 km por carga', 'Carga ultra-rÃ¡pida DC 30 min al 80%', 'Pantalla tÃ¡ctil panorÃ¡mica HD de 12.3 pulgadas', 'Frenado autÃ³nomo y advertencia de colisiÃ³n frontal', 'GarantÃ­a oficial CARVLAK 0km'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/bestune-joy-03-premium-d7278dba996b59c79117892219243310-1024-1024.webp',
@@ -1321,6 +1399,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'AutomÃ¡tica',
     fuel: 'ElÃ©ctrico',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '',
     features: ['VersiÃ³n tope de gama Exclusive 0km', 'Techo solar panorÃ¡mico corredizo', 'CÃ¡maras 360Â° con renderizado 3D para estacionamiento', 'Tapizados en cuero microperforado premium', 'PortÃ³n trasero con apertura elÃ©ctrica manos libres', 'GarantÃ­a total de fÃ¡brica 0km'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/bestune-joy-03-exclusive-e63124df72e9c22fb017892218817515-1024-1024.webp',
@@ -1350,6 +1430,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'AutomÃ¡tica',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$90.000',
     features: ['TracciÃ³n integral inteligente BMW xDrive 4x4', 'Motor 2.0 TwinPower Turbo de 252 HP y caja Steptronic 8v', 'BMW Live Cockpit Professional con GPS integrado', 'Techo solar panorÃ¡mico elÃ©ctrico de cristal', 'Asientos de cuero con regulaciÃ³n elÃ©ctrica y memoria', 'Llantas de aleaciÃ³n M Sport 19 pulgadas'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/bmw-x3-xdrive-30i-674a3b66263378a6b617885386250561-1024-1024.webp',
@@ -1385,6 +1467,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'AutomÃ¡tica',
     fuel: 'DiÃ©sel',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$68.000',
     features: ['Unidad 2 aÃ±o 2022 en estado verdaderamente inmaculado', 'Motor 2.8 D-4D potenciado a 204 HP y 500 Nm', 'Caja AutomÃ¡tica secuencial de 6 velocidades', 'TracciÃ³n 4x4 con alta, baja y bloqueo de diferencial', 'Paquete de seguridad activa Toyota Safety Sense', 'Audio JBL premium con subwoofer original'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/toyota-hilux-2022-gris-1bf43ef0e1d3a7332d17834545118279-1024-1024.webp',
@@ -1418,6 +1502,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'AutomÃ¡tica',
     fuel: 'Nafta',
     colorExterior: 'Blanco',
+    mixedConsumption: '',
+    patente: '$34.000',
     features: ['Motor 3.0 V6 BiTurbo de 333 HP y tracciÃ³n integral permanente 4MATIC', 'Caja automÃ¡tica 9G-TRONIC de 9 marchas', 'SuspensiÃ³n neumÃ¡tica adaptativa AIRMATIC', 'Tapizados en cuero genuino con molduras de nogal', 'Faros LED Intelligent Light System', 'Techo panorÃ¡mico corredizo doble'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/mercedez-benz-gle400-44f884647579e6522b17867375987448-1024-1024.webp',
@@ -1456,6 +1542,8 @@ window.CARVLAK_OFFICIAL_CATALOG = [
     transmission: 'AutomÃ¡tica',
     fuel: 'DiÃ©sel',
     colorExterior: 'Gris Grafito',
+    mixedConsumption: '',
+    patente: '$120.000',
     features: ['Amortiguadores de competiciÃ³n FOX 2.5 pulgadas Live Valve con bypass interno', 'Modos de conducciÃ³n todoterreno con exclusivo modo BAJA', 'Motor 2.0 Bi-Turbo con caja automÃ¡tica secuencial de 10 velocidades', 'Pantalla vertical tÃ¡ctil SYNC 4A de 12 pulgadas y sistema de sonido Bang & Olufsen', 'AÃ±o 2024 con solo 26.000 km en garantÃ­a oficial Ford', 'La pick-up deportiva y off-road definitiva'],
     images: [
       'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/ford-ranger-raptor-682cce6182bc98701517763647259471-1024-1024.webp',
