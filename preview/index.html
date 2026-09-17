@@ -198,7 +198,7 @@
             
             <div class="flex flex-wrap gap-3 pt-2">
               <button onclick="selectCategory('all')" class="px-6 py-3.5 rounded-xl bg-[#2D3E46] hover:bg-[#1E2B31] text-white font-bold text-sm shadow-lg shadow-slate-900/10 transition-all flex items-center space-x-2">
-                <span>Explorar los <span id="heroCatalogCount">51</span> Vehículos</span>
+                <span>Explorar los <span id="heroCatalogCount">44</span> Vehículos</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </button>
               <button onclick="showSection('financing')" class="px-6 py-3.5 rounded-xl bg-white border border-slate-300 hover:border-slate-400 text-[#2D3E46] font-semibold text-sm hover:bg-slate-50 transition-all">
@@ -212,7 +212,7 @@
             <!-- TRUST PILLS -->
             <div class="pt-4 grid grid-cols-3 gap-3 border-t border-slate-200/80 text-center sm:text-left">
               <div>
-                <div class="text-xl font-extrabold text-[#2D3E46]"><span id="heroStatStock">46</span></div>
+                <div class="text-xl font-extrabold text-[#2D3E46]"><span id="heroStatStock">44</span></div>
                 <div class="text-xs text-slate-500 font-medium">Unidades en Stock</div>
               </div>
               <div>
@@ -233,10 +233,10 @@
                 Destacado de la Semana
               </div>
               
-              <div class="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-100 mb-4 group cursor-pointer" onclick="openVehicleModal('crv-045')">
+              <div class="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-100 mb-4 group cursor-pointer" onclick="openVehicleModal('crv-006')">
                 <img 
                   id="heroCarImg" 
-                  src="images/CHEVROLET%20CELTA%202016/20260605_120756.jpg.jpeg" 
+                  src="https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-06-05-at-12-32-15-pm-3-7b3b4f91d09f7a40ca17889656461932-1024-1024.webp" 
                   alt="Chevrolet Celta LT 2016" 
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -247,8 +247,8 @@
 
               <div class="flex justify-between items-start mb-2">
                 <div>
-                  <h3 class="font-bold text-lg text-[#2D3E46]">Chevrolet Celta 1.4 LT</h3>
-                  <p class="text-xs text-slate-500">2016 • 76.000 km • Hatchback 5P • Rojo</p>
+                  <h3 class="font-bold text-lg text-[#2D3E46]">Chevrolet Celta 1.0 LT</h3>
+                  <p class="text-xs text-slate-500">2016 • 76.000 km • Hatchback 5P • Blanco</p>
                 </div>
                 <div class="text-right">
                   <div class="text-xs text-slate-400 line-through">USD 9.400</div>
@@ -257,10 +257,10 @@
               </div>
 
               <div class="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-slate-100">
-                <button onclick="openVehicleModal('crv-045')" class="w-full py-2.5 rounded-lg bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold transition-colors">
+                <button onclick="openVehicleModal('crv-006')" class="w-full py-2.5 rounded-lg bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold transition-colors">
                   Ver Ficha & 360°
                 </button>
-                <button onclick="openReservationCheckout('crv-045')" class="w-full py-2.5 rounded-lg bg-[#C0392B] hover:bg-[#A93226] text-white text-xs font-bold text-center flex items-center justify-center space-x-1 transition-colors">
+                <button onclick="openReservationCheckout('crv-006')" class="w-full py-2.5 rounded-lg bg-[#C0392B] hover:bg-[#A93226] text-white text-xs font-bold text-center flex items-center justify-center space-x-1 transition-colors">
                   <span>Reservar ($500)</span>
                 </button>
               </div>
@@ -377,6 +377,7 @@
               onchange="applyFilters()" 
               class="w-full px-3 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2D3E46] text-xs sm:text-sm text-slate-800 bg-white font-medium"
             >
+              <option value="custom" selected>⭐ Orden personalizado (Manual / Destacados)</option>
               <option value="price-asc">Precio: menor a mayor</option>
               <option value="price-desc">Precio: mayor a menor</option>
               <option value="year-desc">Año: más nuevo primero</option>
@@ -432,7 +433,7 @@
       <!-- RESULTS COUNT & STATUS -->
       <div class="flex justify-between items-center mb-6 text-sm text-slate-500 px-1">
         <div>
-          Mostrando <span id="displayedCount" class="font-bold text-[#2D3E46]">51</span> unidades de <span id="totalStockCount" class="font-bold">51</span> en stock
+          Mostrando <span id="displayedCount" class="font-bold text-[#2D3E46]">44</span> unidades de <span id="totalStockCount" class="font-bold">44</span> en stock
         </div>
         <div class="text-xs text-slate-400 hidden sm:block">
           * Todas las unidades incluyen chequeo mecánico y documentación transferible
@@ -854,14 +855,23 @@
 
         <!-- GALLERY & 360° VIEWER TABS -->
         <div class="space-y-3">
-          <!-- Gallery Mode Tabs -->
-          <div class="flex items-center gap-2 border-b border-slate-200 pb-2 text-xs font-bold">
-            <button id="galleryTabPhotos" onclick="setGalleryMode('photos')" class="px-3 py-1.5 rounded-lg bg-[#2D3E46] text-white">
-              📷 Galería de Fotos
-            </button>
-            <button id="galleryTab360" onclick="setGalleryMode('360')" class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-1.5">
-              <span>🔄 Vista 360° Interactiva</span>
-              <span class="text-[9px] px-1.5 py-0.2 rounded bg-[#C0392B] text-white font-black uppercase">Simulador</span>
+          <!-- Gallery Mode Tabs & Quick Photo Manager Button -->
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-2 text-xs font-bold">
+            <div class="flex items-center gap-2">
+              <button id="galleryTabPhotos" onclick="setGalleryMode('photos')" class="px-3 py-1.5 rounded-lg bg-[#2D3E46] text-white">
+                📷 Galería de Fotos
+              </button>
+              <button id="galleryTab360" onclick="setGalleryMode('360')" class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-1.5">
+                <span>🔄 Vista 360° Interactiva</span>
+                <span class="text-[9px] px-1.5 py-0.2 rounded bg-[#C0392B] text-white font-black uppercase">Simulador</span>
+              </button>
+            </div>
+            <button 
+              onclick="openPhotoManagerForCurrentModalCar()" 
+              class="px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1.5 shadow-sm transition-colors"
+              title="Cargar fotos manualmente desde tu PC y elegir el orden de portada"
+            >
+              <span>📸 Cargar Fotos / Elegir Orden</span>
             </button>
           </div>
 
@@ -1413,7 +1423,7 @@
       <!-- ADMIN TABS NAVIGATION (5 TABS) -->
       <div class="bg-slate-100 px-5 pt-2 border-b border-slate-200 flex space-x-2 overflow-x-auto text-xs font-bold">
         <button id="adminTabBtnStock" onclick="switchAdminTab('stock')" class="px-4 py-2.5 rounded-t-xl bg-white text-[#2D3E46] border-t border-l border-r border-slate-200 shadow-sm">
-          🚗 Inventario & Stock (<span id="adminStatTotal">51</span>)
+          🚗 Inventario & Stock (<span id="adminStatTotal">44</span>)
         </button>
         <button id="adminTabBtnReservas" onclick="switchAdminTab('reservas')" class="px-4 py-2.5 rounded-t-xl text-slate-600 hover:text-slate-900 flex items-center gap-1.5">
           <span>🎟️ Señas & Reservas CRM</span>
@@ -1474,6 +1484,13 @@
             </div>
 
             <div class="flex items-center space-x-2">
+              <button 
+                onclick="openCatalogOrderModal()" 
+                class="px-3 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold shadow-sm transition-all flex items-center space-x-1.5"
+                title="Elegir qué vehículos se muestran primero en la web"
+              >
+                <span>↕️ Reordenar Catálogo</span>
+              </button>
               <button 
                 onclick="openVehicleFormForCreate()" 
                 class="px-3.5 py-2 rounded-lg bg-[#C0392B] hover:bg-[#A93226] text-white text-xs font-bold shadow-sm transition-all flex items-center space-x-1.5"
@@ -1585,10 +1602,57 @@
                 </div>
               </div>
 
-              <div>
-                <label class="block text-[10px] font-bold uppercase text-slate-600 mb-1">URLs de Fotos (Una por línea o separadas por comas)</label>
-                <textarea id="formImages" oninput="updatePhotoPreviews()" rows="3" placeholder="https://..." class="w-full px-3 py-2 text-xs font-mono rounded-lg border border-slate-300 bg-white"></textarea>
-                <div id="formPhotoPreviews" class="flex gap-2 mt-2 overflow-x-auto pb-1"></div>
+              <!-- GESTOR DE FOTOS & ORDEN DEL VEHÍCULO -->
+              <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div>
+                    <label class="block text-[11px] font-bold uppercase text-[#2D3E46]">
+                      📸 Fotos del Vehículo y Orden de Portada
+                    </label>
+                    <p class="text-[11px] text-slate-500">
+                      Subí fotos desde tu equipo o pegá rutas. La <strong>Foto #1</strong> es la que se verá en la portada de la web.
+                    </p>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <input type="file" id="formPhotoFileInput" multiple accept="image/*" class="hidden" onchange="handleFormPhotoFiles(this.files)">
+                    <button type="button" onclick="document.getElementById('formPhotoFileInput').click()" class="px-3 py-1.5 rounded-lg bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                      <span>📁 Subir desde mi PC</span>
+                    </button>
+                    <button type="button" onclick="toggleFormRawTextarea()" class="px-2.5 py-1.5 rounded-lg border border-slate-300 text-slate-600 hover:bg-slate-50 text-xs font-semibold">
+                      <span>Editar URLs</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- DROPZONE INTERACTIVO -->
+                <div 
+                  id="formPhotoDropzone" 
+                  class="border-2 border-dashed border-slate-300 hover:border-[#2D3E46] transition-colors rounded-xl p-3 text-center bg-slate-50/50 cursor-pointer"
+                  onclick="document.getElementById('formPhotoFileInput').click()"
+                >
+                  <p class="text-xs text-slate-600 font-medium">
+                    Arrastrá imágenes aquí o hacé clic para subir fotos (JPG, PNG, WebP)
+                  </p>
+                </div>
+
+                <!-- AGREGAR POR RUTA O URL -->
+                <div class="flex gap-2">
+                  <input type="text" id="formPhotoUrlInput" placeholder="Agregar ruta local (ej: images/...) o enlace web (https://...)" class="flex-1 px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white">
+                  <button type="button" onclick="addFormPhotoFromUrl()" class="px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-800 text-white text-xs font-bold">
+                    + Agregar Foto
+                  </button>
+                </div>
+
+                <!-- CONTENEDOR VISUAL DE FOTOS CON ORDEN Y PORTADA -->
+                <div id="formPhotoPreviewsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 pt-1 min-h-[100px]">
+                  <!-- Miniaturas dinámicas -->
+                </div>
+
+                <!-- TEXTAREA RAW (OPCIONAL/OCULTO POR DEFECTO) -->
+                <div id="formRawTextareaContainer" class="hidden pt-2 border-t border-slate-200">
+                  <label class="block text-[10px] font-bold uppercase text-slate-500 mb-1">Lista de Rutas / URLs (Una por línea)</label>
+                  <textarea id="formImages" oninput="syncFormPhotosFromRawTextarea()" rows="3" placeholder="https://..." class="w-full px-3 py-2 text-xs font-mono rounded-lg border border-slate-300 bg-slate-50"></textarea>
+                </div>
               </div>
 
               <div>
@@ -1766,7 +1830,10 @@
 
       <div class="flex flex-wrap justify-between items-center gap-2 pt-4 border-t border-slate-200 mt-3">
         <span id="exportCopyNotice" class="text-xs text-emerald-600 font-bold hidden">¡Copiado al portapapeles!</span>
-        <div class="flex space-x-2 ml-auto">
+        <div class="flex flex-wrap space-x-2 ml-auto">
+          <button onclick="downloadVehiclesJs()" class="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition-colors" title="Descargar vehicles.js para reemplazar en la carpeta del proyecto">
+            📥 Descargar vehicles.js
+          </button>
           <button onclick="downloadCatalogJson()" class="px-4 py-2 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-bold transition-colors">
             📥 Descargar .JSON
           </button>
@@ -1778,999 +1845,166 @@
     </div>
   </div>
 
+  <!-- 4. MODAL GESTOR DE FOTOS & ORDEN (STANDALONE) -->
+  <div id="photoManagerModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-5 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden my-auto">
+      
+      <!-- HEADER -->
+      <div class="bg-[#2D3E46] text-white px-5 py-4 flex items-center justify-between border-b border-[#1E2B31]">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-xl">
+            📸
+          </div>
+          <div>
+            <h2 id="pmModalTitle" class="text-base sm:text-lg font-bold">Gestor de Fotos & Orden</h2>
+            <p id="pmModalSubtitle" class="text-xs text-slate-300">Cargar fotos desde tu PC, definir la portada y elegir el orden exacto.</p>
+          </div>
+        </div>
+        <button onclick="closePhotoManager()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold transition-colors">✕</button>
+      </div>
+
+      <!-- BODY -->
+      <div class="flex-1 overflow-y-auto p-5 space-y-4">
+        
+        <!-- INSTRUCTIONS BANNER -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-3.5 flex items-start gap-3 text-xs text-amber-900 shadow-sm">
+          <span class="text-xl">⭐</span>
+          <div class="space-y-1">
+            <p class="font-bold text-sm">Control Total del Orden de las Fotos:</p>
+            <p>• La <strong>Foto #1 (con estrella dorada ⭐)</strong> es la <strong>Foto de Portada</strong> principal que se exhibe en la tarjeta del auto en el catálogo de la página.</p>
+            <p>• Podés hacer clic en <strong>"⭐ Portada"</strong> en cualquier foto para ponerla de primera, usar los botones <strong>◀ / ▶</strong> para moverla, o <strong>arrastrar y soltar (drag & drop)</strong> las fotos con el mouse.</p>
+          </div>
+        </div>
+
+        <!-- UPLOAD SECTION -->
+        <div class="bg-slate-50 border-2 border-dashed border-slate-300 hover:border-[#2D3E46] transition-colors rounded-2xl p-5 text-center" id="pmDropZone">
+          <input type="file" id="pmFileInput" multiple accept="image/*" class="hidden" onchange="handlePmFileInput(this.files)">
+          <div class="flex flex-col items-center justify-center space-y-2">
+            <div class="w-12 h-12 rounded-full bg-slate-200/80 text-[#2D3E46] flex items-center justify-center text-2xl shadow-inner">
+              📁
+            </div>
+            <div class="text-sm font-bold text-[#2D3E46]">
+              Subir fotos directamente desde tu computadora
+            </div>
+            <p class="text-xs text-slate-500 max-w-md">
+              Arrastrá las fotos aquí o hacé clic abajo para seleccionarlas desde tu equipo (JPG, PNG, WebP). Se optimizan automáticamente para máxima nitidez y velocidad.
+            </p>
+            <button type="button" onclick="document.getElementById('pmFileInput').click()" class="mt-2 px-5 py-2.5 rounded-xl bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold shadow-md transition-transform hover:scale-105 flex items-center gap-1.5">
+              <span>📷 Seleccionar Fotos de mi PC</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ADD BY PATH OR URL -->
+        <div class="bg-white border border-slate-200 rounded-xl p-3 space-y-1.5 shadow-sm">
+          <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-600">O agregar por ruta local / URL web</label>
+          <div class="flex gap-2">
+            <input type="text" id="pmUrlInput" placeholder="Ej: images/CHEVROLET CELTA 2016/foto1.jpg o https://..." class="flex-1 px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2D3E46]">
+            <button type="button" onclick="addPhotoFromInput()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold transition-colors">
+              + Agregar
+            </button>
+          </div>
+        </div>
+
+        <!-- PHOTOS GRID -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+              <span>Fotos del Vehículo</span>
+              <span id="pmPhotoCountBadge" class="px-2 py-0.5 rounded-full bg-slate-200 text-slate-800 text-[10px] font-extrabold">0</span>
+            </h3>
+            <span class="text-[11px] text-slate-400 italic">Arrastrá con el mouse para reordenar</span>
+          </div>
+
+          <div id="pmPhotosGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 min-h-[140px] p-1">
+            <!-- Rellenado dinámico con JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+      <div class="bg-slate-50 border-t border-slate-200 px-5 py-3.5 flex items-center justify-between">
+        <span class="text-xs text-slate-500 font-medium" id="pmStatusText"></span>
+        <div class="flex space-x-2">
+          <button type="button" onclick="closePhotoManager()" class="px-4 py-2 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-bold transition-colors">
+            Cancelar
+          </button>
+          <button type="button" onclick="savePhotoManagerChanges()" class="px-5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold shadow-md transition-all flex items-center gap-1.5">
+            <span>💾 Guardar Fotos y Orden</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 5. MODAL REORDENAR CATÁLOGO DE VEHÍCULOS -->
+  <div id="catalogOrderModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-5 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden my-auto">
+      
+      <!-- HEADER -->
+      <div class="bg-[#2D3E46] text-white px-5 py-4 flex items-center justify-between border-b border-[#1E2B31]">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-xl">
+            ↕️
+          </div>
+          <div>
+            <h2 class="text-base sm:text-lg font-bold">Organizar Orden de los Vehículos en la Web</h2>
+            <p class="text-xs text-slate-300">Elegí qué vehículos se muestran primero en el catálogo de la página.</p>
+          </div>
+        </div>
+        <button onclick="closeCatalogOrderModal()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold transition-colors">✕</button>
+      </div>
+
+      <!-- TOOLBAR SEARCH -->
+      <div class="p-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between gap-3">
+        <input 
+          type="text" 
+          id="coSearchInput" 
+          oninput="renderCatalogOrderList()" 
+          placeholder="Buscar vehículo por marca o modelo..." 
+          class="w-full max-w-sm px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#2D3E46]"
+        />
+        <div class="text-xs text-slate-500 font-medium whitespace-nowrap">
+          Total: <span id="coTotalCars" class="font-bold text-[#2D3E46]">0</span> unidades
+        </div>
+      </div>
+
+      <!-- LIST CONTAINER -->
+      <div class="flex-1 overflow-y-auto p-4">
+        <div id="coVehiclesList" class="space-y-2">
+          <!-- Items dinámicos -->
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="bg-slate-50 border-t border-slate-200 px-5 py-3.5 flex items-center justify-between">
+        <button type="button" onclick="closeCatalogOrderModal()" class="px-4 py-2 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-bold transition-colors">
+          Cerrar
+        </button>
+        <button type="button" onclick="saveCatalogOrderChanges()" class="px-5 py-2 rounded-xl bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold shadow-md transition-colors flex items-center gap-1.5">
+          <span>💾 Guardar Orden del Catálogo</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ================================================================= -->
   <!-- JAVASCRIPT: DATA (51 VEHICLES), NLP ENGINE & COMMERCIAL LOGIC -->
   <!-- ================================================================= -->
   <script>
-    // CATÁLOGO COMPLETO DE 51 VEHÍCULOS (38 Usados Tiendanube + 4 Eléctricos 0km + 3 Motos + 6 Todoterreno)
-    const VEHICLES = [
-      // 1. USADOS SELECCIONADOS (TIENDANUBE REALES CRV-001 A CRV-038)
-      {
-        id: 'crv-001',
-        brand: 'Fiat',
-        model: 'Uno Way',
-        version: '1.4 Way Blanco',
-        category: 'usados',
-        year: 2014,
-        mileage: 89000,
-        priceUsd: 6870,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Blanco',
-        features: ['Aire acondicionado', 'Dirección asistida', 'Alzacristales eléctricos delanteros', 'Faros camineros', 'Barras longitudinales de techo'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/fiat-uno-way-2014-blanco-ce4009d9f7d94168a517774703389288-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-04-28-at-11-06-30-am-f525ee231b2f14b37b17774703274551-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-002',
-        brand: 'FAW',
-        model: 'Oley',
-        version: '1.5 Comfort Sedán',
-        category: 'usados',
-        year: 2016,
-        mileage: 92000,
-        priceUsd: 7900,
-        bodyType: 'Sedán',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Plata',
-        features: ['Aire acondicionado', 'Doble airbag frontal', 'Frenos ABS', 'Radio con USB y MP3', 'Cierre centralizado'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/faw-oley-26589ebfbcbbc106a017857881393392-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-08-03-at-11-44-32-am-1-39c43bfbcab249d32b17857881452668-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-003',
-        brand: 'BYD',
-        model: 'F0',
-        version: '1.0 GLX-I Extra Full',
-        category: 'usados',
-        year: 2016,
-        mileage: 84000,
-        priceUsd: 7900,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Rojo',
-        features: ['Aire acondicionado', 'Dirección hidráulica', 'Vidrios eléctricos', 'Keyless entry / Start-Stop', 'Llantas de aleación'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/byf-f0-rojo-3b6ca2b621c5a440a417794684652785-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-05-22-at-10-21-22-am-1-d68a9168bf42125f1917794684534438-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-004',
-        brand: 'Chevrolet',
-        model: 'Celta',
-        version: '1.4 LT 5P',
-        category: 'usados',
-        year: 2016,
-        mileage: 76000,
-        priceUsd: 8900,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Rojo',
-        features: ['Aire acondicionado', 'Dirección hidráulica', 'Alzacristales eléctricos delanteros', 'Cierre centralizado con comando', 'Doble airbag y ABS'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chevrolet-celta-lt-rojo-2016-358abbfda490e95ff617883759345906-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/20260902_152139-jpg-c6801de275ecb22adc17883759631141-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/20260902_152120-jpg-210be4b6d8298117ff17883759605246-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/20260902_152128-jpg-b08ff7f8bcbfb84db817883759633360-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-005',
-        brand: 'Renault',
-        model: 'Kwid',
-        version: '1.0 Zen MT',
-        category: 'usados',
-        year: 2019,
-        mileage: 58000,
-        priceUsd: 9500,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Blanco',
-        features: ['4 Airbags de serie', 'Dirección eléctrica EPS', 'Aire acondicionado', 'Alzacristales eléctricos', 'Excelente consumo 18 km/l'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/renault-kwid-2019-8922dcbe01755cf7b217883758393259-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/20260902_153723-jpg-1fbe147321eb45a6c117883758414441-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/20260902_153715-jpg-65239e2ae2d3ea861a17883758396001-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-006',
-        brand: 'Chevrolet',
-        model: 'Prisma',
-        version: '1.4 LT Sedán',
-        category: 'usados',
-        year: 2017,
-        mileage: 82000,
-        priceUsd: 9900,
-        bodyType: 'Sedán',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Plata',
-        features: ['Baúl amplio de 500 litros', 'Aire acondicionado', 'Sistema MyLink con pantalla táctil', 'Bluetooth', 'Sensor de estacionamiento'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chevrolet-prisma-lt-2017-e85d9d7936a536ba9517865613386687-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-08-12-at-10-38-04-am-3-637951a316dffda63b17865613444464-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-007',
-        brand: 'Volkswagen',
-        model: 'Gol Trend',
-        version: '1.6 MSI Comfortline',
-        category: 'usados',
-        year: 2018,
-        mileage: 69000,
-        priceUsd: 10500,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Blanco',
-        features: ['Motor 1.6 MSI 101 CV', 'Aire acondicionado', 'Vidrios eléctricos', 'Cierre centralizado', 'Faros antiniebla'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-06-25-at-12-58-40-pm-2-f87c9dfbf9d419356617823190890695-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/vw-gol-trend-2018-c2b9a7b975d52bb73217823190833118-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-008',
-        brand: 'Renault',
-        model: 'Sandero',
-        version: '1.6 Expression 8v',
-        category: 'usados',
-        year: 2018,
-        mileage: 71000,
-        priceUsd: 10900,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Oscuro',
-        features: ['Excelente habitabilidad trasera', 'Aire acondicionado', 'Sistema MediaNav con GPS', 'Comando satelital al volante', 'Doble airbag frontal'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/renault-sandero-2018-b80c65532a8bfd38c617883757657989-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/20260902_152643-jpg-8beab236aa838fc99a17883757697410-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-009',
-        brand: 'Suzuki',
-        model: 'Celerio',
-        version: '1.0 GL Extra Full',
-        category: 'usados',
-        year: 2019,
-        mileage: 51000,
-        priceUsd: 11200,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Azul',
-        features: ['Consumo sobresaliente 20 km/l', '6 Airbags de seguridad', 'Frenos ABS con EBD', 'Alzacristales en las 4 puertas', 'Bluetooth y manos libres'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/suzuki-celerio-2019-3539958bc60211181217763649557457-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-04-16-at-3-31-01-pm-1-19762194b302c1d9b317763649479383-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-010',
-        brand: 'Suzuki',
-        model: 'Swift',
-        version: '1.2 GL Dualjet',
-        category: 'usados',
-        year: 2019,
-        mileage: 62000,
-        priceUsd: 12500,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Plata',
-        features: ['Motor japonés 1.2 Dualjet 83 CV', 'Pantalla táctil con cámara de retroceso', 'Volante forrado en cuero', 'Llantas de aleación 15"', 'Faros antiniebla'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/suzuki-swift-gl-2019-b541315b706c62bbec17883756475685-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/20260902_153139-jpg-62776c5f7457c1626017883756535266-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-011',
-        brand: 'Volkswagen',
-        model: 'Saveiro',
-        version: '1.6 Cabina Simple',
-        category: 'usados',
-        year: 2019,
-        mileage: 74000,
-        priceUsd: 12900,
-        bodyType: 'Pick-up',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Blanco',
-        features: ['Capacidad de carga 712 kg', 'Lona marítima incluida', 'Aire acondicionado', 'Dirección asistida', 'Protector de caja'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/vw-saveiro-2019-blanca-0f9c2d6f9da248555e17774705193910-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-04-28-at-11-13-17-am-3-d6c1be7b11d615ec5d17774705096537-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-012',
-        brand: 'Chevrolet',
-        model: 'Onix Joy',
-        version: '1.0 Black Edition',
-        category: 'usados',
-        year: 2020,
-        mileage: 49000,
-        priceUsd: 13200,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Negro',
-        features: ['Detalles estéticos Black Edition', 'Aire acondicionado', 'Alzacristales eléctricos', 'Frenos ABS y doble airbag', 'Consumo económico'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chevrolet-onix-joy-2020-f56f3458b6cbcfc4c417857883344606-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-08-03-at-11-53-06-am-1-d64e9e03d779ceee7017857883377755-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-013',
-        brand: 'Fiat',
-        model: 'Argo',
-        version: '1.3 Drive GSE',
-        category: 'usados',
-        year: 2020,
-        mileage: 53000,
-        priceUsd: 13900,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Rojo Modena',
-        features: ['Motor Firefly 1.3 99 CV cadenero', 'Pantalla multimedia 7" táctil', 'Comandos al volante', 'Cámara de reversa', 'Monitoreo de presión de neumáticos'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/fiat-argo-drive-2020-f4722ad65b53d4fe7c17823192668541-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-06-25-at-1-03-02-pm-1-f761d496e5b4c106ad17823192617751-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-014',
-        brand: 'Renault',
-        model: 'Duster',
-        version: '1.6 Expression 4x2',
-        category: 'usados',
-        year: 2018,
-        mileage: 79000,
-        priceUsd: 14200,
-        bodyType: 'SUV',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Estrella',
-        features: ['Excelente despeje del suelo 21 cm', 'Gran espacio interior y baúl de 475L', 'Barras de techo', 'Aire acondicionado', 'Frenos ABS'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/renault-duster-2018-gris-db4ae6f51cb7e8ebaa17865615609403-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-08-12-at-10-44-32-am-2-8a9d18c644d6b6e82817865615655760-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-015',
-        brand: 'Peugeot',
-        model: '208',
-        version: '1.2 PureTech Allure',
-        category: 'usados',
-        year: 2020,
-        mileage: 44000,
-        priceUsd: 14800,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Azul Quasar',
-        features: ['i-Cockpit con volante compacto', 'Techo cielo panorámico', 'Pantalla táctil con Apple CarPlay y Android Auto', 'Llantas de aleación 16"', 'Climatizador automático'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/peugeot-208-allure-2020-f55dbd7a315b9b940e17883755328859-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/20260902_154210-jpg-8cfa5eb06c4b223c6f17883755364132-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-016',
-        brand: 'Nissan',
-        model: 'Versa',
-        version: '1.6 Sense MT',
-        category: 'usados',
-        year: 2020,
-        mileage: 58000,
-        priceUsd: 15200,
-        bodyType: 'Sedán',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Grafito',
-        features: ['Espacio para piernas trasero récord', 'Llave inteligente iKey con encendido por botón', 'Control dinámico vehicular VDC', '6 Airbags de serie', 'Volante multifunción'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/nissan-versa-sense-2020-fcbd315c15bdff99ea17774706592233-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-04-28-at-11-20-33-am-3-61a7a10df791a82bf417774706509988-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-017',
-        brand: 'Volkswagen',
-        model: 'Polo',
-        version: '1.6 MSI Trendline',
-        category: 'usados',
-        year: 2021,
-        mileage: 42000,
-        priceUsd: 15900,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Platino',
-        features: ['Plataforma MQB-A0 de 5 estrellas Latin NCAP', 'Control de estabilidad ESC y tracción ASR', '4 Airbags', 'Sistema Composition Touch de 6.5"', 'Anclajes ISOFIX'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/vw-polo-trendline-2021-39e2467d5ff912a76f17823194511874-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-06-25-at-1-10-18-pm-2-0ab0fa5675f923b49917823194464521-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-018',
-        brand: 'Hyundai',
-        model: 'HB20',
-        version: '1.0 Comfort Plus',
-        category: 'usados',
-        year: 2022,
-        mileage: 33000,
-        priceUsd: 16500,
-        bodyType: 'Hatchback',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Blanco Atlas',
-        features: ['Garantía oficial Hyundai de 5 años o 100.000 km', 'Pantalla flotante de 8" inalámbrica', 'Control de estabilidad y asistente de pendiente', 'Asiento con regulación de altura', 'Luces DRL'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/hyundai-hb20-2022-blanco-6e2bf114a511ff34b217857885333190-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-08-03-at-12-00-11-pm-1-419b4890c2e98a83d417857885373305-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-019',
-        brand: 'Chevrolet',
-        model: 'Onix Plus',
-        version: '1.0 Turbo Premier AT',
-        category: 'usados',
-        year: 2021,
-        mileage: 39000,
-        priceUsd: 17200,
-        bodyType: 'Sedán',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Azul Seeker',
-        features: ['Motor 1.0 Turbo 116 CV', 'Caja automática de 6 marchas', '6 Airbags y frenado de emergencia', 'Cargador inalámbrico de celular', 'Alerta de punto ciego y asistente de estacionamiento'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chevrolet-onix-premier-turbo-2021-d70bfdbf38411b7d5417883754215289-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/20260902_154954-jpg-07d4b4fb24e6c3be3a17883754249117-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-020',
-        brand: 'Nissan',
-        model: 'Kicks',
-        version: '1.6 Advance CVT',
-        category: 'usados',
-        year: 2020,
-        mileage: 48000,
-        priceUsd: 18400,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Plata',
-        features: ['Caja automática X-Tronic CVT', 'Panel de instrumentos digital de 7"', 'Cámara de visión trasera', 'Asientos Zero Gravity de máximo confort', 'Llave inteligente y botón de encendido'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/nissan-kicks-advance-2020-a6125439a25b15bbdc17865617395022-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-08-12-at-10-52-19-am-2-a3be875294a28beec917865617441836-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-021',
-        brand: 'Renault',
-        model: 'Captur',
-        version: '2.0 Zen MT',
-        category: 'usados',
-        year: 2019,
-        mileage: 63000,
-        priceUsd: 18900,
-        bodyType: 'SUV',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Naranja Ocre / Techo Negro',
-        features: ['Diseño bitono francés', 'Tarjeta llave presencial manos libres', 'Climatizador automático', 'Regulador y limitador de velocidad', 'Llantas diamantadas 17"'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/renault-captur-2019-f5381aa42b781119b917763651717320-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-04-16-at-3-39-44-pm-1-98782a1768499de72517763651662970-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-022',
-        brand: 'Bestune',
-        model: 'T33',
-        version: '1.6 Luxury AT',
-        category: 'usados',
-        year: 2022,
-        mileage: 26000,
-        priceUsd: 19500,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Rojo Carmín',
-        features: ['Caja automática Aisin de 6 marchas', 'Techo solar eléctrico', 'Interior en ecocuero premium', 'Pantalla táctil flotante de 10.25"', 'Freno de mano eléctrico con Auto-Hold'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/bestune-t33-2022-rojo-101fa2d5bfb9121ec217823196305141-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-06-25-at-1-17-45-pm-3-7b1f5a544bbce85d8a17823196253457-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-023',
-        brand: 'Chevrolet',
-        model: 'Tracker',
-        version: '1.2 Turbo LTZ AT',
-        category: 'usados',
-        year: 2021,
-        mileage: 38000,
-        priceUsd: 21500,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Blanco Cumbre',
-        features: ['Motor 1.2 Turbo 132 CV', 'Alerta de colisión frontal con frenado de emergencia', 'Sensor de punto ciego', 'Wi-Fi nativo a bordo y OnStar', 'Cámara de reversa HD'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/chevrolet-tracker-ltz-2021-d70b9fa54efb15e4f417883753127891-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/20260902_155612-jpg-a8276fdbfa75218d6e17883753164419-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-024',
-        brand: 'Volkswagen',
-        model: 'T-Cross',
-        version: '1.0 200 TSI Comfortline AT',
-        category: 'usados',
-        year: 2022,
-        mileage: 31000,
-        priceUsd: 23200,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Platino',
-        features: ['Motor 200 TSI 116 CV y 200 Nm de torque', 'Panel digital Active Info Display de 8"', 'VW Play con pantalla de 10" táctil', 'Detector de fatiga del conductor', 'Sensor de lluvia y crepuscular'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/vw-t-cross-200-tsi-2022-77eb5da2bf155a3fde17857887192211-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-08-03-at-12-08-44-pm-2-e568bb9e685f096ae517857887228836-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-025',
-        brand: 'Hyundai',
-        model: 'Creta',
-        version: '1.6 GLS Full AT',
-        category: 'usados',
-        year: 2021,
-        mileage: 37000,
-        priceUsd: 23800,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Plata',
-        features: ['Caja automática secuencial de 6 marchas', '6 Airbags de protección integral', 'Climatizador digital con salidas traseras', 'Llantas de aleación 17"', 'Tapizado de alta resistencia'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/hyundai-creta-2021-gris-f5cb98e16a2ef9c1a517865619198751-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-08-12-at-10-59-02-am-1-0ebbf128a36c86a34a17865619245598-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-026',
-        brand: 'Suzuki',
-        model: 'Vitara',
-        version: '1.4 Boosterjet Turbo 4WD AllGrip',
-        category: 'usados',
-        year: 2020,
-        mileage: 49000,
-        priceUsd: 24500,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Rojo / Techo Negro',
-        features: ['Tracción integral AllGrip 4WD con 4 modos', 'Motor 1.4 Turbo Boosterjet 140 CV', 'Techo solar panorámico doble apertura', 'Levas al volante', 'Control de descenso'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/suzuki-vitara-allgrip-2020-f5a6b10de67a216db717763653926514-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-04-16-at-3-46-12-pm-3-eb2a85e492b451515217763653874416-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-027',
-        brand: 'Toyota',
-        model: 'Corolla',
-        version: '1.8 Hybrid SEG e-CVT',
-        category: 'usados',
-        year: 2021,
-        mileage: 41000,
-        priceUsd: 26900,
-        bodyType: 'Sedán',
-        transmission: 'Automática',
-        fuel: 'Híbrido',
-        colorExterior: 'Blanco Perlado',
-        features: ['Sistema híbrido autorrecargable Toyota', 'Consumo homologado de más de 22 km/l en ciudad', 'Toyota Safety Sense ADAS completo', 'Tapizado en cuero premium', 'Climatizador bi-zona'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/toyota-corolla-hybrid-seg-2021-f4469a5a7ef640989c17823198154189-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-06-25-at-1-24-30-pm-2-8a4bf58ec69719463b17823198101426-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-028',
-        brand: 'Renault',
-        model: 'Oroch',
-        version: '1.3 TCe Turbo Intens Outsider',
-        category: 'usados',
-        year: 2023,
-        mileage: 22000,
-        priceUsd: 21900,
-        bodyType: 'Pick-up',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Cassiopée',
-        features: ['Motor 1.3 Turbo desarrollado con Mercedes-Benz (170 CV)', 'Caja automática CVT de 8 marchas simuladas', 'Paquete Outsider con faros de largo alcance y defensas', 'Barra San Antonio y capota marítima', 'Suspensión trasera Multilink'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/renault-oroch-turbo-2023-e45f911a36db90ab2217883751996541-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/20260902_160344-jpg-7456bbaf927429b67a17883752044810-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-029',
-        brand: 'Ford',
-        model: 'Territory',
-        version: '1.5 Turbo Titanium AT',
-        category: 'usados',
-        year: 2022,
-        mileage: 34000,
-        priceUsd: 28500,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Magnético',
-        features: ['Techo solar panorámico panorámico XXL', 'Cámara 360° con vista aérea envolvente', 'Asientos delanteros calefaccionados y ventilados', 'Ford Co-Pilot 360 con frenado autónomo', 'Tablero 100% digital configurable de 10"'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/ford-territory-titanium-2022-f6789b144fa542ba8717857889104523-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-08-03-at-12-16-52-pm-3-726bf689e415b3c5a117857889146193-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-030',
-        brand: 'KIA',
-        model: 'Sportage',
-        version: '2.0 EX Full AT',
-        category: 'usados',
-        year: 2021,
-        mileage: 46000,
-        priceUsd: 29900,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Blanco Perla',
-        features: ['Caja automática de 6 velocidades con modo Sport', 'Techo solar panorámico', 'Climatizador automático dual', 'Tapizado en cuero premium', 'Portón trasero con apertura eléctrica inteligente'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/kia-sportage-2021-blanco-d45610a2f7c9e0114b17865621124419-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-08-12-at-11-06-44-am-2-8f6511a2f4c9c1b75217865621172948-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-031',
-        brand: 'Honda',
-        model: 'HR-V',
-        version: '1.8 EX-L AT Leather',
-        category: 'usados',
-        year: 2021,
-        mileage: 39000,
-        priceUsd: 30900,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Acero',
-        features: ['Sistema de asientos configurables Magic Seat ULT', 'Faros Full LED con sensor crepuscular', 'Freno de mano eléctrico con Brake Hold', 'Climatizador táctil digital', 'Confiabilidad mecánica japonesa'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/honda-hr-v-ex-l-2021-e7890bf415ca68be7117763656128741-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-04-16-at-3-53-05-pm-1-1789a5c8e4726b89f517763656081295-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-032',
-        brand: 'Volkswagen',
-        model: 'Taos',
-        version: '1.4 250 TSI Highline AT',
-        category: 'usados',
-        year: 2022,
-        mileage: 28000,
-        priceUsd: 33900,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Blanco Puro / Techo Negro',
-        features: ['Faros IQ.Light matriciales LED con luz de curva dinámica', 'Frenado autónomo de emergencia con detección de peatones', 'Control de crucero adaptativo Stop & Go', 'Iluminación ambiental personalizable en 10 colores', 'Cargador inalámbrico para smartphone'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/vw-taos-highline-2022-77fa890e54cb9123fe17823200194481-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-06-25-at-1-31-48-pm-3-63fa89b254c7b89ae117823200142168-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-033',
-        brand: 'Toyota',
-        model: 'Hilux',
-        version: '2.4 TDI DX 4x2 Cabina Doble',
-        category: 'usados',
-        year: 2021,
-        mileage: 68000,
-        priceUsd: 32500,
-        bodyType: 'Pick-up',
-        transmission: 'Manual',
-        fuel: 'Diesel',
-        colorExterior: 'Blanco',
-        features: ['Insuperable valor de reventa en Uruguay', 'Motor 2.4 turbodiésel 150 CV y 400 Nm', '7 Airbags de serie', 'Control de estabilidad y balanceo de tráiler', 'Lona marítima y protector de caja'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/toyota-hilux-dx-2021-blanca-f45812a67e58914bf117883750811904-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/20260902_161015-jpg-a567bf89d742611e9a17883750854492-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-034',
-        brand: 'BMW',
-        model: '118i',
-        version: '1.5 TwinPower Turbo Sportline',
-        category: 'usados',
-        year: 2020,
-        mileage: 41000,
-        priceUsd: 35900,
-        bodyType: 'Hatchback',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Negro Zafiro Metalizado',
-        features: ['BMW Live Cockpit Professional con pantalla táctil de 10.25"', 'Caja Steptronic de doble embrague con 7 velocidades', 'Paquete estético Sportline con butacas deportivas', 'Asistente de marcha atrás automático 50 metros', 'Faros LED con diseño hexagonal'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/bmw-118i-sportline-2020-f4789012a6789b54c117857891244589-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-08-03-at-12-25-10-pm-1-f4789b54c126789a1217857891289120-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-035',
-        brand: 'Mercedes-Benz',
-        model: 'A 200',
-        version: '1.3 Turbo Progressive DCT',
-        category: 'usados',
-        year: 2021,
-        mileage: 33000,
-        priceUsd: 38900,
-        bodyType: 'Hatchback',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Plata Iridio Metalizado',
-        features: ['Sistema multimedia MBUX con inteligencia artificial "Hey Mercedes"', 'Doble pantalla panorámica de 10.25" widescreen', 'Faros LED High Performance', 'Asistente de frenado activo con frenado autónomo', 'Techo corredizo panorámico de cristal'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/mercedes-benz-a200-progressive-2021-f56789a415bc890e1217865623055410-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-08-12-at-11-14-30-am-3-d5678ab941256789e117865623101192-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-036',
-        brand: 'Audi',
-        model: 'Q3',
-        version: '35 TFSI 1.4 Turbo S-Line',
-        category: 'usados',
-        year: 2021,
-        mileage: 36000,
-        priceUsd: 44900,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Daytona Metalizado',
-        features: ['Paquete deportivo S-Line interior y exterior', 'Audi Virtual Cockpit Plus de 12.3"', 'Sistema de sonido Audi Sound System con 10 parlantes', 'Portón de baúl eléctrico con apertura por sensor de pie', 'Llantas Audi Sport de 19 pulgadas'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/audi-q3-sline-2021-f4789ab541267890e117763658254419-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-04-16-at-4-01-22-pm-2-987654a123f890b54117763658209845-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-037',
-        brand: 'Volkswagen',
-        model: 'Amarok',
-        version: '3.0 V6 TDI Highline 4Motion AT',
-        category: 'usados',
-        year: 2022,
-        mileage: 44000,
-        priceUsd: 48900,
-        bodyType: 'Pick-up',
-        transmission: 'Automática',
-        fuel: 'Diesel',
-        colorExterior: 'Gris Indium',
-        features: ['Motor V6 3.0 turbodiésel 258 CV con función Overboost (272 CV)', 'Tracción integral permanente 4Motion con bloqueo de diferencial', 'Caja automática ZF de 8 marchas', 'Tapizado en cuero Vienna y butacas calefaccionadas', 'Frenos a disco en las 4 ruedas'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/vw-amarok-v6-highline-2022-d789012a45bc6789e117823202251145-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-06-25-at-1-39-15-pm-1-123456a789f012b34517823202208741-1024-1024.webp'
-        ]
-      },
-      {
-        id: 'crv-038',
-        brand: 'Ford',
-        model: 'Ranger Raptor',
-        version: '2.0 Bi-Turbo 4x4 Fox Racing',
-        category: 'todoterreno',
-        year: 2022,
-        mileage: 38000,
-        priceUsd: 77000,
-        bodyType: 'Pick-up',
-        transmission: 'Automática',
-        fuel: 'Diesel',
-        colorExterior: 'Azul Performance',
-        features: ['Amortiguadores Fox Racing Shox de competición con Bypass', 'Chasis reforzado desarrollado por Ford Performance', 'Caja automática de 10 velocidades con levas de magnesio', 'Modo Baja para conducción off-road rápida', 'Neumáticos BF Goodrich All-Terrain'],
-        images: [
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/ford-ranger-raptor-682cce6182bc98701517763647259471-1024-1024.webp',
-          'https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-04-16-at-3-23-55-pm-f948c249f9eae582b717763646652117-1024-1024.webp'
-        ]
-      },
-
-      // 2. ELÉCTRICOS 0KM (HUDSON, DONGFENG, BESTUNE, GWM)
-      {
-        id: 'crv-el-01',
-        brand: 'Dongfeng',
-        model: 'Box EV',
-        version: '430 Pro Eléctrico 0km',
-        category: 'electricos',
-        year: 2026,
-        mileage: 0,
-        priceUsd: 21900,
-        bodyType: 'Hatchback',
-        transmission: 'Automática',
-        fuel: 'Eléctrico',
-        colorExterior: 'Bicolor Blanco / Techo Negro',
-        features: ['Batería de 42.3 kWh (430 km autonomía NEDC)', 'Carga rápida DC 30% a 80% en 30 minutos', 'Pantalla táctil 12.8" con Apple CarPlay / Android Auto', 'Garantía oficial Dongfeng Uruguay 8 años o 150.000 km', 'Asistencias ADAS y frenado autónomo de emergencia'],
-        images: [
-          'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80'
-        ]
-      },
-      {
-        id: 'crv-el-02',
-        brand: 'GWM',
-        model: 'Ora 03',
-        version: 'GT Luxury 0km 100% Eléctrico',
-        category: 'electricos',
-        year: 2026,
-        mileage: 0,
-        priceUsd: 28500,
-        bodyType: 'Hatchback',
-        transmission: 'Automática',
-        fuel: 'Eléctrico',
-        colorExterior: 'Gris Grafito Mate',
-        features: ['Autonomía extendida 500 km', 'Techo solar panorámico corredizo', 'Control de crucero adaptativo y mantenimiento de carril', 'Cámara 360° HD con visión 3D', 'Tapizado en eco-cuero premium bi-tono'],
-        images: [
-          'https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80'
-        ]
-      },
-      {
-        id: 'crv-el-03',
-        brand: 'Hudson',
-        model: 'Cargo EV',
-        version: 'Furgón Utilitario 100% Eléctrico 0km',
-        category: 'electricos',
-        year: 2026,
-        mileage: 0,
-        priceUsd: 18900,
-        bodyType: 'Utilitario',
-        transmission: 'Automática',
-        fuel: 'Eléctrico',
-        colorExterior: 'Blanco Glaciar',
-        features: ['Capacidad de carga 1.200 kg y 5.5 m³', 'Batería CATL LFP con 260 km de autonomía urbana', 'Costos operativos 85% menores que diésel', 'Exoneración total de IMESI y patente bonificada', 'Doble puerta trasera batiente 180°'],
-        images: [
-          'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80'
-        ]
-      },
-      {
-        id: 'crv-el-04',
-        brand: 'Bestune',
-        model: 'NAT EV',
-        version: 'Luxury Space 0km Eléctrico',
-        category: 'electricos',
-        year: 2026,
-        mileage: 0,
-        priceUsd: 24900,
-        bodyType: 'Monovolumen',
-        transmission: 'Automática',
-        fuel: 'Eléctrico',
-        colorExterior: 'Blanco Perlado',
-        features: ['Puerta trasera corrediza eléctrica lateral', 'Espacio trasero ejecutivo con 1 metro de distancia entre asientos', 'Autonomía de 420 km', 'Ideal para transporte ejecutivo o familia', 'Sistema de purificación de aire con filtro N95'],
-        images: [
-          'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80'
-        ]
-      },
-
-      // 3. MOTOS USADAS SELECCIONADAS (KTM, HUSQVARNA, KAWASAKI)
-      {
-        id: 'crv-mo-01',
-        brand: 'KTM',
-        model: '390 Duke',
-        version: 'ABS WP Apex',
-        category: 'motos',
-        year: 2023,
-        mileage: 8500,
-        priceUsd: 7800,
-        bodyType: 'Moto',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Naranja / Negro',
-        features: ['Motor monocilíndrico 373cc de 44 HP', 'Suspensiones WP APEX invertidas', 'Frenos ByBre con ABS en curva Bosch 9.1MP', 'Pantalla TFT a color con Bluetooth', 'Quickshifter+ bidireccional opcional'],
-        images: [
-          'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80'
-        ]
-      },
-      {
-        id: 'crv-mo-02',
-        brand: 'Husqvarna',
-        model: 'Svartpilen 401',
-        version: 'Dark Scrambler ABS',
-        category: 'motos',
-        year: 2022,
-        mileage: 6200,
-        priceUsd: 8200,
-        bodyType: 'Moto',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Gris Mate / Bronce',
-        features: ['Diseño escandinavo neo-retro vanguardista', 'Embrague antirrebote PASC', 'Llantas de rayos con cubiertas Pirelli Scorpion Rally STR', 'Escape Akrapovic homologado', 'Iluminación Full LED'],
-        images: [
-          'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80'
-        ]
-      },
-      {
-        id: 'crv-mo-03',
-        brand: 'Kawasaki',
-        model: 'Ninja 400',
-        version: 'KRT Edition ABS',
-        category: 'motos',
-        year: 2023,
-        mileage: 4900,
-        priceUsd: 9600,
-        bodyType: 'Moto',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Verde Lime / Negro',
-        features: ['Bicilíndrico paralelo 399cc 45 HP', 'Chasis multitubular tipo Trellis ultraliviano', 'Embrague asistido y antirrebote', 'Freno a disco lobulado de 310mm con ABS Nissin', 'Escape deportivo con protector térmico'],
-        images: [
-          'https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80'
-        ]
-      },
-
-      // 4. TODOTERRENO 4X4 (TOYOTA, JEEP, FORD, SUZUKI, VOLKSWAGEN, MERCEDES-BENZ)
-      {
-        id: 'crv-tt-01',
-        brand: 'Toyota',
-        model: 'Hilux',
-        version: '2.8 TDI SRV 4x4 Automática',
-        category: 'todoterreno',
-        year: 2021,
-        mileage: 64000,
-        priceUsd: 46900,
-        bodyType: 'Pick-up',
-        transmission: 'Automática',
-        fuel: 'Diesel',
-        colorExterior: 'Gris Plata Metalizado',
-        features: ['Tracción 4x4 con reductora y bloqueo de diferencial trasero', 'Motor 2.8 turbodiésel 204 CV y 500 Nm', 'Toyota Safety Sense con frenado autónomo', 'Lona marítima y barra antivuelco original', 'Enganche reforzado homologado'],
-        images: [
-          'https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1541348263662-e0c8de4259ba?auto=format&fit=crop&w=800&q=80'
-        ]
-      },
-      {
-        id: 'crv-tt-02',
-        brand: 'Jeep',
-        model: 'Wrangler Unlimited',
-        version: '3.6 V6 Sahara 4x4',
-        category: 'todoterreno',
-        year: 2020,
-        mileage: 52000,
-        priceUsd: 58000,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Negro Brillante',
-        features: ['Techo rígido desmontable Freedom Top 3 piezas', 'Sistema 4x4 Selec-Trac con caja de transferencia', 'Audio Alpine Premium con 9 altavoces y subwoofer', 'Puertas desmontables y parabrisas abatible', 'Neumáticos todoterreno 32"'],
-        images: [
-          'https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80'
-        ]
-      },
-      {
-        id: 'crv-tt-03',
-        brand: 'Ford',
-        model: 'Ranger',
-        version: '3.2 TDCi Limited 4x4 AT',
-        category: 'todoterreno',
-        year: 2022,
-        mileage: 48000,
-        priceUsd: 38500,
-        bodyType: 'Pick-up',
-        transmission: 'Automática',
-        fuel: 'Diesel',
-        colorExterior: 'Blanco Oxford',
-        features: ['Tracción 4x4 electrónica shift-on-the-fly con reductora', 'Motor Puma 3.2L 5 cilindros 200 CV', 'SYNC 3 con pantalla táctil 8", navegador y cámara de reversa', '7 Airbags', 'Cobertor de caja y estribos de aluminio'],
-        images: [
-          'https://images.unsplash.com/photo-1541348263662-e0c8de4259ba?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=800&q=80'
-        ]
-      },
-      {
-        id: 'crv-tt-04',
-        brand: 'Suzuki',
-        model: 'Jimny',
-        version: '1.5 GLX 4x4 AllGrip Pro',
-        category: 'todoterreno',
-        year: 2022,
-        mileage: 29000,
-        priceUsd: 25900,
-        bodyType: 'SUV',
-        transmission: 'Manual',
-        fuel: 'Nafta',
-        colorExterior: 'Amarillo Kinetic / Techo Negro',
-        features: ['Tracción 4x4 AllGrip PRO con reductora transfer manual', 'Chasis de largueros con ejes rígidos delantero y trasero', 'Control de descenso HDC y arranque en pendiente HHC', 'Faros LED con proyectores y lavafaros', 'Pantalla táctil con Apple CarPlay y Android Auto'],
-        images: [
-          'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=800&q=80'
-        ]
-      },
-      {
-        id: 'crv-tt-05',
-        brand: 'Volkswagen',
-        model: 'Amarok',
-        version: '3.0 V6 TDI Extreme 4Motion',
-        category: 'todoterreno',
-        year: 2021,
-        mileage: 59000,
-        priceUsd: 44500,
-        bodyType: 'Pick-up',
-        transmission: 'Automática',
-        fuel: 'Diesel',
-        colorExterior: 'Gris Indium Metalizado',
-        features: ['Motor 3.0 V6 turbodiésel 258 CV con Overboost', 'Tracción integral permanente 4Motion con Torsen', 'Caja automática ZF de 8 marchas', 'Barra deportiva Sportsbar exclusiva Extreme', 'Asientos ErgoComfort con regulación eléctrica de 14 posiciones'],
-        images: [
-          'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1541348263662-e0c8de4259ba?auto=format&fit=crop&w=800&q=80'
-        ]
-      },
-      {
-        id: 'crv-tt-06',
-        brand: 'Mercedes-Benz',
-        model: 'GLB 250',
-        version: '4MATIC Progressive 7 Asientos',
-        category: 'todoterreno',
-        year: 2021,
-        mileage: 41000,
-        priceUsd: 54900,
-        bodyType: 'SUV',
-        transmission: 'Automática',
-        fuel: 'Nafta',
-        colorExterior: 'Blanco Polar',
-        features: ['Tracción total variable 4MATIC con paquete Off-Road', 'Configuración de 7 plazas en 3 filas de asientos', 'Sistema multimedia MBUX con panel digital dual de 10.25"', 'Techo corredizo panorámico de cristal', 'Asistente de frenado activo y detección de cansancio'],
-        images: [
-          'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80',
-          'https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80'
-        ]
-      }
-    ];
-
+    // CATÁLOGO OFICIAL DE 44 VEHÍCULOS CARVLAK (cargado desde vehicles.js)
+    const VEHICLES = (window.CARVLAK_OFFICIAL_CATALOG && window.CARVLAK_OFFICIAL_CATALOG.length > 0)
+      ? window.CARVLAK_OFFICIAL_CATALOG
+      : [];
     // MARCAS OFICIALES POR CATEGORÍA
     const CARVLAK_BRANDS_BY_CATEGORY = {
-      'usados': ['Suzuki', 'Nissan', 'Toyota', 'Dodge', 'Citroen', 'Fiat', 'Hyundai', 'Chevrolet', 'BMW', 'KIA', 'Renault', 'Jetour', 'Ford', 'Audi', 'Peugeot', 'BYD', 'Mercedes-Benz', 'Jeep', 'FAW', 'Volkswagen', 'Bestune', 'Geely', 'Honda', 'Chery'],
-      'electricos': ['Hudson', 'Dongfeng', 'Bestune', 'GWM'],
+      'usados': ['Suzuki', 'Nissan', 'Toyota', 'Fiat', 'Hyundai', 'Chevrolet', 'BMW', 'KIA', 'Renault', 'Ford', 'Peugeot', 'BYD', 'Mercedes-Benz', 'FAW', 'Volkswagen', 'Bestune'],
+      'electricos': ['HudsonEV', 'Dongfeng', 'Bestune', 'GWM'],
       'motos': ['KTM', 'Husqvarna', 'Kawasaki'],
-      'todoterreno': ['Toyota', 'Jeep', 'Ford', 'Suzuki', 'Volkswagen', 'Mercedes-Benz']
+      'todoterreno': ['Toyota', 'Ford', 'Suzuki', 'Volkswagen', 'Mercedes-Benz', 'Renault', 'BMW', 'HudsonEV']
     };
 
     // ========================================================
@@ -2797,18 +2031,18 @@
           ? window.CARVLAK_OFFICIAL_CATALOG
           : VEHICLES;
 
-        const savedStock = localStorage.getItem('carvlak_stock_v5');
+        const savedStock = localStorage.getItem('carvlak_stock_v6');
         if (savedStock) {
           stockData = JSON.parse(savedStock);
         } else {
           stockData = JSON.parse(JSON.stringify(defaultStock));
-          localStorage.setItem('carvlak_stock_v5', JSON.stringify(stockData));
+          localStorage.setItem('carvlak_stock_v6', JSON.stringify(stockData));
         }
 
-        const savedRes = localStorage.getItem('carvlak_reservations_v5');
+        const savedRes = localStorage.getItem('carvlak_reservations_v6');
         reservationsData = savedRes ? JSON.parse(savedRes) : [];
 
-        const savedLeads = localStorage.getItem('carvlak_leads_v5');
+        const savedLeads = localStorage.getItem('carvlak_leads_v6');
         leadsData = savedLeads ? JSON.parse(savedLeads) : [];
       } catch (e) {
         console.error('Error al inicializar datos:', e);
@@ -2825,7 +2059,7 @@
 
     function saveStockToStorage() {
       try {
-        localStorage.setItem('carvlak_stock_v5', JSON.stringify(stockData));
+        localStorage.setItem('carvlak_stock_v6', JSON.stringify(stockData));
       } catch (e) {
         console.error('Error al guardar stock:', e);
       }
@@ -2836,7 +2070,7 @@
 
     function saveReservationsToStorage() {
       try {
-        localStorage.setItem('carvlak_reservations_v5', JSON.stringify(reservationsData));
+        localStorage.setItem('carvlak_reservations_v6', JSON.stringify(reservationsData));
       } catch (e) {
         console.error('Error al guardar reservas:', e);
       }
@@ -2846,7 +2080,7 @@
 
     function saveLeadsToStorage() {
       try {
-        localStorage.setItem('carvlak_leads_v5', JSON.stringify(leadsData));
+        localStorage.setItem('carvlak_leads_v6', JSON.stringify(leadsData));
       } catch (e) {
         console.error('Error al guardar leads:', e);
       }
@@ -2860,7 +2094,7 @@
       const countUsados = stockData.filter(v => v.category === 'usados' || !v.category).length;
       const countElec = stockData.filter(v => v.category === 'electricos').length;
       const countMotos = stockData.filter(v => v.category === 'motos').length;
-      const countTT = stockData.filter(v => v.category === 'todoterreno' || (v.bodyType === 'Pick-up' && (v.brand === 'Toyota' || v.brand === 'Ford' || v.brand === 'Volkswagen'))).length;
+      const countTT = stockData.filter(v => v.category === 'todoterreno' || v.bodyType === 'Pick-up' || v.bodyType === 'SUV 4x4' || (v.features || []).some(f => f.toLowerCase().includes('4x4'))).length;
 
       // Nav counts
       const elNavUsados = document.getElementById('navCountUsados');
@@ -3084,8 +2318,11 @@
         if (currentCategory !== 'all') {
           if (currentCategory === 'todoterreno') {
             const isTT = (car.category === 'todoterreno') || 
-                         (car.bodyType === 'Pick-up' && (car.features || []).some(f => f.toLowerCase().includes('4x4') || f.toLowerCase().includes('4motion') || f.toLowerCase().includes('allgrip')));
+                         (car.bodyType === 'Pick-up' || car.bodyType === 'SUV 4x4') ||
+                         ((car.features || []).some(f => f.toLowerCase().includes('4x4') || f.toLowerCase().includes('4motion') || f.toLowerCase().includes('allgrip') || f.toLowerCase().includes('pick-up')));
             if (!isTT) return false;
+          } else if (currentCategory === 'usados') {
+            if (car.category !== 'usados' && car.category !== 'todoterreno') return false;
           } else if (car.category !== currentCategory) {
             return false;
           }
@@ -3121,7 +2358,9 @@
       });
 
       // Ordenamiento
-      if (sortVal === 'price-asc') {
+      if (sortVal === 'custom') {
+        // Mantiene el orden exacto definido manualmente en stockData
+      } else if (sortVal === 'price-asc') {
         filtered.sort((a, b) => a.priceUsd - b.priceUsd);
       } else if (sortVal === 'price-desc') {
         filtered.sort((a, b) => b.priceUsd - a.priceUsd);
@@ -3138,7 +2377,7 @@
       clearSearchInput();
       selectCategory('all');
       document.getElementById('brandFilter').value = 'all';
-      document.getElementById('sortFilter').value = 'price-asc';
+      document.getElementById('sortFilter').value = 'custom';
       applyFilters();
     }
 
@@ -4068,12 +3307,21 @@
                 <option value="vendido" ${status === 'vendido' ? 'selected' : ''}>🔴 Vendido</option>
               </select>
             </td>
-            <td class="py-2.5 px-4 text-right space-x-1.5 whitespace-nowrap">
-              <button onclick="openVehicleFormForEdit('${car.id}')" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs">
+            <td class="py-2.5 px-4 text-right space-x-1 whitespace-nowrap">
+              <button onclick="openPhotoManager('${car.id}')" class="px-2.5 py-1 rounded bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 font-bold text-xs" title="Cargar fotos y elegir orden de portada">
+                📸 Fotos & Orden
+              </button>
+              <button onclick="moveVehicleInStock('${car.id}', -1)" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs" title="Mover hacia arriba en la web">
+                ⬆️
+              </button>
+              <button onclick="moveVehicleInStock('${car.id}', 1)" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs" title="Mover hacia abajo en la web">
+                ⬇️
+              </button>
+              <button onclick="openVehicleFormForEdit('${car.id}')" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs">
                 ✏️ Editar
               </button>
-              <button onclick="deleteCar('${car.id}')" class="px-2.5 py-1 rounded bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs">
-                🗑️ Borrar
+              <button onclick="deleteCar('${car.id}')" class="px-2 py-1 rounded bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs">
+                🗑️
               </button>
             </td>
           </tr>
@@ -4126,16 +3374,216 @@
       }
     }
 
+    // ========================================================
+    // UTILIDADES DE FOTOS & COMPRESIÓN CLIENT-SIDE
+    // ========================================================
+    function compressAndLoadImage(file) {
+      return new Promise((resolve, reject) => {
+        if (!file.type || !file.type.startsWith('image/')) {
+          return reject(new Error('El archivo no es una imagen válida'));
+        }
+        const reader = new FileReader();
+        reader.onerror = () => reject(new Error('Error al leer el archivo'));
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onerror = () => reject(new Error('Error al decodificar la imagen'));
+          img.onload = () => {
+            const maxDim = 1400;
+            let width = img.width;
+            let height = img.height;
+            if (width > maxDim || height > maxDim) {
+              if (width > height) {
+                height = Math.round((height * maxDim) / width);
+                width = maxDim;
+              } else {
+                width = Math.round((width * maxDim) / height);
+                height = maxDim;
+              }
+            }
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.82);
+            resolve(dataUrl);
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // ========================================================
+    // GESTIÓN DE FOTOS EN EL FORMULARIO DE VEHÍCULO
+    // ========================================================
+    let currentFormPhotos = [];
+    let draggedFormPhotoIdx = null;
+
+    function renderFormPhotosList() {
+      const container = document.getElementById('formPhotoPreviewsGrid');
+      const textarea = document.getElementById('formImages');
+      if (!container) return;
+
+      if (textarea) {
+        textarea.value = currentFormPhotos.join('\n');
+      }
+
+      if (currentFormPhotos.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-4 text-center text-xs text-slate-400 italic bg-slate-50 rounded-xl border border-slate-200">
+            No hay fotos cargadas aún. Subí imágenes desde tu equipo o ingresá una ruta arriba.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = currentFormPhotos.map((url, idx) => {
+        const isCover = idx === 0;
+        return `
+          <div 
+            class="relative rounded-xl border-2 ${isCover ? 'border-amber-400 shadow-md ring-2 ring-amber-300/40' : 'border-slate-200'} overflow-hidden bg-slate-100 flex flex-col justify-between group transition-all"
+            draggable="true"
+            ondragstart="handleFormPhotoDragStart(event, ${idx})"
+            ondragover="handleFormPhotoDragOver(event)"
+            ondrop="handleFormPhotoDrop(event, ${idx})"
+          >
+            <!-- BADGE NUMERO / PORTADA -->
+            <div class="absolute top-1.5 left-1.5 z-10 flex flex-col gap-1 pointer-events-none">
+              ${isCover 
+                ? '<span class="bg-amber-500 text-white font-extrabold text-[9px] px-1.5 py-0.5 rounded shadow-sm flex items-center gap-0.5">⭐ PORTADA</span>' 
+                : `<span class="bg-black/70 text-white font-bold text-[9px] px-1.5 py-0.5 rounded shadow-sm">#${idx + 1}</span>`}
+            </div>
+
+            <!-- IMAGEN -->
+            <div class="aspect-[4/3] w-full overflow-hidden bg-slate-200 cursor-grab active:cursor-grabbing">
+              <img src="${url}" alt="Foto ${idx + 1}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=300&q=75'">
+            </div>
+
+            <!-- BOTONES DE ORDEN Y ACCIONES -->
+            <div class="p-1.5 bg-white border-t border-slate-200 flex items-center justify-between gap-1 text-[10px]">
+              ${!isCover ? `
+                <button type="button" onclick="setFormPhotoCover(${idx})" class="px-1.5 py-0.5 rounded bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold border border-amber-300" title="Poner como foto de portada principal">
+                  ⭐ Portada
+                </button>
+              ` : '<span class="text-[9px] font-bold text-amber-700 px-1">Principal</span>'}
+              
+              <div class="flex items-center gap-1 ml-auto">
+                <button type="button" onclick="moveFormPhoto(${idx}, -1)" ${idx === 0 ? 'disabled class="opacity-30 px-1 text-slate-400"' : 'class="px-1.5 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold"'} title="Mover a la izquierda">◀</button>
+                <button type="button" onclick="moveFormPhoto(${idx}, 1)" ${idx === currentFormPhotos.length - 1 ? 'disabled class="opacity-30 px-1 text-slate-400"' : 'class="px-1.5 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold"'} title="Mover a la derecha">▶</button>
+                <button type="button" onclick="deleteFormPhoto(${idx})" class="px-1.5 py-0.5 rounded bg-red-50 hover:bg-red-100 text-red-600 font-bold" title="Eliminar foto">🗑️</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function handleFormPhotoFiles(files) {
+      if (!files || files.length === 0) return;
+      showAdminToast(`⏳ Procesando ${files.length} foto(s)...`);
+      for (let i = 0; i < files.length; i++) {
+        try {
+          const dataUrl = await compressAndLoadImage(files[i]);
+          currentFormPhotos.push(dataUrl);
+        } catch (err) {
+          console.error('Error al cargar foto:', err);
+        }
+      }
+      renderFormPhotosList();
+      showAdminToast(`✅ Se agregaron ${files.length} foto(s).`);
+    }
+
+    function addFormPhotoFromUrl() {
+      const input = document.getElementById('formPhotoUrlInput');
+      const val = (input?.value || '').trim();
+      if (!val) return;
+      currentFormPhotos.push(val);
+      input.value = '';
+      renderFormPhotosList();
+    }
+
+    function setFormPhotoCover(idx) {
+      if (idx <= 0 || idx >= currentFormPhotos.length) return;
+      const [item] = currentFormPhotos.splice(idx, 1);
+      currentFormPhotos.unshift(item);
+      renderFormPhotosList();
+    }
+
+    function moveFormPhoto(idx, dir) {
+      const target = idx + dir;
+      if (target < 0 || target >= currentFormPhotos.length) return;
+      const [item] = currentFormPhotos.splice(idx, 1);
+      currentFormPhotos.splice(target, 0, item);
+      renderFormPhotosList();
+    }
+
+    function deleteFormPhoto(idx) {
+      currentFormPhotos.splice(idx, 1);
+      renderFormPhotosList();
+    }
+
+    function handleFormPhotoDragStart(e, idx) {
+      draggedFormPhotoIdx = idx;
+      e.dataTransfer.effectAllowed = 'move';
+    }
+
+    function handleFormPhotoDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+    }
+
+    function handleFormPhotoDrop(e, targetIdx) {
+      e.preventDefault();
+      if (draggedFormPhotoIdx === null || draggedFormPhotoIdx === targetIdx) return;
+      const [item] = currentFormPhotos.splice(draggedFormPhotoIdx, 1);
+      currentFormPhotos.splice(targetIdx, 0, item);
+      draggedFormPhotoIdx = null;
+      renderFormPhotosList();
+    }
+
+    function toggleFormRawTextarea() {
+      const c = document.getElementById('formRawTextareaContainer');
+      if (c) c.classList.toggle('hidden');
+    }
+
+    function syncFormPhotosFromRawTextarea() {
+      const val = document.getElementById('formImages').value;
+      currentFormPhotos = val.split(/[\n,]+/).map(u => u.trim()).filter(u => u.length > 0);
+      renderFormPhotosList();
+    }
+
+    function initFormDropzone() {
+      const dropzone = document.getElementById('formPhotoDropzone');
+      if (dropzone) {
+        dropzone.ondragover = (e) => { e.preventDefault(); dropzone.classList.add('border-[#2D3E46]', 'bg-slate-100'); };
+        dropzone.ondragleave = (e) => { e.preventDefault(); dropzone.classList.remove('border-[#2D3E46]', 'bg-slate-100'); };
+        dropzone.ondrop = (e) => {
+          e.preventDefault();
+          dropzone.classList.remove('border-[#2D3E46]', 'bg-slate-100');
+          if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+            handleFormPhotoFiles(e.dataTransfer.files);
+          }
+        };
+      }
+    }
+
+    // ========================================================
+    // CREAR / EDITAR VEHÍCULOS
+    // ========================================================
     function openVehicleFormForCreate() {
       const formSection = document.getElementById('adminFormSection');
       document.getElementById('formTitle').textContent = '➕ Agregar Nuevo Vehículo';
       document.getElementById('formSubmitBtnText').textContent = 'Guardar y Publicar';
       document.getElementById('formCarId').value = '';
       document.getElementById('vehicleCrudForm').reset();
-      document.getElementById('formPhotoPreviews').innerHTML = '';
       document.getElementById('formYear').value = 2022;
       document.getElementById('formStatus').value = 'disponible';
       
+      currentFormPhotos = [];
+      renderFormPhotosList();
+      initFormDropzone();
+
       formSection.classList.remove('hidden');
       formSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -4162,10 +3610,11 @@
       document.getElementById('formColor').value = car.colorExterior || '';
       document.getElementById('formStatus').value = car.status || 'disponible';
       
-      document.getElementById('formImages').value = (car.images || []).join('\n');
       document.getElementById('formFeatures').value = (car.features || []).join(', ');
 
-      updatePhotoPreviews();
+      currentFormPhotos = (car.images && car.images.length > 0) ? [...car.images] : [];
+      renderFormPhotosList();
+      initFormDropzone();
 
       formSection.classList.remove('hidden');
       formSection.scrollIntoView({ behavior: 'smooth' });
@@ -4173,24 +3622,7 @@
 
     function closeVehicleForm() {
       document.getElementById('adminFormSection').classList.add('hidden');
-    }
-
-    function updatePhotoPreviews() {
-      const urlsText = document.getElementById('formImages').value;
-      const previewContainer = document.getElementById('formPhotoPreviews');
-      const urls = urlsText.split(/[\n,]+/).map(u => u.trim()).filter(u => u.startsWith('http'));
-
-      if (urls.length === 0) {
-        previewContainer.innerHTML = '<span class="text-[11px] text-slate-400 italic">Pegá enlaces HTTP/HTTPS arriba para previsualizar</span>';
-        return;
-      }
-
-      previewContainer.innerHTML = urls.map((url, i) => `
-        <div class="relative w-16 h-12 rounded-lg border border-slate-300 overflow-hidden bg-slate-100 group shadow-sm flex-shrink-0">
-          <img src="${url}" alt="Foto ${i+1}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=100&q=70'">
-          <span class="absolute bottom-0 right-0 bg-black/70 text-white text-[9px] px-1 font-bold">${i+1}</span>
-        </div>
-      `).join('');
+      currentFormPhotos = [];
     }
 
     function handleSaveVehicle(e) {
@@ -4209,11 +3641,9 @@
       const colorExterior = document.getElementById('formColor').value.trim();
       const status = document.getElementById('formStatus').value;
       
-      const imagesText = document.getElementById('formImages').value;
-      let images = imagesText.split(/[\n,]+/).map(u => u.trim()).filter(u => u.startsWith('http'));
-      if (images.length === 0) {
-        images = ['https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80'];
-      }
+      const images = currentFormPhotos.length > 0 
+        ? [...currentFormPhotos] 
+        : ['https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80'];
 
       const featuresText = document.getElementById('formFeatures').value;
       const features = featuresText.split(',').map(f => f.trim()).filter(f => f.length > 0);
@@ -4264,6 +3694,355 @@
       applyFilters();
       initSimulator();
       filterAdminVehicles();
+    }
+
+    // ========================================================
+    // MODAL GESTOR DE FOTOS & ORDEN (STANDALONE)
+    // ========================================================
+    let pmCarId = null;
+    let pmPhotos = [];
+    let draggedPmPhotoIdx = null;
+
+    function openPhotoManager(carId) {
+      const car = stockData.find(v => v.id === carId);
+      if (!car) return;
+      pmCarId = car.id;
+      pmPhotos = (car.images && car.images.length > 0) ? [...car.images] : [];
+
+      document.getElementById('pmModalTitle').textContent = `📸 Fotos & Orden: ${car.brand} ${car.model} (${car.year})`;
+      document.getElementById('pmModalSubtitle').textContent = `Precio: USD $${Number(car.priceUsd).toLocaleString('es-UY')} • ${car.version || ''}`;
+      
+      const urlInput = document.getElementById('pmUrlInput');
+      if (urlInput) urlInput.value = '';
+
+      renderPhotoManagerGrid();
+
+      // Configurar dropzone
+      const dropzone = document.getElementById('pmDropZone');
+      if (dropzone) {
+        dropzone.ondragover = (e) => { e.preventDefault(); dropzone.classList.add('border-[#2D3E46]', 'bg-slate-100'); };
+        dropzone.ondragleave = (e) => { e.preventDefault(); dropzone.classList.remove('border-[#2D3E46]', 'bg-slate-100'); };
+        dropzone.ondrop = (e) => {
+          e.preventDefault();
+          dropzone.classList.remove('border-[#2D3E46]', 'bg-slate-100');
+          if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+            handlePmFileInput(e.dataTransfer.files);
+          }
+        };
+      }
+
+      const modal = document.getElementById('photoManagerModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function openPhotoManagerForCurrentModalCar() {
+      if (currentModalCar) {
+        openPhotoManager(currentModalCar.id);
+      }
+    }
+
+    function closePhotoManager() {
+      const modal = document.getElementById('photoManagerModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      pmCarId = null;
+      pmPhotos = [];
+    }
+
+    function renderPhotoManagerGrid() {
+      const grid = document.getElementById('pmPhotosGrid');
+      const countBadge = document.getElementById('pmPhotoCountBadge');
+      const statusText = document.getElementById('pmStatusText');
+      if (countBadge) countBadge.textContent = pmPhotos.length;
+      if (statusText) statusText.textContent = `${pmPhotos.length} fotos cargadas`;
+      if (!grid) return;
+
+      if (pmPhotos.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-8 text-center text-xs text-slate-400 bg-slate-50 rounded-xl border border-slate-200">
+            No hay fotos cargadas. Usá el botón de arriba para subir fotos de tu PC o agregar una ruta.
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = pmPhotos.map((url, idx) => {
+        const isCover = idx === 0;
+        return `
+          <div 
+            class="relative rounded-xl border-2 ${isCover ? 'border-amber-400 shadow-md ring-2 ring-amber-300/40' : 'border-slate-200'} overflow-hidden bg-slate-100 flex flex-col justify-between group transition-all"
+            draggable="true"
+            ondragstart="handlePmPhotoDragStart(event, ${idx})"
+            ondragover="handlePmPhotoDragOver(event)"
+            ondrop="handlePmPhotoDrop(event, ${idx})"
+          >
+            <!-- BADGE NUMERO / PORTADA -->
+            <div class="absolute top-2 left-2 z-10 flex flex-col gap-1 pointer-events-none">
+              ${isCover 
+                ? '<span class="bg-amber-500 text-white font-extrabold text-[10px] px-2 py-0.5 rounded shadow flex items-center gap-1">⭐ PORTADA</span>' 
+                : `<span class="bg-black/70 text-white font-bold text-[10px] px-2 py-0.5 rounded shadow">#${idx + 1}</span>`}
+            </div>
+
+            <!-- IMAGEN PREVIA -->
+            <div class="aspect-[4/3] w-full overflow-hidden bg-slate-200 cursor-grab active:cursor-grabbing">
+              <img src="${url}" alt="Foto ${idx + 1}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=300&q=75'">
+            </div>
+
+            <!-- CONTROLES -->
+            <div class="p-2 bg-white border-t border-slate-200 flex flex-col gap-1.5">
+              <div class="flex items-center justify-between">
+                ${!isCover ? `
+                  <button type="button" onclick="setPmCover(${idx})" class="w-full py-1 px-2 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 text-[11px] font-bold text-center transition-colors">
+                    ⭐ Poner como Portada
+                  </button>
+                ` : `
+                  <span class="w-full py-1 text-[11px] font-extrabold text-amber-700 text-center bg-amber-50 rounded-lg">
+                    ✓ Portada Principal
+                  </span>
+                `}
+              </div>
+
+              <div class="flex items-center justify-between gap-1 pt-1 border-t border-slate-100">
+                <div class="flex items-center gap-1">
+                  <button type="button" onclick="movePmPhoto(${idx}, -1)" ${idx === 0 ? 'disabled class="opacity-30 px-2 py-1 text-slate-400 text-xs"' : 'class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs"'} title="Mover a la izquierda">◀</button>
+                  <button type="button" onclick="movePmPhoto(${idx}, 1)" ${idx === pmPhotos.length - 1 ? 'disabled class="opacity-30 px-2 py-1 text-slate-400 text-xs"' : 'class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs"'} title="Mover a la derecha">▶</button>
+                </div>
+                <button type="button" onclick="deletePmPhoto(${idx})" class="px-2 py-1 rounded bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs transition-colors" title="Eliminar foto">
+                  🗑️ Borrar
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function handlePmFileInput(files) {
+      if (!files || files.length === 0) return;
+      showAdminToast(`⏳ Procesando y optimizando ${files.length} foto(s)...`);
+      for (let i = 0; i < files.length; i++) {
+        try {
+          const dataUrl = await compressAndLoadImage(files[i]);
+          pmPhotos.push(dataUrl);
+        } catch (err) {
+          console.error('Error al procesar foto:', err);
+        }
+      }
+      renderPhotoManagerGrid();
+      showAdminToast(`✅ Se agregaron ${files.length} foto(s) correctamente.`);
+    }
+
+    function addPhotoFromInput() {
+      const input = document.getElementById('pmUrlInput');
+      const val = (input?.value || '').trim();
+      if (!val) return;
+      pmPhotos.push(val);
+      input.value = '';
+      renderPhotoManagerGrid();
+    }
+
+    function setPmCover(idx) {
+      if (idx <= 0 || idx >= pmPhotos.length) return;
+      const [item] = pmPhotos.splice(idx, 1);
+      pmPhotos.unshift(item);
+      renderPhotoManagerGrid();
+      showAdminToast(`⭐ Nueva foto de portada asignada.`);
+    }
+
+    function movePmPhoto(idx, dir) {
+      const target = idx + dir;
+      if (target < 0 || target >= pmPhotos.length) return;
+      const [item] = pmPhotos.splice(idx, 1);
+      pmPhotos.splice(target, 0, item);
+      renderPhotoManagerGrid();
+    }
+
+    function deletePmPhoto(idx) {
+      pmPhotos.splice(idx, 1);
+      renderPhotoManagerGrid();
+      showAdminToast(`🗑️ Foto eliminada.`);
+    }
+
+    function handlePmPhotoDragStart(e, idx) {
+      draggedPmPhotoIdx = idx;
+      e.dataTransfer.effectAllowed = 'move';
+    }
+
+    function handlePmPhotoDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+    }
+
+    function handlePmPhotoDrop(e, targetIdx) {
+      e.preventDefault();
+      if (draggedPmPhotoIdx === null || draggedPmPhotoIdx === targetIdx) return;
+      const [item] = pmPhotos.splice(draggedPmPhotoIdx, 1);
+      pmPhotos.splice(targetIdx, 0, item);
+      draggedPmPhotoIdx = null;
+      renderPhotoManagerGrid();
+    }
+
+    function savePhotoManagerChanges() {
+      if (!pmCarId) return;
+      const car = stockData.find(v => v.id === pmCarId);
+      if (!car) return;
+
+      car.images = pmPhotos.length > 0 ? [...pmPhotos] : ['https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80'];
+      
+      saveStockToStorage();
+      applyFilters();
+      filterAdminVehicles();
+
+      if (currentModalCar && currentModalCar.id === pmCarId) {
+        currentModalCar.images = [...car.images];
+        currentModalImgIndex = 0;
+        updateModalGallery();
+      }
+
+      closePhotoManager();
+      showAdminToast(`✅ Fotos de ${car.brand} ${car.model} actualizadas correctamente.`);
+    }
+
+    // ========================================================
+    // MODAL REORDENAR CATÁLOGO DE VEHÍCULOS
+    // ========================================================
+    let catalogOrderTemp = [];
+    let draggedCarOrderIdx = null;
+
+    function moveVehicleInStock(id, dir) {
+      const index = stockData.findIndex(v => v.id === id);
+      if (index === -1) return;
+      const target = index + dir;
+      if (target < 0 || target >= stockData.length) return;
+      const [moved] = stockData.splice(index, 1);
+      stockData.splice(target, 0, moved);
+      saveStockToStorage();
+      applyFilters();
+      filterAdminVehicles();
+      showAdminToast(`↕️ ${moved.brand} ${moved.model} movido en el catálogo.`);
+    }
+
+    function openCatalogOrderModal() {
+      catalogOrderTemp = [...stockData];
+      renderCatalogOrderList();
+      const modal = document.getElementById('catalogOrderModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCatalogOrderModal() {
+      const modal = document.getElementById('catalogOrderModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function renderCatalogOrderList() {
+      const listEl = document.getElementById('coVehiclesList');
+      const totalCarsEl = document.getElementById('coTotalCars');
+      const searchVal = (document.getElementById('coSearchInput')?.value || '').toLowerCase().trim();
+      if (!listEl) return;
+
+      if (totalCarsEl) totalCarsEl.textContent = catalogOrderTemp.length;
+
+      listEl.innerHTML = catalogOrderTemp.map((car, idx) => {
+        const matchSearch = !searchVal || 
+          car.brand.toLowerCase().includes(searchVal) || 
+          car.model.toLowerCase().includes(searchVal) || 
+          (car.year && String(car.year).includes(searchVal));
+
+        if (!matchSearch) return '';
+
+        const thumb = (car.images && car.images.length > 0) ? car.images[0] : 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=150&q=70';
+
+        return `
+          <div 
+            class="flex items-center justify-between p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition-all gap-3"
+            draggable="true"
+            ondragstart="handleCarOrderDragStart(event, ${idx})"
+            ondragover="handleCarOrderDragOver(event)"
+            ondrop="handleCarOrderDrop(event, ${idx})"
+          >
+            <!-- POSITION & THUMBNAIL -->
+            <div class="flex items-center space-x-3">
+              <span class="w-8 h-8 rounded-lg bg-[#2D3E46] text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
+                #${idx + 1}
+              </span>
+              <img src="${thumb}" alt="${car.brand}" class="w-12 h-9 object-cover rounded-lg border border-slate-200 shadow-sm flex-shrink-0" onerror="this.src='https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=150&q=70'">
+              <div>
+                <div class="font-bold text-xs text-[#2D3E46]">${car.brand} ${car.model} (${car.year})</div>
+                <div class="text-[11px] text-slate-500 font-semibold text-[#C0392B]">USD $${Number(car.priceUsd).toLocaleString('es-UY')}</div>
+              </div>
+            </div>
+
+            <!-- ORDER BUTTONS -->
+            <div class="flex items-center space-x-1 flex-shrink-0">
+              <button type="button" onclick="moveCarOrderToTop(${idx})" ${idx === 0 ? 'disabled class="opacity-30 px-2 py-1 text-slate-400 text-xs"' : 'class="px-2 py-1 rounded bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 font-bold text-xs"'} title="Poner primero en la página">
+                🔝 Primero
+              </button>
+              <button type="button" onclick="moveCarOrder(${idx}, -1)" ${idx === 0 ? 'disabled class="opacity-30 px-2 py-1 text-slate-400 text-xs"' : 'class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs"'} title="Subir">
+                ⬆️
+              </button>
+              <button type="button" onclick="moveCarOrder(${idx}, 1)" ${idx === catalogOrderTemp.length - 1 ? 'disabled class="opacity-30 px-2 py-1 text-slate-400 text-xs"' : 'class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs"'} title="Bajar">
+                ⬇️
+              </button>
+              <button type="button" onclick="moveCarOrderToBottom(${idx})" ${idx === catalogOrderTemp.length - 1 ? 'disabled class="opacity-30 px-2 py-1 text-slate-400 text-xs"' : 'class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs"'} title="Poner al final">
+                🔻
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function moveCarOrderToTop(idx) {
+      if (idx <= 0) return;
+      const [item] = catalogOrderTemp.splice(idx, 1);
+      catalogOrderTemp.unshift(item);
+      renderCatalogOrderList();
+    }
+
+    function moveCarOrderToBottom(idx) {
+      if (idx >= catalogOrderTemp.length - 1) return;
+      const [item] = catalogOrderTemp.splice(idx, 1);
+      catalogOrderTemp.push(item);
+      renderCatalogOrderList();
+    }
+
+    function moveCarOrder(idx, dir) {
+      const target = idx + dir;
+      if (target < 0 || target >= catalogOrderTemp.length) return;
+      const [item] = catalogOrderTemp.splice(idx, 1);
+      catalogOrderTemp.splice(target, 0, item);
+      renderCatalogOrderList();
+    }
+
+    function handleCarOrderDragStart(e, idx) {
+      draggedCarOrderIdx = idx;
+      e.dataTransfer.effectAllowed = 'move';
+    }
+
+    function handleCarOrderDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+    }
+
+    function handleCarOrderDrop(e, targetIdx) {
+      e.preventDefault();
+      if (draggedCarOrderIdx === null || draggedCarOrderIdx === targetIdx) return;
+      const [item] = catalogOrderTemp.splice(draggedCarOrderIdx, 1);
+      catalogOrderTemp.splice(targetIdx, 0, item);
+      draggedCarOrderIdx = null;
+      renderCatalogOrderList();
+    }
+
+    function saveCatalogOrderChanges() {
+      stockData = [...catalogOrderTemp];
+      saveStockToStorage();
+      applyFilters();
+      filterAdminVehicles();
+      closeCatalogOrderModal();
+      showAdminToast('✅ Nuevo orden del catálogo aplicado con éxito a la página.');
     }
 
     function confirmResetCatalog() {
@@ -4423,6 +4202,26 @@
       URL.revokeObjectURL(url);
     }
 
+    function downloadVehiclesJs() {
+      const content = `// =================================================================
+// CATÁLOGO OFICIAL DE VEHÍCULOS CARVLAK (FOTOS REALES DE SHOWROOM)
+// Actualizado el ${new Date().toLocaleDateString('es-UY')}
+// =================================================================
+
+window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
+`;
+      const blob = new Blob([content], { type: 'application/javascript;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'vehicles.js';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showAdminToast('📥 Descargando archivo vehicles.js actualizado.');
+    }
+
     // TECLAS DE ESCAPE
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
@@ -4432,6 +4231,8 @@
         closeAdminPinModal();
         closeAdminPanel();
         closeExportModal();
+        closePhotoManager();
+        closeCatalogOrderModal();
         toggleAdvisorWidget(false);
       }
     });
@@ -4446,4 +4247,5 @@
 
 </body>
 </html>
+
 
