@@ -77,22 +77,23 @@
       .no-print { display: none !important; }
     }
   </style>
+  <style id="customDynamicTheme"></style>
 </head>
 <body class="bg-[#F8FAFC] text-slate-800 min-h-screen flex flex-col antialiased">
 
   <!-- TOP ANNOUNCEMENT BAR (Color Petrol #2D3E46) -->
-  <div class="bg-[#2D3E46] text-white px-4 py-2 text-xs font-medium border-b border-[#1E2B31]">
+  <div id="topAnnouncementBar" class="bg-[#2D3E46] text-white px-4 py-2 text-xs font-medium border-b border-[#1E2B31]">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-4">
       <div class="flex items-center space-x-2 text-slate-200">
         <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         <span class="font-semibold text-white">Showroom Abierto:</span>
-        <span>Av. Giannattasio km 18.500 esq. Racine, Ciudad de la Costa</span>
+        <span id="topBarAddress">Av. Giannattasio km 18.500 esq. Racine, Ciudad de la Costa</span>
       </div>
       <div class="flex items-center space-x-4 text-slate-200">
-        <span class="hidden md:inline">Garantía Mecánica Propia • Financiación Bancaria 100% • Seña Online</span>
-        <a href="https://wa.me/59899267964" target="_blank" class="text-white hover:text-emerald-300 font-bold flex items-center transition-colors">
+        <span id="topBarPromoText" class="hidden md:inline">Garantía Mecánica Propia • Financiación Bancaria 100% • Seña Online</span>
+        <a id="topBarPhoneLink" href="https://wa.me/59899267964" target="_blank" class="text-white hover:text-emerald-300 font-bold flex items-center transition-colors">
           <svg class="w-3.5 h-3.5 mr-1 text-emerald-400 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-          099 267 964
+          <span id="topBarPhoneText">099 267 964</span>
         </a>
       </div>
     </div>
@@ -187,12 +188,12 @@
           <div class="lg:col-span-7 space-y-5 text-left">
             <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold badge-soft">
               <span class="w-2 h-2 rounded-full bg-[#C0392B] animate-ping"></span>
-              <span class="text-[#2D3E46]">Catálogo 100% Actualizado • Reserva Online con Seña</span>
+              <span id="heroTopBadge" class="text-[#2D3E46]">Catálogo 100% Actualizado • Reserva Online con Seña</span>
             </div>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#2D3E46] leading-[1.15]">
+            <h1 id="heroMainTitle" class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#2D3E46] leading-[1.15]">
               Tu próximo vehículo con la <span class="text-[#C0392B]">confianza CARVLAK</span>.
             </h1>
-            <p class="text-slate-600 text-base sm:text-lg max-w-xl">
+            <p id="heroMainSubtitle" class="text-slate-600 text-base sm:text-lg max-w-xl">
               Usados seleccionados con inspección mecánica de 100 puntos, eléctricos 0km de última generación, motos y todoterrenos. Financiación bancaria hasta en 60 cuotas, toma de permutas y reserva digital con seña inmediata.
             </p>
             
@@ -226,41 +227,54 @@
             </div>
           </div>
 
-          <!-- HERO HIGHLIGHT CARD -->
-          <div class="lg:col-span-5">
+          <!-- HERO HIGHLIGHT CARD (MODIFICABLE EN VIVO) -->
+          <div class="lg:col-span-5" id="heroFeaturedCardContainer">
             <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xl shadow-slate-200/60 relative">
-              <div class="absolute -top-3 right-6 bg-[#C0392B] text-white text-[11px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
+              
+              <!-- BOTÓN DIRECTO PARA EDITAR DESTACADO -->
+              <div class="absolute -top-3 left-4">
+                <button 
+                  type="button"
+                  onclick="openHeroFeaturedModal()" 
+                  class="bg-white/95 hover:bg-slate-100 text-[#2D3E46] text-[11px] font-bold px-3 py-1 rounded-full border border-slate-300 shadow-md flex items-center gap-1.5 transition-transform hover:scale-105"
+                  title="Modificar el vehículo destacado de la semana"
+                >
+                  <span>✏️ Cambiar Destacado</span>
+                </button>
+              </div>
+
+              <div id="heroBadgeText" class="absolute -top-3 right-6 bg-[#C0392B] text-white text-[11px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
                 Destacado de la Semana
               </div>
               
-              <div class="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-100 mb-4 group cursor-pointer" onclick="openVehicleModal('crv-006')">
+              <div id="heroCardClickable" class="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-100 mb-4 group cursor-pointer" onclick="handleHeroFeaturedCardClick()">
                 <img 
                   id="heroCarImg" 
                   src="https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-06-05-at-12-32-15-pm-3-7b3b4f91d09f7a40ca17889656461932-1024-1024.webp" 
                   alt="Chevrolet Celta LT 2016" 
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div class="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm text-white px-2.5 py-1 rounded text-xs font-semibold">
+                <div id="heroImgSubtitle" class="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm text-white px-2.5 py-1 rounded text-xs font-semibold">
                   Fotos Reales en Showroom
                 </div>
               </div>
 
               <div class="flex justify-between items-start mb-2">
                 <div>
-                  <h3 class="font-bold text-lg text-[#2D3E46]">Chevrolet Celta 1.0 LT</h3>
-                  <p class="text-xs text-slate-500">2016 • 76.000 km • Hatchback 5P • Blanco</p>
+                  <h3 id="heroCarTitle" class="font-bold text-lg text-[#2D3E46]">Chevrolet Celta 1.0 LT</h3>
+                  <p id="heroCarSpecs" class="text-xs text-slate-500">2016 • 76.000 km • Hatchback 5P • Blanco</p>
                 </div>
                 <div class="text-right">
-                  <div class="text-xs text-slate-400 line-through">USD 9.400</div>
-                  <div class="text-xl font-extrabold text-[#C0392B]">USD 8.900</div>
+                  <div id="heroCarOldPrice" class="text-xs text-slate-400 line-through">USD 9.400</div>
+                  <div id="heroCarPrice" class="text-xl font-extrabold text-[#C0392B]">USD 8.900</div>
                 </div>
               </div>
 
               <div class="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-slate-100">
-                <button onclick="openVehicleModal('crv-006')" class="w-full py-2.5 rounded-lg bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold transition-colors">
+                <button id="heroBtnViewDetails" onclick="handleHeroFeaturedCardClick()" class="w-full py-2.5 rounded-lg bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold transition-colors">
                   Ver Ficha & 360°
                 </button>
-                <button onclick="openReservationCheckout('crv-006')" class="w-full py-2.5 rounded-lg bg-[#C0392B] hover:bg-[#A93226] text-white text-xs font-bold text-center flex items-center justify-center space-x-1 transition-colors">
+                <button id="heroBtnReserve" onclick="handleHeroFeaturedReserveClick()" class="w-full py-2.5 rounded-lg bg-[#C0392B] hover:bg-[#A93226] text-white text-xs font-bold text-center flex items-center justify-center space-x-1 transition-colors">
                   <span>Reservar ($500)</span>
                 </button>
               </div>
@@ -1265,7 +1279,7 @@
   <!-- CONVERSATIONAL AI ADVISOR (FLOATING WIDGET) -->
   <!-- ================================================================= -->
   <!-- FLOATING TRIGGER BUTTON (Bottom-Right) -->
-  <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
+  <div id="advisorFloatingWidget" class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
     
     <!-- Pulse badge hint -->
     <div id="advisorBadgeHint" class="hidden sm:flex items-center gap-1.5 bg-[#2D3E46] text-white text-[11px] font-semibold px-3 py-1.5 rounded-full shadow-lg border border-[#1E2B31] animate-bounce">
@@ -1435,6 +1449,9 @@
         </button>
         <button id="adminTabBtnMetricas" onclick="switchAdminTab('metricas')" class="px-4 py-2.5 rounded-t-xl text-slate-600 hover:text-slate-900">
           📊 Dashboard Métricas
+        </button>
+        <button id="adminTabBtnUi" onclick="switchAdminTab('ui')" class="px-4 py-2.5 rounded-t-xl text-slate-600 hover:text-slate-900 flex items-center gap-1.5 whitespace-nowrap">
+          <span>🎨 Personalizar Interfaz & Destacado</span>
         </button>
       </div>
 
@@ -1796,6 +1813,231 @@
           </div>
         </div>
 
+        <!-- ==================== TAB 5: PERSONALIZAR INTERFAZ & DESTACADO ==================== -->
+        <div id="adminTabUiSection" class="hidden space-y-6">
+          
+          <!-- SECCIÓN 1: DESTACADO DE LA SEMANA -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div class="flex items-center space-x-2">
+                <span class="text-xl">⭐</span>
+                <div>
+                  <h3 class="text-sm font-bold text-[#2D3E46]">Vehículo Destacado de la Portada</h3>
+                  <p class="text-xs text-slate-500">Configurá la tarjeta principal que ven todos los visitantes al entrar.</p>
+                </div>
+              </div>
+              <button type="button" onclick="openHeroFeaturedModal()" class="px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 font-bold text-xs shadow-xs">
+                ⚡ Asistente Rápido
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Vehículo a Destacar (44 disponibles)</label>
+                <select id="uiFeaturedCarSelect" onchange="syncUiFeaturedPreview()" class="w-full px-3 py-2.5 text-xs font-semibold rounded-lg border border-slate-300 bg-white">
+                  <!-- Llenado dinámico con stockData -->
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Etiqueta / Badge Superior</label>
+                <input type="text" id="uiFeaturedBadge" placeholder="Destacado de la Semana" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-bold">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Precio Anterior Tachado (opcional)</label>
+                <input type="text" id="uiFeaturedOldPrice" placeholder="Ej: USD 9.400" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Texto de Portada en Foto</label>
+                <input type="text" id="uiFeaturedImgTag" placeholder="Fotos Reales en Showroom" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white">
+              </div>
+            </div>
+
+            <!-- PREVIEW INLINE DEL DESTACADO -->
+            <div id="uiFeaturedPreviewBox" class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center space-x-4">
+              <img id="uiPreviewImg" src="" class="w-24 h-18 object-cover rounded-lg border border-slate-200 shadow-sm" alt="Preview">
+              <div>
+                <div id="uiPreviewTitle" class="font-bold text-sm text-[#2D3E46]">Cargando...</div>
+                <div id="uiPreviewSpecs" class="text-xs text-slate-500">...</div>
+                <div id="uiPreviewPrice" class="text-sm font-black text-[#C0392B]">...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECCIÓN 2: TEXTOS DEL HERO & ENCABEZADO -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <div class="flex items-center space-x-2 border-b border-slate-100 pb-3">
+              <span class="text-xl">📢</span>
+              <div>
+                <h3 class="text-sm font-bold text-[#2D3E46]">Textos Principales del Hero</h3>
+                <p class="text-xs text-slate-500">Editá el título y la descripción principal del encabezado.</p>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Badge Superior del Hero</label>
+                <input type="text" id="uiHeroBadge" placeholder="Catálogo 100% Actualizado • Reserva Online con Seña" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Título Principal (H1)</label>
+                <input type="text" id="uiHeroTitle" placeholder="Tu próximo vehículo con la confianza CARVLAK." class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-bold">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Subtítulo / Bajada Descriptiva</label>
+                <textarea id="uiHeroSubtitle" rows="2" placeholder="Usados seleccionados con inspección mecánica..." class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECCIÓN 3: BARRA SUPERIOR & CONTACTO -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <div class="flex items-center space-x-2 border-b border-slate-100 pb-3">
+              <span class="text-xl">📍</span>
+              <div>
+                <h3 class="text-sm font-bold text-[#2D3E46]">Barra Superior & Información de Contacto</h3>
+                <p class="text-xs text-slate-500">Modificá la dirección del showroom y el número de WhatsApp oficial.</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Dirección del Showroom</label>
+                <input type="text" id="uiTopAddress" placeholder="Av. Giannattasio km 18.500 esq. Racine, Ciudad de la Costa" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Frase Promocional / Beneficios</label>
+                <input type="text" id="uiTopPromo" placeholder="Garantía Mecánica Propia • Financiación Bancaria 100% • Seña Online" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">WhatsApp Teléfono (Visible)</label>
+                <input type="text" id="uiWhatsappDisplay" placeholder="099 267 964" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-bold">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">WhatsApp Número Internacional (Para Enlace)</label>
+                <input type="text" id="uiWhatsappNumber" placeholder="59899267964" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-mono">
+              </div>
+            </div>
+          </div>
+
+          <!-- SECCIÓN 4: PALETA DE COLORES & TEMAS -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <div class="flex items-center space-x-2 border-b border-slate-100 pb-3">
+              <span class="text-xl">🎨</span>
+              <div>
+                <h3 class="text-sm font-bold text-[#2D3E46]">Paleta de Colores & Identidad Visual</h3>
+                <p class="text-xs text-slate-500">Personalizá los colores de la barra, botones y acentos de precios.</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+              <button type="button" onclick="applyPresetTheme('#2D3E46', '#C0392B')" class="p-3 rounded-xl border border-slate-300 hover:border-slate-500 text-left transition-all">
+                <div class="flex items-center space-x-2 mb-1">
+                  <span class="w-4 h-4 rounded-full bg-[#2D3E46]"></span>
+                  <span class="w-4 h-4 rounded-full bg-[#C0392B]"></span>
+                </div>
+                <div class="font-bold text-xs text-slate-800">CARVLAK Oficial</div>
+                <div class="text-[10px] text-slate-400">Petrol & Rojo</div>
+              </button>
+
+              <button type="button" onclick="applyPresetTheme('#1E293B', '#F59E0B')" class="p-3 rounded-xl border border-slate-300 hover:border-slate-500 text-left transition-all">
+                <div class="flex items-center space-x-2 mb-1">
+                  <span class="w-4 h-4 rounded-full bg-[#1E293B]"></span>
+                  <span class="w-4 h-4 rounded-full bg-[#F59E0B]"></span>
+                </div>
+                <div class="font-bold text-xs text-slate-800">Midnight Gold</div>
+                <div class="text-[10px] text-slate-400">Azul Noche & Dorado</div>
+              </button>
+
+              <button type="button" onclick="applyPresetTheme('#0F172A', '#059669')" class="p-3 rounded-xl border border-slate-300 hover:border-slate-500 text-left transition-all">
+                <div class="flex items-center space-x-2 mb-1">
+                  <span class="w-4 h-4 rounded-full bg-[#0F172A]"></span>
+                  <span class="w-4 h-4 rounded-full bg-[#059669]"></span>
+                </div>
+                <div class="font-bold text-xs text-slate-800">Eco Green</div>
+                <div class="text-[10px] text-slate-400">Grafito & Esmeralda</div>
+              </button>
+
+              <button type="button" onclick="applyPresetTheme('#18181B', '#E11D48')" class="p-3 rounded-xl border border-slate-300 hover:border-slate-500 text-left transition-all">
+                <div class="flex items-center space-x-2 mb-1">
+                  <span class="w-4 h-4 rounded-full bg-[#18181B]"></span>
+                  <span class="w-4 h-4 rounded-full bg-[#E11D48]"></span>
+                </div>
+                <div class="font-bold text-xs text-slate-800">Sport Dark</div>
+                <div class="text-[10px] text-slate-400">Negro Carbono & Rubí</div>
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div class="flex items-center space-x-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <input type="color" id="uiPrimaryColor" value="#2D3E46" onchange="syncColorInputLive()" class="w-10 h-10 rounded-lg cursor-pointer border border-slate-300 p-0.5">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700">Color Primario (Petrol)</label>
+                  <span class="text-[10px] text-slate-400">Barra superior, botones principales y encabezados</span>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <input type="color" id="uiAccentColor" value="#C0392B" onchange="syncColorInputLive()" class="w-10 h-10 rounded-lg cursor-pointer border border-slate-300 p-0.5">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700">Color de Acento (Rojo)</label>
+                  <span class="text-[10px] text-slate-400">Precios, botones de seña y destacados</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECCIÓN 5: VISIBILIDAD DE MÓDULOS -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <div class="flex items-center space-x-2 border-b border-slate-100 pb-3">
+              <span class="text-xl">👁️</span>
+              <div>
+                <h3 class="text-sm font-bold text-[#2D3E46]">Visibilidad de Módulos</h3>
+                <p class="text-xs text-slate-500">Activá o desactivá bloques de la página con un clic.</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+              <label class="flex items-center space-x-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer hover:bg-slate-100 transition-colors">
+                <input type="checkbox" id="uiToggleTopBar" checked class="w-4 h-4 rounded text-[#2D3E46] focus:ring-[#2D3E46]">
+                <span class="text-xs font-bold text-slate-700">Barra Superior</span>
+              </label>
+
+              <label class="flex items-center space-x-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer hover:bg-slate-100 transition-colors">
+                <input type="checkbox" id="uiToggleFinancing" checked class="w-4 h-4 rounded text-[#2D3E46] focus:ring-[#2D3E46]">
+                <span class="text-xs font-bold text-slate-700">Financiación</span>
+              </label>
+
+              <label class="flex items-center space-x-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer hover:bg-slate-100 transition-colors">
+                <input type="checkbox" id="uiToggleTradeIn" checked class="w-4 h-4 rounded text-[#2D3E46] focus:ring-[#2D3E46]">
+                <span class="text-xs font-bold text-slate-700">Tasá tu Usado</span>
+              </label>
+
+              <label class="flex items-center space-x-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer hover:bg-slate-100 transition-colors">
+                <input type="checkbox" id="uiToggleAdvisor" checked class="w-4 h-4 rounded text-[#2D3E46] focus:ring-[#2D3E46]">
+                <span class="text-xs font-bold text-slate-700">Asesor IA</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- ACCIONES FOOTER TAB UI -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <button type="button" onclick="resetUiSettingsToDefault()" class="px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-red-50 hover:text-red-700 text-slate-600 text-xs font-bold transition-colors">
+              🔄 Restablecer Diseño Predeterminado
+            </button>
+            <button type="button" onclick="saveAllUiSettingsFromAdmin()" class="px-6 py-2.5 rounded-xl bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold shadow-md transition-all flex items-center gap-2">
+              <span>💾 Guardar Todos los Cambios de Interfaz</span>
+            </button>
+          </div>
+
+        </div>
+
       </div>
 
       <!-- FOOTER ADMIN -->
@@ -1992,6 +2234,83 @@
   </div>
 
   <!-- ================================================================= -->
+  <!-- MODAL RÁPIDO: MODIFICAR DESTACADO DE LA SEMANA -->
+  <!-- ================================================================= -->
+  <div id="heroFeaturedModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 relative my-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+        <div class="flex items-center space-x-2">
+          <span class="text-2xl">⭐</span>
+          <div>
+            <h3 class="text-base font-bold text-[#2D3E46]">Modificar Destacado de la Semana</h3>
+            <p class="text-xs text-slate-500">Seleccioná qué vehículo resaltar en la portada principal.</p>
+          </div>
+        </div>
+        <button onclick="closeHeroFeaturedModal()" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold">✕</button>
+      </div>
+
+      <div class="space-y-4 pt-4">
+        <!-- SELECTOR DE VEHÍCULO -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Elegir Vehículo del Catálogo (44 disponibles)</label>
+          <select id="quickFeaturedSelect" onchange="onQuickFeaturedCarChange()" class="w-full px-3 py-2.5 text-xs font-semibold rounded-xl border border-slate-300 bg-white focus:ring-2 focus:ring-[#2D3E46]">
+            <!-- Dinámico -->
+          </select>
+        </div>
+
+        <!-- BADGE Y ETIQUETA -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Texto del Badge Superior</label>
+            <input type="text" id="quickBadgeText" value="Destacado de la Semana" placeholder="Ej: Destacado de la Semana" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-bold">
+            <div class="flex flex-wrap gap-1 mt-1.5">
+              <button type="button" onclick="setQuickBadgePreset('Destacado de la Semana')" class="text-[10px] px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold">Destacado</button>
+              <button type="button" onclick="setQuickBadgePreset('Oportunidad Única')" class="text-[10px] px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold">Oportunidad</button>
+              <button type="button" onclick="setQuickBadgePreset('Recién Ingresado')" class="text-[10px] px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold">Ingreso</button>
+              <button type="button" onclick="setQuickBadgePreset('Super Precio')" class="text-[10px] px-2 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold">Super Precio</button>
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Texto en Foto</label>
+            <input type="text" id="quickImgSubtitle" value="Fotos Reales en Showroom" placeholder="Ej: Fotos Reales en Showroom" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white">
+          </div>
+        </div>
+
+        <!-- PRECIO TACHADO / OFERTA -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Precio Anterior / Tachado (opcional)</label>
+            <input type="text" id="quickOldPrice" placeholder="Ej: USD 9.400" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Precio Actual (de catálogo)</label>
+            <input type="text" id="quickCurrentPrice" readonly class="w-full px-3 py-2 text-xs font-extrabold text-[#C0392B] rounded-lg border border-slate-200 bg-slate-50">
+          </div>
+        </div>
+
+        <!-- VISTA PREVIA RÁPIDA -->
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center space-x-3">
+          <img id="quickPreviewImg" src="" class="w-20 h-16 object-cover rounded-lg border border-slate-200 shadow-sm" alt="Preview">
+          <div>
+            <div id="quickPreviewTitle" class="font-bold text-xs text-[#2D3E46]">Cargando...</div>
+            <div id="quickPreviewSpecs" class="text-[11px] text-slate-500">...</div>
+            <div id="quickPreviewPrice" class="text-xs font-bold text-[#C0392B]">...</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center pt-4 border-t border-slate-200 mt-4">
+        <button type="button" onclick="closeHeroFeaturedModal()" class="px-4 py-2 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-bold transition-colors">
+          Cancelar
+        </button>
+        <button type="button" onclick="saveQuickFeaturedCar()" class="px-5 py-2 rounded-xl bg-[#C0392B] hover:bg-[#A93226] text-white text-xs font-bold shadow-md transition-colors flex items-center gap-1.5">
+          <span>💾 Guardar y Aplicar Destacado</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
   <!-- JAVASCRIPT: DATA (51 VEHICLES), NLP ENGINE & COMMERCIAL LOGIC -->
   <!-- ================================================================= -->
   <script>
@@ -2055,6 +2374,7 @@
       updateAllCatalogCounters();
       updateBrandFilterOptions();
       updateAdminStats();
+      if (typeof applyUiSettings === 'function') applyUiSettings();
     }
 
     function saveStockToStorage() {
@@ -2066,6 +2386,7 @@
       updateAllCatalogCounters();
       updateBrandFilterOptions();
       updateAdminStats();
+      if (typeof applyUiSettings === 'function') applyUiSettings();
     }
 
     function saveReservationsToStorage() {
@@ -3217,7 +3538,7 @@
     }
 
     function switchAdminTab(tab) {
-      const tabs = ['stock', 'reservas', 'leads', 'metricas'];
+      const tabs = ['stock', 'reservas', 'leads', 'metricas', 'ui'];
       tabs.forEach(t => {
         const btn = document.getElementById(`adminTabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);
         const sec = document.getElementById(`adminTab${t.charAt(0).toUpperCase() + t.slice(1)}Section`);
@@ -3244,6 +3565,8 @@
         renderAdminLeadsTable();
       } else if (tab === 'metricas') {
         renderAdminMetricsDashboard();
+      } else if (tab === 'ui') {
+        populateUiAdminForm();
       }
     }
 
@@ -3308,7 +3631,10 @@
               </select>
             </td>
             <td class="py-2.5 px-4 text-right space-x-1 whitespace-nowrap">
-              <button onclick="openPhotoManager('${car.id}')" class="px-2.5 py-1 rounded bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 font-bold text-xs" title="Cargar fotos y elegir orden de portada">
+              <button onclick="setAsFeaturedHero('${car.id}')" class="px-2.5 py-1 rounded bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-bold text-xs shadow-xs" title="Establecer como Destacado de la Semana en la portada">
+                ⭐ Destacar
+              </button>
+              <button onclick="openPhotoManager('${car.id}')" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs" title="Cargar fotos y elegir orden de portada">
                 📸 Fotos & Orden
               </button>
               <button onclick="moveVehicleInStock('${car.id}', -1)" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs" title="Mover hacia arriba en la web">
@@ -4233,13 +4559,416 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
         closeExportModal();
         closePhotoManager();
         closeCatalogOrderModal();
+        closeHeroFeaturedModal();
         toggleAdvisorWidget(false);
       }
     });
 
+    // =================================================================
+    // GESTOR DE PERSONALIZACIÓN DE INTERFAZ & DESTACADO DE LA SEMANA
+    // =================================================================
+    const DEFAULT_UI_SETTINGS = {
+      featuredCarId: 'crv-006', // Chevrolet Celta por defecto
+      featuredBadge: 'Destacado de la Semana',
+      featuredImgTag: 'Fotos Reales en Showroom',
+      featuredOldPrice: 'USD 9.400',
+      heroTitle: 'Tu próximo vehículo con la <span class="text-[#C0392B]">confianza CARVLAK</span>.',
+      heroSubtitle: 'Usados seleccionados con inspección mecánica de 100 puntos, eléctricos 0km de última generación, motos y todoterrenos. Financiación bancaria hasta en 60 cuotas, toma de permutas y reserva digital con seña inmediata.',
+      heroTopBadge: 'Catálogo 100% Actualizado • Reserva Online con Seña',
+      topAddress: 'Av. Giannattasio km 18.500 esq. Racine, Ciudad de la Costa',
+      topPromo: 'Garantía Mecánica Propia • Financiación Bancaria 100% • Seña Online',
+      whatsappDisplay: '099 267 964',
+      whatsappNumber: '59899267964',
+      primaryColor: '#2D3E46',
+      accentColor: '#C0392B',
+      showTopBar: true,
+      showFinancing: true,
+      showTradeIn: true,
+      showAdvisor: true
+    };
+
+    let uiSettings = null;
+
+    function getUiSettings() {
+      if (uiSettings) return uiSettings;
+      try {
+        const saved = localStorage.getItem('carvlak_ui_settings_v1');
+        if (saved) {
+          uiSettings = Object.assign({}, DEFAULT_UI_SETTINGS, JSON.parse(saved));
+        } else {
+          uiSettings = Object.assign({}, DEFAULT_UI_SETTINGS);
+        }
+      } catch (e) {
+        console.error('Error al cargar configuración de interfaz:', e);
+        uiSettings = Object.assign({}, DEFAULT_UI_SETTINGS);
+      }
+      return uiSettings;
+    }
+
+    function saveUiSettings(newSettings) {
+      uiSettings = Object.assign({}, getUiSettings(), newSettings);
+      try {
+        localStorage.setItem('carvlak_ui_settings_v1', JSON.stringify(uiSettings));
+      } catch (e) {
+        console.error('Error al guardar configuración de interfaz:', e);
+      }
+      applyUiSettings(uiSettings);
+    }
+
+    function applyUiSettings(cfg) {
+      if (!cfg) cfg = getUiSettings();
+
+      // 1. Renderizar Tarjeta Destacado de la Semana
+      renderHeroFeaturedCard(cfg);
+
+      // 2. Textos del Hero
+      const elHeroTitle = document.getElementById('heroMainTitle');
+      if (elHeroTitle && cfg.heroTitle) elHeroTitle.innerHTML = cfg.heroTitle;
+
+      const elHeroSubtitle = document.getElementById('heroMainSubtitle');
+      if (elHeroSubtitle && cfg.heroSubtitle) elHeroSubtitle.textContent = cfg.heroSubtitle;
+
+      const elHeroTopBadge = document.getElementById('heroTopBadge');
+      if (elHeroTopBadge && cfg.heroTopBadge) elHeroTopBadge.textContent = cfg.heroTopBadge;
+
+      // 3. Barra Superior
+      const elTopBar = document.getElementById('topAnnouncementBar');
+      if (elTopBar) elTopBar.classList.toggle('hidden', cfg.showTopBar === false);
+
+      const elTopAddress = document.getElementById('topBarAddress');
+      if (elTopAddress && cfg.topAddress) elTopAddress.textContent = cfg.topAddress;
+
+      const elTopPromo = document.getElementById('topBarPromoText');
+      if (elTopPromo && cfg.topPromo) elTopPromo.textContent = cfg.topPromo;
+
+      const elPhoneLink = document.getElementById('topBarPhoneLink');
+      if (elPhoneLink && cfg.whatsappNumber) elPhoneLink.href = 'https://wa.me/' + cfg.whatsappNumber.replace(/[^0-9]/g, '');
+
+      const elPhoneText = document.getElementById('topBarPhoneText');
+      if (elPhoneText && cfg.whatsappDisplay) elPhoneText.textContent = cfg.whatsappDisplay;
+
+      // 4. Módulos Visibilidad
+      const elFinancing = document.getElementById('financingSection');
+      if (elFinancing) elFinancing.classList.toggle('hidden', cfg.showFinancing === false);
+
+      const elTradeIn = document.getElementById('tradeinSection');
+      if (elTradeIn) elTradeIn.classList.toggle('hidden', cfg.showTradeIn === false);
+
+      const elAdvisor = document.getElementById('advisorFloatingWidget');
+      if (elAdvisor) elAdvisor.classList.toggle('hidden', cfg.showAdvisor === false);
+
+      // 5. Paleta de Colores Dinámica
+      applyThemeColors(cfg.primaryColor || '#2D3E46', cfg.accentColor || '#C0392B');
+    }
+
+    function renderHeroFeaturedCard(cfg) {
+      if (!cfg) cfg = getUiSettings();
+      const carId = cfg.featuredCarId || 'crv-006';
+      let car = stockData.find(v => v.id === carId);
+      if (!car && stockData.length > 0) car = stockData[0];
+      if (!car) return;
+
+      const badgeEl = document.getElementById('heroBadgeText');
+      if (badgeEl) badgeEl.textContent = cfg.featuredBadge || 'Destacado de la Semana';
+
+      const imgTagEl = document.getElementById('heroImgSubtitle');
+      if (imgTagEl) imgTagEl.textContent = cfg.featuredImgTag || 'Fotos Reales en Showroom';
+
+      const imgEl = document.getElementById('heroCarImg');
+      if (imgEl) {
+        const primaryImg = (car.images && car.images.length > 0) ? car.images[0] : '';
+        imgEl.src = primaryImg;
+        imgEl.alt = `${car.brand} ${car.model} ${car.year}`;
+      }
+
+      const titleEl = document.getElementById('heroCarTitle');
+      if (titleEl) titleEl.textContent = `${car.brand} ${car.model} ${car.version ? car.version.slice(0, 18) : ''}`;
+
+      const specsEl = document.getElementById('heroCarSpecs');
+      if (specsEl) {
+        const kmStr = car.mileage === 0 ? '0 km (Nuevo)' : `${Number(car.mileage).toLocaleString('es-UY')} km`;
+        specsEl.textContent = `${car.year} • ${kmStr} • ${car.bodyType || 'Hatchback'}${car.colorExterior ? ' • ' + car.colorExterior : ''}`;
+      }
+
+      const oldPriceEl = document.getElementById('heroCarOldPrice');
+      if (oldPriceEl) {
+        if (cfg.featuredOldPrice && cfg.featuredOldPrice.trim().length > 0) {
+          oldPriceEl.textContent = cfg.featuredOldPrice;
+          oldPriceEl.classList.remove('hidden');
+        } else {
+          oldPriceEl.classList.add('hidden');
+        }
+      }
+
+      const priceEl = document.getElementById('heroCarPrice');
+      if (priceEl) priceEl.textContent = `USD ${Number(car.priceUsd).toLocaleString('es-UY')}`;
+    }
+
+    function handleHeroFeaturedCardClick() {
+      const cfg = getUiSettings();
+      const carId = cfg.featuredCarId || 'crv-006';
+      openVehicleModal(carId);
+    }
+
+    function handleHeroFeaturedReserveClick() {
+      const cfg = getUiSettings();
+      const carId = cfg.featuredCarId || 'crv-006';
+      openReservationCheckout(carId);
+    }
+
+    // GESTIÓN DEL MODAL RÁPIDO DE DESTACADO
+    function openHeroFeaturedModal() {
+      const cfg = getUiSettings();
+      const modal = document.getElementById('heroFeaturedModal');
+      const select = document.getElementById('quickFeaturedSelect');
+      if (!modal || !select) return;
+
+      select.innerHTML = stockData.map(car => `
+        <option value="${car.id}" ${car.id === cfg.featuredCarId ? 'selected' : ''}>
+          ${car.brand} ${car.model} (${car.year}) — USD $${Number(car.priceUsd).toLocaleString('es-UY')} [${(car.status || 'disponible').toUpperCase()}]
+        </option>
+      `).join('');
+
+      document.getElementById('quickBadgeText').value = cfg.featuredBadge || 'Destacado de la Semana';
+      document.getElementById('quickImgSubtitle').value = cfg.featuredImgTag || 'Fotos Reales en Showroom';
+      document.getElementById('quickOldPrice').value = cfg.featuredOldPrice || '';
+
+      onQuickFeaturedCarChange();
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeHeroFeaturedModal() {
+      const modal = document.getElementById('heroFeaturedModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function onQuickFeaturedCarChange() {
+      const select = document.getElementById('quickFeaturedSelect');
+      if (!select) return;
+      const carId = select.value;
+      const car = stockData.find(v => v.id === carId);
+      if (!car) return;
+
+      const img = document.getElementById('quickPreviewImg');
+      if (img) img.src = (car.images && car.images.length > 0) ? car.images[0] : '';
+
+      const title = document.getElementById('quickPreviewTitle');
+      if (title) title.textContent = `${car.brand} ${car.model} (${car.year})`;
+
+      const specs = document.getElementById('quickPreviewSpecs');
+      if (specs) specs.textContent = `${car.mileage === 0 ? '0 km' : Number(car.mileage).toLocaleString('es-UY') + ' km'} • ${car.transmission} • ${car.fuel}`;
+
+      const price = document.getElementById('quickPreviewPrice');
+      if (price) price.textContent = `USD $${Number(car.priceUsd).toLocaleString('es-UY')}`;
+
+      const curPriceInput = document.getElementById('quickCurrentPrice');
+      if (curPriceInput) curPriceInput.value = `USD $${Number(car.priceUsd).toLocaleString('es-UY')}`;
+    }
+
+    function setQuickBadgePreset(txt) {
+      const input = document.getElementById('quickBadgeText');
+      if (input) input.value = txt;
+    }
+
+    function saveQuickFeaturedCar() {
+      const select = document.getElementById('quickFeaturedSelect');
+      const badgeInput = document.getElementById('quickBadgeText');
+      const imgTagInput = document.getElementById('quickImgSubtitle');
+      const oldPriceInput = document.getElementById('quickOldPrice');
+
+      if (!select) return;
+      const carId = select.value;
+      const car = stockData.find(v => v.id === carId);
+
+      const updated = {
+        featuredCarId: carId,
+        featuredBadge: (badgeInput?.value || 'Destacado de la Semana').trim(),
+        featuredImgTag: (imgTagInput?.value || 'Fotos Reales en Showroom').trim(),
+        featuredOldPrice: (oldPriceInput?.value || '').trim()
+      };
+
+      saveUiSettings(updated);
+      closeHeroFeaturedModal();
+      showAdminToast(`⭐ ¡Vehículo destacado actualizado! ${car ? car.brand + ' ' + car.model : ''}`);
+    }
+
+    function setAsFeaturedHero(carId) {
+      const car = stockData.find(v => v.id === carId);
+      if (!car) return;
+
+      saveUiSettings({
+        featuredCarId: carId,
+        featuredBadge: 'Destacado de la Semana'
+      });
+
+      showAdminToast(`⭐ ${car.brand} ${car.model} fijado como Destacado de la Semana en la portada.`);
+    }
+
+    // GESTIÓN DEL TAB 5 EN EL BACKOFFICE ADMIN
+    function populateUiAdminForm() {
+      const cfg = getUiSettings();
+      const select = document.getElementById('uiFeaturedCarSelect');
+      if (select) {
+        select.innerHTML = stockData.map(car => `
+          <option value="${car.id}" ${car.id === cfg.featuredCarId ? 'selected' : ''}>
+            ${car.brand} ${car.model} (${car.year}) - USD $${Number(car.priceUsd).toLocaleString('es-UY')}
+          </option>
+        `).join('');
+      }
+
+      const fBadge = document.getElementById('uiFeaturedBadge');
+      if (fBadge) fBadge.value = cfg.featuredBadge || '';
+
+      const fOld = document.getElementById('uiFeaturedOldPrice');
+      if (fOld) fOld.value = cfg.featuredOldPrice || '';
+
+      const fTag = document.getElementById('uiFeaturedImgTag');
+      if (fTag) fTag.value = cfg.featuredImgTag || '';
+
+      const hTitle = document.getElementById('uiHeroTitle');
+      if (hTitle) hTitle.value = cfg.heroTitle || '';
+
+      const hSub = document.getElementById('uiHeroSubtitle');
+      if (hSub) hSub.value = cfg.heroSubtitle || '';
+
+      const hBadge = document.getElementById('uiHeroBadge');
+      if (hBadge) hBadge.value = cfg.heroTopBadge || '';
+
+      const tAddr = document.getElementById('uiTopAddress');
+      if (tAddr) tAddr.value = cfg.topAddress || '';
+
+      const tPromo = document.getElementById('uiTopPromo');
+      if (tPromo) tPromo.value = cfg.topPromo || '';
+
+      const waDisp = document.getElementById('uiWhatsappDisplay');
+      if (waDisp) waDisp.value = cfg.whatsappDisplay || '';
+
+      const waNum = document.getElementById('uiWhatsappNumber');
+      if (waNum) waNum.value = cfg.whatsappNumber || '';
+
+      const pColor = document.getElementById('uiPrimaryColor');
+      if (pColor) pColor.value = cfg.primaryColor || '#2D3E46';
+
+      const aColor = document.getElementById('uiAccentColor');
+      if (aColor) aColor.value = cfg.accentColor || '#C0392B';
+
+      const tTopBar = document.getElementById('uiToggleTopBar');
+      if (tTopBar) tTopBar.checked = cfg.showTopBar !== false;
+
+      const tFin = document.getElementById('uiToggleFinancing');
+      if (tFin) tFin.checked = cfg.showFinancing !== false;
+
+      const tTrade = document.getElementById('uiToggleTradeIn');
+      if (tTrade) tTrade.checked = cfg.showTradeIn !== false;
+
+      const tAdv = document.getElementById('uiToggleAdvisor');
+      if (tAdv) tAdv.checked = cfg.showAdvisor !== false;
+
+      syncUiFeaturedPreview();
+    }
+
+    function syncUiFeaturedPreview() {
+      const select = document.getElementById('uiFeaturedCarSelect');
+      if (!select) return;
+      const car = stockData.find(v => v.id === select.value);
+      if (!car) return;
+
+      const img = document.getElementById('uiPreviewImg');
+      if (img) img.src = (car.images && car.images.length > 0) ? car.images[0] : '';
+
+      const title = document.getElementById('uiPreviewTitle');
+      if (title) title.textContent = `${car.brand} ${car.model} (${car.year})`;
+
+      const specs = document.getElementById('uiPreviewSpecs');
+      if (specs) specs.textContent = `${car.mileage === 0 ? '0 km' : Number(car.mileage).toLocaleString('es-UY') + ' km'} • ${car.bodyType || 'Hatchback'}`;
+
+      const price = document.getElementById('uiPreviewPrice');
+      if (price) price.textContent = `USD $${Number(car.priceUsd).toLocaleString('es-UY')}`;
+    }
+
+    function syncColorInputLive() {
+      const p = document.getElementById('uiPrimaryColor')?.value || '#2D3E46';
+      const a = document.getElementById('uiAccentColor')?.value || '#C0392B';
+      applyThemeColors(p, a);
+    }
+
+    function applyPresetTheme(primary, accent) {
+      const pInput = document.getElementById('uiPrimaryColor');
+      const aInput = document.getElementById('uiAccentColor');
+      if (pInput) pInput.value = primary;
+      if (aInput) aInput.value = accent;
+      applyThemeColors(primary, accent);
+      showAdminToast(`🎨 Paleta cambiada a: ${primary} / ${accent}`);
+    }
+
+    function applyThemeColors(primary, accent) {
+      let styleTag = document.getElementById('customDynamicTheme');
+      if (!styleTag) {
+        styleTag = document.createElement('style');
+        styleTag.id = 'customDynamicTheme';
+        document.head.appendChild(styleTag);
+      }
+
+      styleTag.textContent = `
+        .bg-\\[\\#2D3E46\\] { background-color: ${primary} !important; }
+        .text-\\[\\#2D3E46\\] { color: ${primary} !important; }
+        .border-\\[\\#2D3E46\\] { border-color: ${primary} !important; }
+        .hover\\:bg-\\[\\#1E2B31\\]:hover { filter: brightness(0.85) !important; }
+
+        .bg-\\[\\#C0392B\\] { background-color: ${accent} !important; }
+        .text-\\[\\#C0392B\\] { color: ${accent} !important; }
+        .border-\\[\\#C0392B\\] { border-color: ${accent} !important; }
+        .hover\\:bg-\\[\\#A93226\\]:hover { filter: brightness(0.85) !important; }
+      `;
+    }
+
+    function saveAllUiSettingsFromAdmin() {
+      const newCfg = {
+        featuredCarId: document.getElementById('uiFeaturedCarSelect')?.value || 'crv-006',
+        featuredBadge: (document.getElementById('uiFeaturedBadge')?.value || 'Destacado de la Semana').trim(),
+        featuredOldPrice: (document.getElementById('uiFeaturedOldPrice')?.value || '').trim(),
+        featuredImgTag: (document.getElementById('uiFeaturedImgTag')?.value || 'Fotos Reales en Showroom').trim(),
+        heroTitle: (document.getElementById('uiHeroTitle')?.value || '').trim(),
+        heroSubtitle: (document.getElementById('uiHeroSubtitle')?.value || '').trim(),
+        heroTopBadge: (document.getElementById('uiHeroBadge')?.value || '').trim(),
+        topAddress: (document.getElementById('uiTopAddress')?.value || '').trim(),
+        topPromo: (document.getElementById('uiTopPromo')?.value || '').trim(),
+        whatsappDisplay: (document.getElementById('uiWhatsappDisplay')?.value || '').trim(),
+        whatsappNumber: (document.getElementById('uiWhatsappNumber')?.value || '').trim(),
+        primaryColor: document.getElementById('uiPrimaryColor')?.value || '#2D3E46',
+        accentColor: document.getElementById('uiAccentColor')?.value || '#C0392B',
+        showTopBar: document.getElementById('uiToggleTopBar')?.checked !== false,
+        showFinancing: document.getElementById('uiToggleFinancing')?.checked !== false,
+        showTradeIn: document.getElementById('uiToggleTradeIn')?.checked !== false,
+        showAdvisor: document.getElementById('uiToggleAdvisor')?.checked !== false
+      };
+
+      saveUiSettings(newCfg);
+      showAdminToast('✅ ¡Todos los cambios de la interfaz fueron guardados y aplicados con éxito!');
+    }
+
+    function resetUiSettingsToDefault() {
+      const ok = confirm('¿Deseas restablecer todos los textos, colores y configuraciones de la interfaz al diseño oficial de CARVLAK?');
+      if (ok) {
+        uiSettings = Object.assign({}, DEFAULT_UI_SETTINGS);
+        try {
+          localStorage.removeItem('carvlak_ui_settings_v1');
+        } catch (e) {}
+        applyUiSettings(uiSettings);
+        populateUiAdminForm();
+        showAdminToast('🔄 Se restableció la interfaz al diseño original predeterminado.');
+      }
+    }
+
     // INICIALIZACIÓN DE LA APLICACIÓN
     window.addEventListener('DOMContentLoaded', () => {
       initCatalogData();
+      applyUiSettings();
       applyFilters();
       initSimulator();
     });
