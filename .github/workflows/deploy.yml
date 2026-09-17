@@ -29,6 +29,9 @@ jobs:
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Optimizar artefacto (el catálogo usa fotos CDN de Tiendanube)
+        run: rm -rf preview/images
+
       - name: Subir artefacto web (catálogo con fotos reales)
         uses: actions/upload-pages-artifact@v3
         with:
