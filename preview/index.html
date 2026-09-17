@@ -68,6 +68,13 @@
       font-weight: 700;
       box-shadow: 0 4px 12px rgba(45, 62, 70, 0.15);
     }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .mobile-cat-pill.active {
+      background-color: #2D3E46 !important;
+      color: #FFFFFF !important;
+      font-weight: 700 !important;
+    }
 
     /* Print styles for Reservation Voucher */
     @media print {
@@ -79,7 +86,7 @@
   </style>
   <style id="customDynamicTheme"></style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 min-h-screen flex flex-col antialiased">
+<body class="bg-[#F8FAFC] text-slate-800 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
 
   <!-- TOP ANNOUNCEMENT BAR (Color Petrol #2D3E46) -->
   <div id="topAnnouncementBar" class="bg-[#2D3E46] text-white px-4 py-2 text-xs font-medium border-b border-[#1E2B31]">
@@ -177,11 +184,35 @@
     </div>
   </header>
 
+  <!-- MOBILE HORIZONTAL CATEGORY STRIP (SOLO MÓVIL/TABLET) -->
+  <div class="lg:hidden bg-white/95 backdrop-blur-md border-b border-slate-200 px-3 py-2 overflow-x-auto no-scrollbar flex items-center gap-1.5 sticky top-20 z-30 shadow-xs">
+    <button id="mobileCatAll" onclick="selectCategory('all')" class="mobile-cat-pill active px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors bg-[#2D3E46] text-white flex items-center gap-1">
+      <span>🚗 Todos</span>
+      <span id="mobileCountAll" class="text-[10px] opacity-90">(44)</span>
+    </button>
+    <button id="mobileCatUsados" onclick="selectCategory('usados')" class="mobile-cat-pill px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-1">
+      <span>⭐ Usados</span>
+      <span id="mobileCountUsados" class="text-[10px] opacity-75 font-bold">(38)</span>
+    </button>
+    <button id="mobileCatElec" onclick="selectCategory('electricos')" class="mobile-cat-pill px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center gap-1">
+      <span>⚡ Eléctricos 0km</span>
+      <span id="mobileCountElec" class="text-[10px] opacity-75 font-bold">(4)</span>
+    </button>
+    <button id="mobileCatMotos" onclick="selectCategory('motos')" class="mobile-cat-pill px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-1">
+      <span>🏍️ Motos</span>
+      <span id="mobileCountMotos" class="text-[10px] opacity-75 font-bold">(3)</span>
+    </button>
+    <button id="mobileCatTT" onclick="selectCategory('todoterreno')" class="mobile-cat-pill px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-1">
+      <span>🏔️ 4x4</span>
+      <span id="mobileCountTT" class="text-[10px] opacity-75 font-bold">(6)</span>
+    </button>
+  </div>
+
   <!-- MAIN CONTENT CONTAINER -->
   <main class="flex-1">
 
     <!-- HERO SECTION -->
-    <section id="heroSection" class="relative bg-gradient-to-b from-white via-[#F4F6F8] to-[#EFF2EE] border-b border-slate-200 py-12 lg:py-16">
+    <section id="heroSection" class="relative bg-gradient-to-b from-white via-[#F4F6F8] to-[#EFF2EE] border-b border-slate-200 py-6 sm:py-10 lg:py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
@@ -278,6 +309,17 @@
                   <span>Reservar ($500)</span>
                 </button>
               </div>
+
+              <!-- BOTÓN COMPARTIR EN HISTORIA (INSTAGRAM / WHATSAPP) -->
+              <button 
+                id="heroBtnShareStory"
+                onclick="handleShareFeaturedHeroStory()" 
+                class="w-full mt-2.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] hover:opacity-95 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-transform active:scale-[0.98]"
+                title="Compartir ficha oficial en Historia de Instagram o Estado de WhatsApp"
+              >
+                <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <span>📲 Compartir en Historia (Instagram / WhatsApp)</span>
+              </button>
             </div>
           </div>
 
@@ -418,24 +460,24 @@
 
         <!-- QUICK NLP SUGGESTION CHIPS -->
         <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100 text-xs">
-          <span class="text-slate-400 font-medium mr-1">Consultas de ejemplo:</span>
-          <button onclick="setQuickNlpQuery('SUV familiar hasta 25000 USD')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
-            🚙 SUV hasta 25.000 USD
-          </button>
-          <button onclick="setQuickNlpQuery('eléctrico 0km')" class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-600 hover:text-white transition-colors">
-            ⚡ 0km Eléctricos
-          </button>
+          <span class="text-slate-400 font-medium mr-1">Filtros rápidos:</span>
           <button onclick="setQuickNlpQuery('hasta 10000 USD')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
-            💰 Hasta 10.000 USD
+            💰 Menos de USD 10k
+          </button>
+          <button onclick="setQuickNlpQuery('hasta 15000 USD')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
+            💵 Hasta USD 15k
+          </button>
+          <button onclick="setQuickNlpQuery('automático')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
+            🕹️ Automáticos
           </button>
           <button onclick="setQuickNlpQuery('4x4 todoterreno')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
-            🏔️ 4x4 Todoterreno
+            🏔️ Pick-up / 4x4
           </button>
-          <button onclick="setQuickNlpQuery('moto deportiva')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
-            🏍️ Motos de Alta Gama
+          <button onclick="setQuickNlpQuery('poco uso')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
+            🛣️ Pocos Km (&lt;60k)
           </button>
-          <button onclick="setQuickNlpQuery('automático con poco uso')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
-            🕹️ Automático poco uso
+          <button onclick="setQuickNlpQuery('eléctrico 0km')" class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-600 hover:text-white transition-colors">
+            ⚡ 100% Eléctricos
           </button>
           <button onclick="resetCatalogFilters()" class="ml-auto text-slate-500 hover:text-[#C0392B] font-semibold text-xs py-1">
             Limpiar filtros
@@ -993,6 +1035,16 @@
             title="Simular cuotas de este auto"
           >
             <span>💳 Simular Crédito</span>
+          </button>
+
+          <button 
+            id="modalShareStoryBtn" 
+            onclick="shareCarToStory(currentModalCar ? currentModalCar.id : null)" 
+            class="py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] hover:opacity-95 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-1.5"
+            title="Compartir ficha en Historia de Instagram o Estado de WhatsApp"
+          >
+            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span class="whitespace-nowrap">📸 Historia</span>
           </button>
 
           <a 
@@ -2311,6 +2363,118 @@
   </div>
 
   <!-- ================================================================= -->
+  <!-- BARRA FIJA INFERIOR MOBILE (SHOWROOM & CONSULTA DIRECTA) -->
+  <!-- ================================================================= -->
+  <div id="mobileStickyBar" class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-2 flex items-center justify-between gap-2 shadow-[0_-4px_12px_rgba(0,0,0,0.06)]">
+    <a 
+      href="https://wa.me/59899267964?text=Hola%20CARVLAK,%20quisiera%20consultar%20sobre%20los%20veh%C3%ADculos%20disponibles%20en%20el%20Showroom" 
+      target="_blank"
+      class="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-colors"
+    >
+      <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+      <span>WhatsApp Showroom</span>
+    </a>
+    <button 
+      onclick="selectCategory('all')" 
+      class="py-2.5 px-3 rounded-xl bg-[#2D3E46] hover:bg-[#1E2B31] text-white font-bold text-xs flex items-center justify-center gap-1 transition-colors"
+    >
+      <span>🚗 Ver <span id="mobileStickyStockCount">44</span> Autos</span>
+    </button>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- MODAL PARA COMPARTIR EN HISTORIAS DE INSTAGRAM / WHATSAPP -->
+  <!-- ================================================================= -->
+  <div id="shareStoryModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-5 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[94vh] overflow-y-auto shadow-2xl border border-slate-200 relative my-auto p-5 sm:p-6">
+      
+      <!-- HEADER -->
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 flex items-center justify-center text-white text-sm shadow-sm">
+            📸
+          </span>
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-[#2D3E46]">Historia para Instagram / WhatsApp</h3>
+            <p class="text-xs text-slate-500">Formato vertical 9:16 (1080x1920) optimizado con datos oficiales de CARVLAK</p>
+          </div>
+        </div>
+        <button onclick="closeShareStoryModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm transition-colors">
+          ✕
+        </button>
+      </div>
+
+      <!-- BODY: PREVIEW & ACTION COLUMNS -->
+      <div class="grid grid-cols-1 sm:grid-cols-12 gap-5 pt-4 items-center">
+        
+        <!-- PREVIEW CONTAINER (9:16 RATIO) -->
+        <div class="sm:col-span-6 flex flex-col items-center">
+          <div id="shareStoryImgWrapper" class="w-full max-w-[240px] aspect-[9/16] bg-slate-900 rounded-xl overflow-hidden shadow-xl border-2 border-slate-700 relative flex items-center justify-center">
+            <img id="shareStoryPreviewImg" src="" alt="Vista previa de historia" class="w-full h-full object-contain hidden" />
+            <div id="shareStoryLoadingSpinner" class="text-center p-4">
+              <div class="w-8 h-8 border-4 border-amber-400 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+              <p class="text-xs text-slate-300 font-semibold">Generando imagen HD...</p>
+            </div>
+          </div>
+          <span class="text-[11px] text-slate-400 mt-2 font-medium">Resolución HD 1080x1920 px (9:16)</span>
+        </div>
+
+        <!-- ACTIONS & INSTRUCTIONS -->
+        <div class="sm:col-span-6 space-y-3 text-left">
+          
+          <div>
+            <h4 id="shareStoryCarTitle" class="font-bold text-[#2D3E46] text-sm sm:text-base leading-snug">Auto Seleccionado</h4>
+            <p id="shareStoryCarSubtitle" class="text-xs text-slate-500">USD 0.000 • Showroom Giannattasio</p>
+          </div>
+
+          <!-- PRIMARY DOWNLOAD BUTTON -->
+          <button 
+            id="shareStoryDownloadBtn" 
+            onclick="downloadCurrentStoryImage()" 
+            class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 hover:opacity-95 text-white text-xs font-bold shadow-md flex items-center justify-center gap-2 transition-transform active:scale-95"
+          >
+            <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            <span>Descargar Imagen HD para Subir</span>
+          </button>
+
+          <!-- WHATSAPP STATUS / CHAT SHARE -->
+          <a 
+            id="shareStoryWhatsAppBtn" 
+            href="#" 
+            target="_blank" 
+            class="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-colors"
+          >
+            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            <span>Compartir por WhatsApp</span>
+          </a>
+
+          <!-- COPY LINK -->
+          <button 
+            id="shareStoryCopyLinkBtn" 
+            onclick="copyCarStoryShareLink()" 
+            class="w-full py-2 px-4 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
+          >
+            <span>🔗 Copiar Enlace Directo</span>
+          </button>
+
+          <!-- HOW-TO GUIDE PILLS -->
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-[11px] text-slate-600 space-y-1.5">
+            <div class="font-bold text-[#2D3E46] flex items-center gap-1">
+              <span>💡 ¿Cómo subirla a Instagram Stories?</span>
+            </div>
+            <p>1️⃣ Tocá <strong>Descargar Imagen HD</strong> en tu celular o PC.</p>
+            <p>2️⃣ En Instagram, tocá <strong>Tu Historia (+)</strong> y elegí la imagen descargada.</p>
+            <p>3️⃣ Podés agregarle el sticker de <strong>Enlace</strong> con el link de la web.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
   <!-- JAVASCRIPT: DATA (51 VEHICLES), NLP ENGINE & COMMERCIAL LOGIC -->
   <!-- ================================================================= -->
   <script>
@@ -2445,6 +2609,21 @@
       const elTabTT = document.getElementById('tabCountTodoterreno');
       if (elTabTT) elTabTT.textContent = countTT;
 
+      // Mobile category counts
+      const elMobAll = document.getElementById('mobileCountAll');
+      if (elMobAll) elMobAll.textContent = `(${total})`;
+      const elMobUsados = document.getElementById('mobileCountUsados');
+      if (elMobUsados) elMobUsados.textContent = `(${countUsados})`;
+      const elMobElec = document.getElementById('mobileCountElec');
+      if (elMobElec) elMobElec.textContent = `(${countElec})`;
+      const elMobMotos = document.getElementById('mobileCountMotos');
+      if (elMobMotos) elMobMotos.textContent = `(${countMotos})`;
+      const elMobTT = document.getElementById('mobileCountTT');
+      if (elMobTT) elMobTT.textContent = `(${countTT})`;
+
+      const elStickyCount = document.getElementById('mobileStickyStockCount');
+      if (elStickyCount) elStickyCount.textContent = total;
+
       const elTotalStock = document.getElementById('totalStockCount');
       if (elTotalStock) elTotalStock.textContent = total;
     }
@@ -2470,6 +2649,24 @@
       const activeBtn = document.getElementById(activeBtnMap[cat] || 'tabCategoryAll');
       if (activeBtn) {
         activeBtn.classList.add('active');
+      }
+
+      // Update mobile category strip pills style
+      document.querySelectorAll('.mobile-cat-pill').forEach(btn => {
+        btn.classList.remove('active', 'bg-[#2D3E46]', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-700');
+      });
+      const mobileBtnMap = {
+        'all': 'mobileCatAll',
+        'usados': 'mobileCatUsados',
+        'electricos': 'mobileCatElec',
+        'motos': 'mobileCatMotos',
+        'todoterreno': 'mobileCatTT'
+      };
+      const activeMobileBtn = document.getElementById(mobileBtnMap[cat] || 'mobileCatAll');
+      if (activeMobileBtn) {
+        activeMobileBtn.classList.remove('bg-slate-100', 'text-slate-700');
+        activeMobileBtn.classList.add('active', 'bg-[#2D3E46]', 'text-white');
       }
 
       // Reset brand selection and update options for this category
@@ -2803,6 +3000,14 @@
                 </div>
                 
                 <div class="flex items-center space-x-1.5">
+                  <a 
+                    href="https://wa.me/59899267964?text=${encodeURIComponent('Hola CARVLAK, me interesa consultar por el ' + car.brand + ' ' + car.model + ' ' + car.year + ' (USD ' + formattedPrice + '). ¿Sigue disponible?')}" 
+                    target="_blank"
+                    class="p-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white border border-emerald-200 transition-colors flex items-center justify-center"
+                    title="Consultar por WhatsApp"
+                  >
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                  </a>
                   <button 
                     onclick="openVehicleModal('${car.id}')" 
                     class="px-2.5 py-1.5 rounded-lg bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold transition-colors"
@@ -4962,6 +5167,395 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
         applyUiSettings(uiSettings);
         populateUiAdminForm();
         showAdminToast('🔄 Se restableció la interfaz al diseño original predeterminado.');
+      }
+    }
+
+    // ========================================================
+    // GENERADOR DE HISTORIAS DE INSTAGRAM / WHATSAPP (9:16 - 1080x1920)
+    // ========================================================
+    let currentStoryBlob = null;
+    let currentStoryDataUrl = null;
+    let currentStoryCar = null;
+
+    function drawStoryRoundRect(ctx, x, y, width, height, radius, fillStyle, strokeStyle, lineWidth) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+      if (fillStyle) {
+        ctx.fillStyle = fillStyle;
+        ctx.fill();
+      }
+      if (strokeStyle) {
+        ctx.strokeStyle = strokeStyle;
+        ctx.lineWidth = lineWidth || 1;
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    async function generateCarStoryBlob(car) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1080;
+      canvas.height = 1920;
+      const ctx = canvas.getContext('2d');
+
+      // 1. FONDO DEGRADADO OSCURO DE ALTA GAMA
+      const bgGrad = ctx.createLinearGradient(0, 0, 0, 1920);
+      bgGrad.addColorStop(0, '#141E24');
+      bgGrad.addColorStop(0.35, '#1E2B31');
+      bgGrad.addColorStop(0.75, '#121B20');
+      bgGrad.addColorStop(1, '#0A0F12');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, 1080, 1920);
+
+      // Resplandor ambiental rojo arriba a la derecha
+      const redGlow = ctx.createRadialGradient(950, 180, 20, 950, 180, 480);
+      redGlow.addColorStop(0, 'rgba(192, 57, 43, 0.32)');
+      redGlow.addColorStop(1, 'rgba(192, 57, 43, 0)');
+      ctx.fillStyle = redGlow;
+      ctx.beginPath();
+      ctx.arc(950, 180, 480, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Resplandor ambiental petrol abajo a la izquierda
+      const petGlow = ctx.createRadialGradient(120, 1720, 20, 120, 1720, 520);
+      petGlow.addColorStop(0, 'rgba(61, 82, 92, 0.40)');
+      petGlow.addColorStop(1, 'rgba(61, 82, 92, 0)');
+      ctx.fillStyle = petGlow;
+      ctx.beginPath();
+      ctx.arc(120, 1720, 520, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Marco fino decorativo
+      drawStoryRoundRect(ctx, 28, 28, 1024, 1864, 36, null, 'rgba(255, 255, 255, 0.08)', 2);
+
+      // 2. ENCABEZADO CARVLAK & BADGE DESTACADO
+      drawStoryRoundRect(ctx, 330, 80, 420, 46, 23, '#C0392B', null);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 20px "Plus Jakarta Sans", system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('⭐ DESTACADO DE LA SEMANA', 540, 110);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 64px "Piazzolla", Georgia, serif';
+      ctx.fillText('CARVLAK', 540, 182);
+
+      ctx.fillStyle = '#94A3B8';
+      ctx.font = '600 18px "Instrument Sans", system-ui, sans-serif';
+      ctx.fillText('AUTOMOTORES • USADOS SELECCIONADOS • CIUDAD DE LA COSTA', 540, 218);
+
+      // 3. FOTO PRINCIPAL DEL VEHÍCULO
+      const photoX = 60, photoY = 250, photoW = 960, photoH = 720, photoR = 28;
+      const primaryImgUrl = (car.images && car.images.length > 0) ? car.images[0] : null;
+
+      let imgObj = null;
+      if (primaryImgUrl) {
+        try {
+          imgObj = await new Promise((resolve) => {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = () => resolve(img);
+            img.onerror = () => resolve(null);
+            setTimeout(() => resolve(null), 5000);
+            img.src = primaryImgUrl;
+          });
+        } catch (e) {
+          imgObj = null;
+        }
+      }
+
+      ctx.save();
+      // Recorte redondeado para la foto
+      ctx.beginPath();
+      ctx.moveTo(photoX + photoR, photoY);
+      ctx.lineTo(photoX + photoW - photoR, photoY);
+      ctx.quadraticCurveTo(photoX + photoW, photoY, photoX + photoW, photoY + photoR);
+      ctx.lineTo(photoX + photoW, photoY + photoH - photoR);
+      ctx.quadraticCurveTo(photoX + photoW, photoY + photoH, photoX + photoW - photoR, photoY + photoH);
+      ctx.lineTo(photoX + photoR, photoY + photoH);
+      ctx.quadraticCurveTo(photoX, photoY + photoH, photoX, photoY + photoH - photoR);
+      ctx.lineTo(photoX, photoY + photoR);
+      ctx.quadraticCurveTo(photoX, photoY, photoX + photoR, photoY);
+      ctx.closePath();
+      ctx.clip();
+
+      if (imgObj) {
+        const imgRatio = imgObj.width / imgObj.height;
+        const boxRatio = photoW / photoH;
+        let renderW, renderH, renderX, renderY;
+        if (imgRatio > boxRatio) {
+          renderH = photoH;
+          renderW = photoH * imgRatio;
+          renderX = photoX - (renderW - photoW) / 2;
+          renderY = photoY;
+        } else {
+          renderW = photoW;
+          renderH = photoW / imgRatio;
+          renderX = photoX;
+          renderY = photoY - (renderH - photoH) / 2;
+        }
+        ctx.drawImage(imgObj, renderX, renderY, renderW, renderH);
+      } else {
+        const fallbackGrad = ctx.createLinearGradient(photoX, photoY, photoX + photoW, photoY + photoH);
+        fallbackGrad.addColorStop(0, '#2D3E46');
+        fallbackGrad.addColorStop(1, '#1A262C');
+        ctx.fillStyle = fallbackGrad;
+        ctx.fillRect(photoX, photoY, photoW, photoH);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 36px "Plus Jakarta Sans", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(car.brand + ' ' + car.model, photoX + photoW / 2, photoY + photoH / 2);
+      }
+      ctx.restore();
+
+      // Borde exterior de la foto
+      drawStoryRoundRect(ctx, photoX, photoY, photoW, photoH, photoR, null, 'rgba(255, 255, 255, 0.18)', 3);
+
+      // Badges sobre la foto
+      const is0km = car.mileage === 0;
+      const yrText = is0km ? '⚡ 0KM NUEVO' : `${car.year}`;
+      drawStoryRoundRect(ctx, 84, 274, 160, 48, 12, '#2D3E46', 'rgba(255,255,255,0.25)', 1.5);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 22px "Plus Jakarta Sans", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(yrText, 164, 305);
+
+      drawStoryRoundRect(ctx, 700, 274, 296, 48, 12, '#059669', 'rgba(255,255,255,0.25)', 1.5);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 18px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('✓ INSPECCIÓN 100 PTS OK', 848, 304);
+
+      drawStoryRoundRect(ctx, 84, 908, 300, 42, 10, 'rgba(0,0,0,0.76)', null);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '600 17px "Instrument Sans", sans-serif';
+      ctx.fillText('📸 FOTOS REALES EN SHOWROOM', 234, 935);
+
+      // 4. DATOS PRINCIPALES DEL VEHÍCULO
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 50px "Piazzolla", Georgia, serif';
+      ctx.fillText(`${car.brand} ${car.model}`, 70, 1030);
+
+      ctx.fillStyle = '#94A3B8';
+      ctx.font = '500 24px "Instrument Sans", sans-serif';
+      const versionStr = `${car.version || ''} • ${car.colorExterior ? car.colorExterior + ' • ' : ''}${car.bodyType || 'Vehículo'}`;
+      ctx.fillText(versionStr, 70, 1070);
+
+      // 5. GRILLA DE 4 ESPECIFICACIONES CLAVE (2x2)
+      const formattedMileage = is0km ? '0 km (Nuevo)' : `${Number(car.mileage).toLocaleString('es-UY')} km`;
+      const specs = [
+        { label: 'Kilometraje', val: formattedMileage, icon: '🛣️' },
+        { label: 'Transmisión', val: car.transmission || 'Manual', icon: '🕹️' },
+        { label: 'Combustible', val: car.fuel || 'Nafta', icon: '⛽' },
+        { label: 'Garantía', val: 'Taller Propio CARVLAK', icon: '🛡️' }
+      ];
+
+      const colWidth = 455;
+      const pillHeight = 58;
+      specs.forEach((sp, idx) => {
+        const col = idx % 2;
+        const row = Math.floor(idx / 2);
+        const px = 70 + col * (colWidth + 30);
+        const py = 1105 + row * (pillHeight + 14);
+
+        drawStoryRoundRect(ctx, px, py, colWidth, pillHeight, 14, '#1A262C', '#2C3E47', 1.5);
+        ctx.fillStyle = '#CBD5E1';
+        ctx.font = '600 20px "Instrument Sans", sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(`${sp.icon} ${sp.label}:`, px + 18, py + 36);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 20px "Plus Jakarta Sans", sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText(sp.val, px + colWidth - 18, py + 36);
+      });
+
+      // 6. TARJETA DESTACADA DE PRECIO
+      const priceCardY = 1270;
+      const priceGrad = ctx.createLinearGradient(70, priceCardY, 1010, priceCardY + 165);
+      priceGrad.addColorStop(0, '#C0392B');
+      priceGrad.addColorStop(1, '#8E281F');
+      drawStoryRoundRect(ctx, 70, priceCardY, 940, 165, 24, priceGrad, 'rgba(255,255,255,0.22)', 2);
+
+      ctx.textAlign = 'left';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.88)';
+      ctx.font = 'bold 19px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('PRECIO CONTADO OFICIAL', 105, priceCardY + 45);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 64px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText(`USD ${Number(car.priceUsd).toLocaleString('es-UY')}`, 105, priceCardY + 118);
+
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 22px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('💳 100% FINANCIABLE', 975, priceCardY + 50);
+      ctx.font = '500 20px "Instrument Sans", sans-serif';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
+      ctx.fillText('Hasta en 60 cuotas bancarias', 975, priceCardY + 86);
+      ctx.fillText('Tomamos tu usado en permuta', 975, priceCardY + 120);
+
+      // 7. BADGES DE GARANTÍA & CONFIANZA
+      const guarY = 1460;
+      const guarItems = [
+        '✓ Taller Mecánico Propio',
+        '✓ Título & Libreta al Día',
+        '✓ Entrega Inmediata'
+      ];
+      guarItems.forEach((item, i) => {
+        const gx = 70 + i * 320;
+        drawStoryRoundRect(ctx, gx, guarY, 300, 48, 12, '#152127', '#25353E', 1.5);
+        ctx.fillStyle = '#34D399';
+        ctx.font = 'bold 18px "Plus Jakarta Sans", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(item, gx + 150, guarY + 31);
+      });
+
+      // 8. SHOWROOM & CTA FOOTER
+      const footY = 1535;
+      drawStoryRoundRect(ctx, 70, footY, 940, 290, 24, '#0D1418', 'rgba(255, 255, 255, 0.12)', 2);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#F59E0B';
+      ctx.font = 'bold 26px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('📲 ¡CONSULTANOS POR ESTA UNIDAD!', 540, footY + 50);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '600 23px "Instrument Sans", sans-serif';
+      ctx.fillText('📍 Showroom: Av. Giannattasio km 18.500 esq. Racine', 540, footY + 105);
+
+      ctx.fillStyle = '#94A3B8';
+      ctx.font = '500 20px "Instrument Sans", sans-serif';
+      ctx.fillText('Ciudad de la Costa, Canelones • Abierto de Lunes a Sábado', 540, footY + 142);
+
+      ctx.fillStyle = '#10B981';
+      ctx.font = 'bold 26px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('💬 WhatsApp: 099 267 964  •  📸 @carvlakuy', 540, footY + 198);
+
+      ctx.fillStyle = '#64748B';
+      ctx.font = 'italic 18px "Instrument Sans", sans-serif';
+      ctx.fillText('🌐 carvlak.mitiendanube.com • Respondé esta historia o escribinos al WhatsApp', 540, footY + 252);
+
+      // CONVERTIR A BLOB Y DATA URL
+      const blob = await new Promise((resolve) => {
+        canvas.toBlob((b) => resolve(b), 'image/jpeg', 0.92);
+      });
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+      return { blob, dataUrl };
+    }
+
+    async function shareCarToStory(carId) {
+      const car = stockData.find(v => v.id === carId) || stockData[0];
+      if (!car) return;
+
+      currentStoryCar = car;
+
+      const modal = document.getElementById('shareStoryModal');
+      const previewImg = document.getElementById('shareStoryPreviewImg');
+      const spinner = document.getElementById('shareStoryLoadingSpinner');
+      const carTitle = document.getElementById('shareStoryCarTitle');
+      const carSub = document.getElementById('shareStoryCarSubtitle');
+      const waBtn = document.getElementById('shareStoryWhatsAppBtn');
+
+      if (carTitle) carTitle.textContent = `${car.brand} ${car.model} ${car.year}`;
+      if (carSub) carSub.textContent = `USD ${Number(car.priceUsd).toLocaleString('es-UY')} • ${car.mileage === 0 ? '0km Nuevo' : Number(car.mileage).toLocaleString('es-UY') + ' km'}`;
+
+      const shareUrl = window.location.href;
+      const shareMsg = `¡Mirá este ${car.brand} ${car.model} ${car.year} en CARVLAK por USD ${Number(car.priceUsd).toLocaleString('es-UY')}! Link: ${shareUrl}`;
+      if (waBtn) {
+        waBtn.href = `https://wa.me/?text=${encodeURIComponent(shareMsg)}`;
+      }
+
+      // Reiniciar estado visual del modal
+      if (previewImg) previewImg.classList.add('hidden');
+      if (spinner) spinner.classList.remove('hidden');
+
+      // Intentar generación y compartición nativa
+      try {
+        const { blob, dataUrl } = await generateCarStoryBlob(car);
+        currentStoryBlob = blob;
+        currentStoryDataUrl = dataUrl;
+
+        if (previewImg) {
+          previewImg.src = dataUrl;
+          previewImg.classList.remove('hidden');
+        }
+        if (spinner) spinner.classList.add('hidden');
+
+        const fileName = `CARVLAK-${car.brand}-${car.model}-${car.year}-Story.jpg`.replace(/\s+/g, '-');
+        const file = new File([blob], fileName, { type: 'image/jpeg' });
+
+        // En navegadores móviles compatibles con Web Share API de archivos
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          try {
+            await navigator.share({
+              files: [file],
+              title: `${car.brand} ${car.model} (${car.year}) | CARVLAK`,
+              text: `¡Mirá este ${car.brand} ${car.model} en CARVLAK! USD ${Number(car.priceUsd).toLocaleString('es-UY')}`
+            });
+            return;
+          } catch (shareErr) {
+            if (shareErr.name !== 'AbortError') {
+              console.warn('Native share intent exited, displaying modal fallback:', shareErr);
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Error generating story image:', err);
+        if (spinner) {
+          spinner.innerHTML = `<p class="text-xs text-red-400">Error al procesar la imagen del vehículo. Podés compartir el enlace directamente.</p>`;
+        }
+      }
+
+      // Mostrar modal si la compartición nativa no está disponible o el usuario canceló
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function handleShareFeaturedHeroStory() {
+      const cfg = getUiSettings();
+      const carId = cfg.featuredCarId || 'crv-006';
+      shareCarToStory(carId);
+    }
+
+    function closeShareStoryModal() {
+      const modal = document.getElementById('shareStoryModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function downloadCurrentStoryImage() {
+      if (!currentStoryDataUrl || !currentStoryCar) return;
+      const fileName = `CARVLAK-${currentStoryCar.brand}-${currentStoryCar.model}-${currentStoryCar.year}-Story.jpg`.replace(/\s+/g, '-');
+      const a = document.createElement('a');
+      a.href = currentStoryDataUrl;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showAdminToast('📥 ¡Imagen HD descargada! Ya podés subirla a tu Historia.');
+    }
+
+    function copyCarStoryShareLink() {
+      const url = window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          showAdminToast('🔗 ¡Enlace del catálogo copiado al portapapeles!');
+        });
+      } else {
+        showAdminToast('Enlace: ' + url);
       }
     }
 
