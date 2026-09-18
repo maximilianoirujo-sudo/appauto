@@ -2513,7 +2513,7 @@
       : [];
     // MARCAS OFICIALES POR CATEGORÍA
     const CARVLAK_BRANDS_BY_CATEGORY = {
-      'usados': ['Suzuki', 'Nissan', 'Toyota', 'Fiat', 'Hyundai', 'Chevrolet', 'BMW', 'KIA', 'Renault', 'Ford', 'Peugeot', 'BYD', 'Mercedes-Benz', 'FAW', 'Volkswagen', 'Bestune'],
+      'usados': ['Suzuki', 'Nissan', 'Toyota', 'Fiat', 'Hyundai', 'Chevrolet', 'BMW', 'KIA', 'Renault', 'Ford', 'Peugeot', 'BYD', 'Mercedes-Benz', 'FAW', 'Faw', 'Volkswagen', 'Bestune'],
       'electricos': ['HudsonEV', 'Dongfeng', 'Bestune', 'GWM'],
       'motos': ['KTM', 'Husqvarna', 'Kawasaki'],
       'todoterreno': ['Toyota', 'Ford', 'Suzuki', 'Volkswagen', 'Mercedes-Benz', 'Renault', 'BMW', 'HudsonEV']
@@ -2546,16 +2546,19 @@
         const savedStock = localStorage.getItem('carvlak_stock_v6');
         if (savedStock) {
           stockData = JSON.parse(savedStock);
-          // Sincronizar consumo mixto y patente predeterminados si faltan en datos guardados
+          // Sincronizar modelos oficiales, marcas, consumo mixto y patente
           if (Array.isArray(stockData) && Array.isArray(defaultStock)) {
             const defaultMap = new Map(defaultStock.map(d => [d.id, d]));
             stockData.forEach(car => {
               const def = defaultMap.get(car.id);
               if (def) {
+                car.brand = def.brand;
+                car.model = def.model;
                 if (!car.mixedConsumption && def.mixedConsumption) car.mixedConsumption = def.mixedConsumption;
                 if (!car.patente && def.patente) car.patente = def.patente;
               }
             });
+            localStorage.setItem('carvlak_stock_v6', JSON.stringify(stockData));
           }
         } else {
           stockData = JSON.parse(JSON.stringify(defaultStock));

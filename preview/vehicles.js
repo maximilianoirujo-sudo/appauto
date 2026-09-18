@@ -1,4 +1,4 @@
-// =================================================================
+﻿// =================================================================
 // CATÃLOGO OFICIAL DE 44 VEHÃCULOS CARVLAK (FOTOS HD TIENDANUBE CDN)
 // ExtraÃ­do directamente de https://carvlak.mitiendanube.com
 // 44 Unidades reales en alta resoluciÃ³n (1024x1024px)
@@ -8,8 +8,8 @@
 window.CARVLAK_OFFICIAL_CATALOG = [
   {
     id: 'crv-001',
-    brand: 'FIAT',
-    model: 'UNO Way',
+    brand: 'Fiat',
+    model: 'Uno Way',
     version: '1.4 EVO Way',
     category: 'usados',
     year: 2014,
@@ -41,7 +41,7 @@ window.CARVLAK_OFFICIAL_CATALOG = [
   },
   {
     id: 'crv-002',
-    brand: 'FAW',
+    brand: 'Faw',
     model: 'N7',
     version: '1.3 16V Extra Full',
     category: 'usados',
@@ -78,7 +78,7 @@ window.CARVLAK_OFFICIAL_CATALOG = [
   },
   {
     id: 'crv-003',
-    brand: 'FAW',
+    brand: 'Faw',
     model: 'Oley',
     version: '1.5 VCT SedÃ¡n',
     category: 'usados',
@@ -116,7 +116,7 @@ window.CARVLAK_OFFICIAL_CATALOG = [
   {
     id: 'crv-004',
     brand: 'BYD',
-    model: 'F0',
+    model: 'F0 GLX-i',
     version: '1.0 GLX-I Extra Full',
     category: 'usados',
     year: 2015,
@@ -188,7 +188,7 @@ window.CARVLAK_OFFICIAL_CATALOG = [
   {
     id: 'crv-006',
     brand: 'Chevrolet',
-    model: 'Celta',
+    model: 'Celta LT',
     version: '1.0 LT 5 Puertas',
     category: 'usados',
     year: 2016,
@@ -286,7 +286,7 @@ window.CARVLAK_OFFICIAL_CATALOG = [
   {
     id: 'crv-009',
     brand: 'Chevrolet',
-    model: 'Onix Joy',
+    model: 'Onix Joy LT',
     version: '1.0 LT 6MT (Unidad 1)',
     category: 'usados',
     year: 2018,
@@ -363,7 +363,7 @@ window.CARVLAK_OFFICIAL_CATALOG = [
   {
     id: 'crv-011',
     brand: 'Chevrolet',
-    model: 'Prisma Joy LT',
+    model: 'Joy',
     version: '1.0 LT 6MT (Unidad 2)',
     category: 'usados',
     year: 2018,
@@ -507,7 +507,7 @@ window.CARVLAK_OFFICIAL_CATALOG = [
   {
     id: 'crv-015',
     brand: 'Renault',
-    model: 'Oroch',
+    model: 'Oroch Dynamique',
     version: '1.6 Dynamique Doble Cabina',
     category: 'usados',
     year: 2018,
@@ -544,7 +544,7 @@ window.CARVLAK_OFFICIAL_CATALOG = [
   {
     id: 'crv-016',
     brand: 'Chevrolet',
-    model: 'Onix Joy',
+    model: 'Onix Joy LT',
     version: '1.0 LT 6MT (Unidad 2)',
     category: 'usados',
     year: 2019,
@@ -612,7 +612,7 @@ window.CARVLAK_OFFICIAL_CATALOG = [
   {
     id: 'crv-018',
     brand: 'Volkswagen',
-    model: 'Up',
+    model: 'UP',
     version: '1.0 Move UP 5 Puertas',
     category: 'usados',
     year: 2018,
@@ -645,7 +645,7 @@ window.CARVLAK_OFFICIAL_CATALOG = [
   {
     id: 'crv-019',
     brand: 'KIA',
-    model: 'Soluto',
+    model: 'Soluto EX Plus',
     version: '1.4 EX Plus MT',
     category: 'usados',
     year: 2020,
@@ -716,7 +716,7 @@ window.CARVLAK_OFFICIAL_CATALOG = [
   {
     id: 'crv-021',
     brand: 'Renault',
-    model: 'Clio IV',
+    model: 'Clio Dynamique',
     version: '0.9 TCe Dynamique Turbo',
     category: 'usados',
     year: 2016,
@@ -1420,7 +1420,7 @@ window.CARVLAK_OFFICIAL_CATALOG = [
   {
     id: 'crv-041',
     brand: 'BMW',
-    model: 'X3',
+    model: 'X3 xDrive 30i',
     version: 'xDrive30i 2.0 TwinPower Turbo 252 HP Steptronic',
     category: 'usados',
     year: 2020,
