@@ -1,0 +1,10 @@
+﻿{
+  "version": 2,
+  "cleanUrls": true,
+  "buildCommand": null,
+  "outputDirectory": "preview",
+  "rewrites": [
+    { "source": "/preview", "destination": "/" },
+    { "source": "/preview/(.*)", "destination": "/$1" }
+  ]
+}

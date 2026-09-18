@@ -2,9 +2,20 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>CARVLAK | Automotores, Usados Seleccionados, Eléctricos 0km y 4x4 en Uruguay</title>
   <link rel="icon" type="image/x-icon" href="https://dcdn-us.mitiendanube.com/stores/006/928/264/themes/common/logo-1181937392-1762700015-9161ba30a7197fa8fc6cefa80fffb51e1762700015.ico?0">
+  
+  <!-- PWA & Mobile Web App Meta Tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2D3E46">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CARVLAK">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,7 +97,7 @@
   </style>
   <style id="customDynamicTheme"></style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
+<body class="bg-[#F8FAFC] text-slate-800 min-h-screen flex flex-col antialiased pb-24 lg:pb-0">
 
   <!-- TOP ANNOUNCEMENT BAR (Color Petrol #2D3E46) -->
   <div id="topAnnouncementBar" class="bg-[#2D3E46] text-white px-4 py-2 text-xs font-medium border-b border-[#1E2B31]">
@@ -1449,6 +1460,7 @@
           <input 
             type="password" 
             id="adminPinInput" 
+            inputmode="numeric"
             placeholder="PIN (1234)" 
             maxlength="10"
             class="w-full text-center text-xl tracking-widest px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2D3E46] font-bold"
@@ -1470,8 +1482,8 @@
   </div>
 
   <!-- 2. PANEL ADMIN COMPLETO CON 5 TABS -->
-  <div id="adminModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-2 sm:p-4 overflow-y-auto">
-    <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[95vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden my-auto">
+  <div id="adminModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-0 sm:p-4 overflow-y-auto">
+    <div class="bg-white sm:rounded-2xl max-w-6xl w-full h-full sm:h-auto sm:max-h-[95vh] flex flex-col shadow-2xl border-0 sm:border border-slate-200 overflow-hidden my-auto">
       
       <!-- HEADER ADMIN -->
       <div class="bg-[#2D3E46] text-white px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#1E2B31]">
@@ -1629,15 +1641,15 @@
                 </div>
                 <div>
                   <label class="block text-[10px] font-bold uppercase text-slate-600 mb-1">Año *</label>
-                  <input type="number" id="formYear" required min="1990" max="2027" value="2021" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-semibold">
+                  <input type="number" id="formYear" inputmode="numeric" required min="1990" max="2027" value="2021" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-semibold">
                 </div>
                 <div>
                   <label class="block text-[10px] font-bold uppercase text-slate-600 mb-1">Precio (USD) *</label>
-                  <input type="number" id="formPrice" required min="500" placeholder="Ej: 12900" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-bold text-[#C0392B]">
+                  <input type="number" id="formPrice" inputmode="numeric" required min="500" placeholder="Ej: 12900" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-bold text-[#C0392B]">
                 </div>
                 <div>
                   <label class="block text-[10px] font-bold uppercase text-slate-600 mb-1">Kilómetros *</label>
-                  <input type="number" id="formMileage" required min="0" placeholder="Ej: 65000" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white">
+                  <input type="number" id="formMileage" inputmode="numeric" required min="0" placeholder="Ej: 65000" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white">
                 </div>
                 <div>
                   <label class="block text-[10px] font-bold uppercase text-slate-600 mb-1">Carrocería</label>
@@ -1680,7 +1692,7 @@
                 </div>
                 <div>
                   <label class="block text-[10px] font-bold uppercase text-slate-600 mb-1">⛽ Consumo Mixto</label>
-                  <input type="text" id="formConsumo" placeholder="Ej: 14.2 km/l" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-medium">
+                  <input type="text" id="formConsumo" inputmode="decimal" placeholder="Ej: 14.2 km/l" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-medium">
                 </div>
                 <div>
                   <label class="block text-[10px] font-bold uppercase text-slate-600 mb-1">📄 Patente Anual</label>
@@ -5667,6 +5679,50 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
       }
     }
 
+    // FUNCIONES DE NAVEGACIÓN MÓVIL (PWA)
+    function mobileNavGoCatalog() {
+      showSection('home');
+      const catEl = document.getElementById('catalogSection');
+      if (catEl) {
+        catEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function mobileNavFocusSearch() {
+      showSection('home');
+      const catEl = document.getElementById('catalogSection');
+      if (catEl) {
+        catEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      setTimeout(() => {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+          searchInput.focus();
+        }
+      }, 350);
+    }
+
+    function mobileNavGoFeatured() {
+      showSection('home');
+      const heroEl = document.getElementById('heroSection');
+      if (heroEl) {
+        heroEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // REGISTRO DE PWA SERVICE WORKER
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => {
+            console.log('CARVLAK PWA Service Worker activo:', reg.scope);
+          })
+          .catch(err => {
+            console.warn('CARVLAK PWA Service Worker:', err);
+          });
+      });
+    }
+
     // INICIALIZACIÓN DE LA APLICACIÓN
     window.addEventListener('DOMContentLoaded', () => {
       initCatalogData();
@@ -5675,6 +5731,54 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
       initSimulator();
     });
   </script>
+
+  <!-- ================================================================= -->
+  <!-- BARRA DE NAVEGACIÓN INFERIOR PARA CELULARES (MOBILE BOTTOM BAR) -->
+  <!-- ================================================================= -->
+  <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-2 py-2 shadow-[0_-4px_25px_rgba(0,0,0,0.08)] flex items-center justify-around">
+    
+    <!-- 1. CATÁLOGO -->
+    <button type="button" onclick="mobileNavGoCatalog()" class="flex flex-col items-center justify-center py-1 px-2.5 text-[#2D3E46] active:scale-95 transition-all">
+      <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+      </svg>
+      <span class="text-[10px] font-bold tracking-tight">Catálogo</span>
+    </button>
+
+    <!-- 2. BUSCAR -->
+    <button type="button" onclick="mobileNavFocusSearch()" class="flex flex-col items-center justify-center py-1 px-2.5 text-slate-600 hover:text-[#2D3E46] active:scale-95 transition-all">
+      <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+      <span class="text-[10px] font-medium tracking-tight">Buscar</span>
+    </button>
+
+    <!-- 3. DESTACADO DE LA SEMANA -->
+    <button type="button" onclick="mobileNavGoFeatured()" class="flex flex-col items-center justify-center py-1 px-2.5 text-amber-600 active:scale-95 transition-all">
+      <svg class="w-5 h-5 mb-0.5 fill-amber-500 text-amber-500" viewBox="0 0 20 20">
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+      </svg>
+      <span class="text-[10px] font-bold tracking-tight">Destacado</span>
+    </button>
+
+    <!-- 4. GESTIÓN ADMIN / BACKOFFICE -->
+    <button type="button" onclick="handleAdminClick()" class="flex flex-col items-center justify-center py-1 px-2.5 text-slate-700 hover:text-[#2D3E46] active:scale-95 transition-all">
+      <svg class="w-5 h-5 mb-0.5 text-[#2D3E46]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+      <span class="text-[10px] font-bold tracking-tight">Admin</span>
+    </button>
+
+    <!-- 5. WHATSAPP -->
+    <a href="https://wa.me/59899267964?text=Hola%20CARVLAK,%20quisiera%20consultar%20sobre%20los%20vehículos" target="_blank" class="flex flex-col items-center justify-center py-1 px-2.5 text-emerald-600 active:scale-95 transition-all">
+      <svg class="w-5 h-5 mb-0.5 fill-current text-emerald-500" viewBox="0 0 24 24">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+      </svg>
+      <span class="text-[10px] font-bold text-emerald-700 tracking-tight">WhatsApp</span>
+    </a>
+
+  </nav>
 
 </body>
 </html>

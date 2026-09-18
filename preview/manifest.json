@@ -1,0 +1,37 @@
+﻿{
+  "name": "CARVLAK Automotores",
+  "short_name": "CARVLAK",
+  "description": "Catálogo oficial de vehículos, usados seleccionados y eléctricos 0km de CARVLAK Uruguay.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#1E2B31",
+  "theme_color": "#2D3E46",
+  "lang": "es-UY",
+  "categories": [
+    "business",
+    "shopping",
+    "automotive"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
