@@ -2170,8 +2170,8 @@
               <div class="flex items-center space-x-2">
                 <span class="text-xl">☁️</span>
                 <div>
-                  <h3 class="text-sm font-bold text-[#2D3E46]">Conexión Base de Datos Cloud (Supabase Multi-Tenant)</h3>
-                  <p class="text-xs text-slate-500">Permite sincronizar en tiempo real el catálogo para todos los clientes y dispositivos.</p>
+                  <h3 class="text-sm font-bold text-[#2D3E46]">Sincronización en la Nube (Tiempo Real Multi-Dispositivo)</h3>
+                  <p class="text-xs text-slate-500">Sincronización automática activa en la nube para todos los dispositivos. (Opcional: podés conectar tu propio Supabase abajo).</p>
                 </div>
               </div>
               <span id="cloudStatusBadgeTab" class="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">
@@ -4061,10 +4061,11 @@
       const badgeTab = document.getElementById('cloudStatusBadgeTab');
 
       if (state === 'connected') {
-        if (textEl) textEl.textContent = 'Nube Conectada';
+        const isSupa = window.SupabaseAdapter && window.SupabaseAdapter.isConfigured();
+        if (textEl) textEl.textContent = isSupa ? 'Supabase Conectado' : 'Nube Sincronizada';
         if (dotEl) dotEl.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
         if (badgeTab) {
-          badgeTab.textContent = '🟢 Conectado a Supabase Cloud';
+          badgeTab.textContent = isSupa ? '🟢 Conectado a Supabase Cloud' : '🟢 Nube Automática Activa';
           badgeTab.className = 'text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200';
         }
       } else if (state === 'syncing') {
