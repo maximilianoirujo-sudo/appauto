@@ -64,49 +64,62 @@
     
     /* ACABADOS METÁLICOS EJECUTIVOS (NANO BANANA PRO) */
     .metallic-surface {
-      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-      border: 1px solid rgba(203, 213, 225, 0.8);
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.9), 0 2px 6px -1px rgba(15, 23, 42, 0.05);
+      background: linear-gradient(180deg, #FFFFFF 0%, #F6F8FA 100%);
+      border: 1px solid rgba(203, 213, 225, 0.85);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.95), 0 2px 8px -2px rgba(15, 23, 42, 0.06);
     }
 
     .metallic-card {
-      background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFD 100%);
-      border: 1px solid rgba(226, 232, 240, 0.95);
-      box-shadow: 0 4px 20px -2px rgba(45, 62, 70, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+      border: 1px solid rgba(203, 213, 225, 0.9);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 1), 0 4px 16px -2px rgba(45, 62, 70, 0.08);
       position: relative;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .metallic-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(148, 163, 184, 0.85);
-      box-shadow: 0 20px 35px -8px rgba(45, 62, 70, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.9);
+      transform: translateY(-4px);
+      border-color: rgba(148, 163, 184, 1);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 1), 0 16px 32px -6px rgba(45, 62, 70, 0.16), 0 0 0 1px rgba(203, 213, 225, 0.6);
+    }
+
+    .metallic-bezel {
+      border: 2px solid #CBD5E1;
+      background: linear-gradient(#FFFFFF, #FFFFFF) padding-box,
+                  linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(203,213,225,0.9) 30%, rgba(148,163,184,0.6) 70%, rgba(255,255,255,0.95) 100%) border-box;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 16px 36px -4px rgba(45,62,70,0.18);
+    }
+
+    .metallic-titanium-dark {
+      background: linear-gradient(135deg, #10171A 0%, #1E2B31 35%, #2D3E46 65%, #162026 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.4), 0 4px 14px rgba(0, 0, 0, 0.18);
     }
 
     .metallic-petrol {
       background: linear-gradient(145deg, #364A54 0%, #2D3E46 55%, #1E2B31 100%);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 4px 14px rgba(30, 43, 49, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3), 0 4px 14px rgba(30, 43, 49, 0.24);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .metallic-petrol:hover {
       background: linear-gradient(145deg, #3E545F 0%, #334650 55%, #24333A 100%);
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.35), 0 6px 18px rgba(30, 43, 49, 0.32);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 6px 18px rgba(30, 43, 49, 0.34);
       transform: translateY(-1px);
     }
     .metallic-petrol:active {
       transform: translateY(1px);
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
     }
 
     .metallic-ruby {
       background: linear-gradient(145deg, #D63929 0%, #C0392B 60%, #9C261A 100%);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.32), 0 4px 14px rgba(192, 57, 43, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.35), 0 4px 14px rgba(192, 57, 43, 0.3);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .metallic-ruby:hover {
       background: linear-gradient(145deg, #E24434 0%, #C93E30 60%, #A52B1E 100%);
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 6px 18px rgba(192, 57, 43, 0.38);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.45), 0 6px 18px rgba(192, 57, 43, 0.4);
       transform: translateY(-1px);
     }
     .metallic-ruby:active {
@@ -116,23 +129,23 @@
 
     .metallic-spec-pill {
       background: linear-gradient(180deg, #F8FAFC 0%, #EDF2F7 100%);
-      border: 1px solid rgba(203, 213, 225, 0.85);
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(203, 213, 225, 0.9);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.95), 0 1px 3px rgba(15, 23, 42, 0.04);
     }
 
     .metallic-pill {
       background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
-      border: 1px solid rgba(203, 213, 225, 0.9);
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.9), 0 1px 3px rgba(15, 23, 42, 0.05);
+      border: 1.5px solid rgba(203, 213, 225, 0.95);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.95), 0 1px 3px rgba(15, 23, 42, 0.05);
       transition: all 0.2s ease;
     }
     .metallic-pill:hover {
       background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 100%);
-      border-color: rgba(148, 163, 184, 0.9);
+      border-color: rgba(148, 163, 184, 1);
     }
 
     .showroom-backdrop {
-      background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 1) 0%, rgba(243, 246, 249, 0.95) 50%, rgba(226, 232, 240, 0.75) 100%);
+      background: radial-gradient(110% 70% at 50% 0%, #FFFFFF 0%, #F1F5F9 40%, #E2E8F0 75%, #CBD5E1 100%);
     }
 
     .chrome-hairline {
@@ -162,9 +175,9 @@
     .category-tab.active {
       background: linear-gradient(145deg, #364A54 0%, #2D3E46 55%, #1E2B31 100%) !important;
       color: #FFFFFF !important;
-      border-color: rgba(255, 255, 255, 0.2) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
       font-weight: 700;
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 6px 16px rgba(30, 43, 49, 0.25) !important;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3), 0 6px 16px rgba(30, 43, 49, 0.28) !important;
     }
 
     .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -174,8 +187,8 @@
       background: linear-gradient(145deg, #364A54 0%, #2D3E46 55%, #1E2B31 100%) !important;
       color: #FFFFFF !important;
       font-weight: 700 !important;
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 2px 8px rgba(30, 43, 49, 0.2) !important;
-      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3), 0 2px 8px rgba(30, 43, 49, 0.22) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
     }
 
     /* Print styles for Reservation Voucher */
@@ -190,19 +203,25 @@
 </head>
 <body class="bg-[#F8FAFC] text-slate-800 min-h-screen flex flex-col antialiased pb-24 lg:pb-0">
 
-  <!-- TOP ANNOUNCEMENT BAR (Color Petrol #2D3E46 con acabado metálico satinado) -->
-  <div id="topAnnouncementBar" class="bg-gradient-to-r from-[#1A252B] via-[#2D3E46] to-[#1A252B] text-white px-4 py-2 text-xs font-medium border-b border-white/10 shadow-xs relative">
+  <!-- TOP ANNOUNCEMENT BAR (Executive Brushed Dark Titanium con distintivo Showroom 2026) -->
+  <div id="topAnnouncementBar" class="metallic-titanium-dark text-white px-4 py-2 text-xs font-medium relative z-50">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 sm:gap-4">
-      <div class="flex items-center space-x-2 text-slate-200">
+      <div class="flex items-center space-x-2.5 text-slate-200">
+        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-amber-300 via-amber-100 to-amber-300 text-slate-900 border border-amber-400/80 shadow-[0_0_10px_rgba(245,158,11,0.25)]">
+          ★ SHOWROOM EJECUTIVO 2026
+        </span>
         <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse ring-2 ring-emerald-400/30"></span>
         <span class="font-bold text-white tracking-wide">Showroom Abierto:</span>
-        <span id="topBarAddress" class="text-slate-300">Av. Giannattasio km 18.500 esq. Racine, Ciudad de la Costa</span>
+        <span id="topBarAddress" class="text-slate-300 font-medium">Av. Giannattasio km 18.500 esq. Racine, Ciudad de la Costa</span>
       </div>
-      <div class="flex items-center space-x-4 text-slate-200">
-        <span id="topBarPromoText" class="hidden md:inline text-slate-300">Garantía Mecánica Propia • Financiación Bancaria 100% • Seña Online</span>
+      <div class="flex items-center space-x-3 text-slate-200">
+        <span id="topBarPromoText" class="hidden md:inline text-slate-300 font-medium">Garantía Mecánica Propia • Financiación 100% • Seña Online USD 500</span>
+        <button onclick="forcePurgeAndReload()" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-[10px] font-bold text-slate-200 border border-white/20 transition-all flex items-center gap-1 cursor-pointer" title="Forzar actualización de datos y catálogo">
+          <span>🔄 v2.2</span>
+        </button>
         <a id="topBarPhoneLink" href="https://wa.me/59899267964" target="_blank" class="text-white hover:text-emerald-300 font-bold flex items-center transition-colors">
           <svg class="w-3.5 h-3.5 mr-1 text-emerald-400 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-          <span id="topBarPhoneText" class="tracking-wide">099 267 964</span>
+          <span id="topBarPhoneText" class="tracking-wide font-mono">099 267 964</span>
         </a>
       </div>
     </div>
@@ -324,12 +343,12 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           <div class="lg:col-span-7 space-y-5 text-left">
-            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-bold metallic-spec-pill text-[#2D3E46] border border-slate-300/80 shadow-2xs">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full text-xs font-extrabold metallic-spec-pill text-[#2D3E46] border border-slate-300 shadow-2xs">
               <span class="w-2 h-2 rounded-full bg-[#C0392B] animate-ping"></span>
-              <span id="heroTopBadge">Catálogo 100% Actualizado • Reserva Online con Seña</span>
+              <span id="heroTopBadge">★ SELECCIÓN EJECUTIVA • VEHÍCULOS CERTIFICADOS 100 PUNTOS</span>
             </div>
             <h1 id="heroMainTitle" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#2D3E46] leading-[1.12]">
-              Tu próximo vehículo con la <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#C0392B] via-[#E74C3C] to-[#C0392B]">confianza CARVLAK</span>.
+              Tu próximo vehículo con la <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#C0392B] via-[#E74C3C] to-[#9C261A] font-black">confianza y respaldo CARVLAK</span>.
             </h1>
             <p id="heroMainSubtitle" class="text-slate-600 text-base sm:text-lg max-w-xl font-normal leading-relaxed">
               Usados seleccionados con inspección mecánica de 100 puntos, eléctricos 0km de última generación, motos y todoterrenos. Financiación bancaria hasta en 60 cuotas, toma de permutas y reserva digital con seña inmediata.
@@ -340,7 +359,7 @@
                 <span>Explorar los <span id="heroCatalogCount">44</span> Vehículos</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </button>
-              <button onclick="showSection('financing')" class="metallic-pill px-6 py-3.5 rounded-xl text-[#2D3E46] font-semibold text-sm transition-all shadow-2xs">
+              <button onclick="showSection('financing')" class="metallic-pill px-6 py-3.5 rounded-xl text-[#2D3E46] font-bold text-sm transition-all shadow-2xs">
                 Simular Financiación
               </button>
               <button onclick="toggleAdvisorWidget(true)" class="px-5 py-3.5 rounded-xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-300 text-emerald-800 font-bold text-sm hover:bg-emerald-100 transition-all flex items-center gap-1.5 shadow-2xs">
@@ -348,58 +367,58 @@
               </button>
             </div>
 
-            <!-- TRUST PILLS METÁLICOS -->
-            <div class="pt-5 grid grid-cols-3 gap-3 border-t border-slate-200/80">
-              <div class="metallic-spec-pill p-3 rounded-xl border border-slate-200 text-center sm:text-left shadow-2xs">
-                <div class="text-2xl font-extrabold text-[#2D3E46]"><span id="heroStatStock">44</span></div>
-                <div class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">Unidades en Stock</div>
+            <!-- TRUST PILLS METÁLICOS (PLACAS DE TITANIO SATINADO) -->
+            <div class="pt-5 grid grid-cols-3 gap-3 border-t border-slate-200/90">
+              <div class="metallic-spec-pill p-3.5 rounded-2xl border border-slate-300/80 text-center sm:text-left shadow-2xs">
+                <div class="text-2xl font-black text-[#2D3E46]"><span id="heroStatStock">44</span></div>
+                <div class="text-[11px] text-slate-500 font-extrabold uppercase tracking-wider">Unidades en Stock</div>
               </div>
-              <div class="metallic-spec-pill p-3 rounded-xl border border-slate-200 text-center sm:text-left shadow-2xs">
-                <div class="text-2xl font-extrabold text-[#C0392B]">100%</div>
-                <div class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">Financiables</div>
+              <div class="metallic-spec-pill p-3.5 rounded-2xl border border-slate-300/80 text-center sm:text-left shadow-2xs">
+                <div class="text-2xl font-black text-[#C0392B]">100%</div>
+                <div class="text-[11px] text-slate-500 font-extrabold uppercase tracking-wider">Financiables</div>
               </div>
-              <div class="metallic-spec-pill p-3 rounded-xl border border-slate-200 text-center sm:text-left shadow-2xs">
-                <div class="text-2xl font-extrabold text-[#2D3E46]">Garantía</div>
-                <div class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">Taller Certificado</div>
+              <div class="metallic-spec-pill p-3.5 rounded-2xl border border-slate-300/80 text-center sm:text-left shadow-2xs">
+                <div class="text-2xl font-black text-[#2D3E46]">Garantía</div>
+                <div class="text-[11px] text-slate-500 font-extrabold uppercase tracking-wider">Taller Certificado</div>
               </div>
             </div>
           </div>
 
-          <!-- HERO HIGHLIGHT CARD (PEDESTAL SHOWROOM METÁLICO) -->
+          <!-- HERO HIGHLIGHT CARD (PEDESTAL DE HONOR DE SHOWROOM METÁLICO) -->
           <div class="lg:col-span-5" id="heroFeaturedCardContainer">
-            <div class="metallic-card bg-white/95 backdrop-blur-md rounded-2xl p-5 border border-slate-300/90 shadow-[0_15px_40px_-10px_rgba(45,62,70,0.18)] relative">
+            <div class="metallic-bezel rounded-3xl p-5 sm:p-6 relative shadow-[0_20px_45px_-10px_rgba(45,62,70,0.22)]">
               
               <!-- BOTÓN DIRECTO PARA EDITAR DESTACADO -->
-              <div class="absolute -top-3 left-4 z-20">
+              <div class="absolute -top-3.5 left-4 z-20">
                 <button 
                   type="button"
                   onclick="openHeroFeaturedModal()" 
-                  class="metallic-spec-pill hover:bg-slate-100 text-[#2D3E46] text-[11px] font-bold px-3 py-1 rounded-full border border-slate-300 shadow-sm flex items-center gap-1.5 transition-transform hover:scale-105 active:scale-95"
+                  class="metallic-spec-pill hover:bg-slate-100 text-[#2D3E46] text-[11px] font-extrabold px-3.5 py-1.5 rounded-full border border-slate-300 shadow-sm flex items-center gap-1.5 transition-transform hover:scale-105 active:scale-95"
                   title="Modificar el vehículo destacado de la semana"
                 >
                   <span>✏️ Cambiar Destacado</span>
                 </button>
               </div>
 
-              <div id="heroBadgeText" class="absolute -top-3 right-6 metallic-ruby text-white text-[11px] font-extrabold px-3.5 py-1 rounded-full uppercase tracking-wider shadow-md z-20">
-                Destacado de la Semana
+              <div id="heroBadgeText" class="absolute -top-3.5 right-6 metallic-ruby text-white text-[11px] font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md z-20 border border-white/25 flex items-center gap-1">
+                <span>★ Destacado de la Semana ★</span>
               </div>
               
-              <div id="heroCardClickable" class="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-100 mb-4 group cursor-pointer border border-slate-200/80 shadow-inner" onclick="handleHeroFeaturedCardClick()">
+              <div id="heroCardClickable" class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-slate-100 mb-4 group cursor-pointer border border-slate-200 shadow-inner" onclick="handleHeroFeaturedCardClick()">
                 <img 
                   id="heroCarImg" 
                   src="https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-06-05-at-12-32-15-pm-3-7b3b4f91d09f7a40ca17889656461932-1024-1024.webp" 
                   alt="Chevrolet Celta LT 2016" 
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div id="heroImgSubtitle" class="absolute bottom-3 left-3 bg-black/75 backdrop-blur-md text-white px-3 py-1 rounded-lg text-xs font-semibold border border-white/20 shadow-md">
+                <div id="heroImgSubtitle" class="absolute bottom-3 left-3 bg-black/80 backdrop-blur-md text-white px-3 py-1 rounded-lg text-xs font-semibold border border-white/20 shadow-md">
                   Fotos Reales en Showroom
                 </div>
               </div>
 
               <div class="flex justify-between items-start mb-2">
                 <div>
-                  <h3 id="heroCarTitle" class="font-heading font-bold text-xl text-[#2D3E46] tracking-tight">Chevrolet Celta 1.0 LT</h3>
+                  <h3 id="heroCarTitle" class="font-heading font-extrabold text-xl text-[#2D3E46] tracking-tight">Chevrolet Celta 1.0 LT</h3>
                   <p id="heroCarSpecs" class="text-xs text-slate-500 font-medium mt-0.5">2016 • 76.000 km • Hatchback 5P • Blanco</p>
                   <div id="heroCarKeyBadges" class="flex flex-wrap gap-1.5 mt-2 text-[11px]"></div>
                 </div>
@@ -6160,16 +6179,73 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
       }
     }
 
-    // REGISTRO DE PWA SERVICE WORKER
+    // FUNCIÓN PARA FORZAR PURGA TOTAL DE CACHÉ Y RECARGA INMEDIATA
+    window.forcePurgeAndReload = async function() {
+      console.log('CARVLAK: Forzando purga total de caché y recarga limpia...');
+      try {
+        if ('caches' in window) {
+          const keys = await caches.keys();
+          await Promise.all(keys.map(k => caches.delete(k)));
+        }
+        if ('serviceWorker' in navigator) {
+          const regs = await navigator.serviceWorker.getRegistrations();
+          for (let r of regs) {
+            await r.unregister();
+          }
+        }
+        localStorage.setItem('CARVLAK_FORCE_RELOADED', Date.now().toString());
+      } catch (e) {
+        console.warn('Error purgando caché:', e);
+      }
+      window.location.reload(true);
+    };
+
+    // VERIFICACIÓN AUTOMÁTICA DE COMPILACIÓN (PURGA SILENCIOSA SI LA VERSIÓN LOCAL ES OBSOLETA)
+    (function autoBustOldCaches() {
+      const CURRENT_BUILD = 'CARVLAK_METALLIC_PRO_2026_V2_2';
+      if (localStorage.getItem('CARVLAK_APP_BUILD') !== CURRENT_BUILD) {
+        if ('caches' in window) {
+          caches.keys().then(keys => {
+            keys.forEach(k => {
+              if (k !== 'carvlak-pwa-v2-metallic-2026') caches.delete(k);
+            });
+          });
+        }
+        localStorage.setItem('CARVLAK_APP_BUILD', CURRENT_BUILD);
+      }
+    })();
+
+    // REGISTRO DE PWA SERVICE WORKER CON DETECCIÓN Y AUTO-ACTUALIZACIÓN
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
+        navigator.serviceWorker.register('./sw.js?v=20260922v2', { updateViaCache: 'none' })
           .then(reg => {
             console.log('CARVLAK PWA Service Worker activo:', reg.scope);
+            reg.update(); // Forzar verificación inmediata de nueva versión
+
+            reg.onupdatefound = () => {
+              const installingWorker = reg.installing;
+              if (installingWorker) {
+                installingWorker.onstatechange = () => {
+                  if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    console.log('CARVLAK: Nueva versión detectada, recargando...');
+                    window.location.reload();
+                  }
+                };
+              }
+            };
           })
           .catch(err => {
             console.warn('CARVLAK PWA Service Worker:', err);
           });
+
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (!refreshing) {
+            refreshing = true;
+            window.location.reload();
+          }
+        });
       });
     }
 
@@ -6229,6 +6305,15 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
     </a>
 
   </nav>
+
+  <!-- BADGE FLOTANTE DE VERSIÓN EJECUTIVA (VERIFICACIÓN VISUAL INMEDIATA) -->
+  <div id="floatingExecutiveBadge" class="fixed bottom-20 lg:bottom-4 right-4 z-40 metallic-surface rounded-full py-1.5 px-3.5 border border-slate-300 shadow-[0_4px_16px_rgba(45,62,70,0.14)] flex items-center gap-2 text-xs font-bold text-[#2D3E46] backdrop-blur-md transition-all hover:scale-105 select-none" aria-label="Versión del sistema">
+    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+    <span class="text-[11px] font-extrabold tracking-tight">Showroom 2026 • v2.2</span>
+    <button onclick="forcePurgeAndReload()" class="ml-1 p-1 hover:bg-slate-200 rounded-full text-slate-500 hover:text-[#C0392B] transition-colors cursor-pointer" title="Forzar actualización completa de catálogo y caché">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+    </button>
+  </div>
 
 </body>
 </html>
