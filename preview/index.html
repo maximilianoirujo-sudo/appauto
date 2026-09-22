@@ -55,41 +55,127 @@
   <script src="cloudStore.js"></script>
 
   <style>
-    body { font-family: 'Instrument Sans', sans-serif; }
-    h1, h2, h3, .font-heading { font-family: 'Piazzolla', serif; }
+    body { font-family: 'Instrument Sans', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    h1, h2, h3, .font-heading { font-family: 'Piazzolla', serif; letter-spacing: -0.02em; }
     ::-webkit-scrollbar { width: 7px; height: 7px; }
     ::-webkit-scrollbar-track { background: #F1F5F9; }
     ::-webkit-scrollbar-thumb { background: #94A3B8; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #64748B; }
     
-    .car-card {
+    /* ACABADOS METÁLICOS EJECUTIVOS (NANO BANANA PRO) */
+    .metallic-surface {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+      border: 1px solid rgba(203, 213, 225, 0.8);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.9), 0 2px 6px -1px rgba(15, 23, 42, 0.05);
+    }
+
+    .metallic-card {
+      background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFD 100%);
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      box-shadow: 0 4px 20px -2px rgba(45, 62, 70, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .metallic-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(148, 163, 184, 0.85);
+      box-shadow: 0 20px 35px -8px rgba(45, 62, 70, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .metallic-petrol {
+      background: linear-gradient(145deg, #364A54 0%, #2D3E46 55%, #1E2B31 100%);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 4px 14px rgba(30, 43, 49, 0.22);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .car-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 30px -10px rgba(45, 62, 70, 0.15);
+    .metallic-petrol:hover {
+      background: linear-gradient(145deg, #3E545F 0%, #334650 55%, #24333A 100%);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.35), 0 6px 18px rgba(30, 43, 49, 0.32);
+      transform: translateY(-1px);
     }
+    .metallic-petrol:active {
+      transform: translateY(1px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .metallic-ruby {
+      background: linear-gradient(145deg, #D63929 0%, #C0392B 60%, #9C261A 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.32), 0 4px 14px rgba(192, 57, 43, 0.28);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .metallic-ruby:hover {
+      background: linear-gradient(145deg, #E24434 0%, #C93E30 60%, #A52B1E 100%);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 6px 18px rgba(192, 57, 43, 0.38);
+      transform: translateY(-1px);
+    }
+    .metallic-ruby:active {
+      transform: translateY(1px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
+    }
+
+    .metallic-spec-pill {
+      background: linear-gradient(180deg, #F8FAFC 0%, #EDF2F7 100%);
+      border: 1px solid rgba(203, 213, 225, 0.85);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .metallic-pill {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+      border: 1px solid rgba(203, 213, 225, 0.9);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.9), 0 1px 3px rgba(15, 23, 42, 0.05);
+      transition: all 0.2s ease;
+    }
+    .metallic-pill:hover {
+      background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 100%);
+      border-color: rgba(148, 163, 184, 0.9);
+    }
+
+    .showroom-backdrop {
+      background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 1) 0%, rgba(243, 246, 249, 0.95) 50%, rgba(226, 232, 240, 0.75) 100%);
+    }
+
+    .chrome-hairline {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(226, 232, 240, 0.1) 0%, rgba(203, 213, 225, 0.9) 50%, rgba(226, 232, 240, 0.1) 100%);
+    }
+
+    .car-card {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .car-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px -8px rgba(45, 62, 70, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+
     .badge-soft {
-      background-color: #EFF2EE;
+      background: linear-gradient(180deg, #FFFFFF 0%, #EFF2EE 100%);
       color: #2D3E46;
       border: 1px solid #DFE5DD;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.9), 0 1px 3px rgba(45, 62, 70, 0.05);
     }
+
     .pulse-glow {
-      box-shadow: 0 0 15px rgba(192, 57, 43, 0.3);
+      box-shadow: 0 0 18px rgba(192, 57, 43, 0.35);
     }
+
     .category-tab.active {
-      background-color: #2D3E46;
-      color: #FFFFFF;
-      border-color: #2D3E46;
+      background: linear-gradient(145deg, #364A54 0%, #2D3E46 55%, #1E2B31 100%) !important;
+      color: #FFFFFF !important;
+      border-color: rgba(255, 255, 255, 0.2) !important;
       font-weight: 700;
-      box-shadow: 0 4px 12px rgba(45, 62, 70, 0.15);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 6px 16px rgba(30, 43, 49, 0.25) !important;
     }
+
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
     .mobile-cat-pill.active {
-      background-color: #2D3E46 !important;
+      background: linear-gradient(145deg, #364A54 0%, #2D3E46 55%, #1E2B31 100%) !important;
       color: #FFFFFF !important;
       font-weight: 700 !important;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 2px 8px rgba(30, 43, 49, 0.2) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
     }
 
     /* Print styles for Reservation Voucher */
@@ -104,39 +190,41 @@
 </head>
 <body class="bg-[#F8FAFC] text-slate-800 min-h-screen flex flex-col antialiased pb-24 lg:pb-0">
 
-  <!-- TOP ANNOUNCEMENT BAR (Color Petrol #2D3E46) -->
-  <div id="topAnnouncementBar" class="bg-[#2D3E46] text-white px-4 py-2 text-xs font-medium border-b border-[#1E2B31]">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-4">
+  <!-- TOP ANNOUNCEMENT BAR (Color Petrol #2D3E46 con acabado metálico satinado) -->
+  <div id="topAnnouncementBar" class="bg-gradient-to-r from-[#1A252B] via-[#2D3E46] to-[#1A252B] text-white px-4 py-2 text-xs font-medium border-b border-white/10 shadow-xs relative">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 sm:gap-4">
       <div class="flex items-center space-x-2 text-slate-200">
-        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="font-semibold text-white">Showroom Abierto:</span>
-        <span id="topBarAddress">Av. Giannattasio km 18.500 esq. Racine, Ciudad de la Costa</span>
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse ring-2 ring-emerald-400/30"></span>
+        <span class="font-bold text-white tracking-wide">Showroom Abierto:</span>
+        <span id="topBarAddress" class="text-slate-300">Av. Giannattasio km 18.500 esq. Racine, Ciudad de la Costa</span>
       </div>
       <div class="flex items-center space-x-4 text-slate-200">
-        <span id="topBarPromoText" class="hidden md:inline">Garantía Mecánica Propia • Financiación Bancaria 100% • Seña Online</span>
+        <span id="topBarPromoText" class="hidden md:inline text-slate-300">Garantía Mecánica Propia • Financiación Bancaria 100% • Seña Online</span>
         <a id="topBarPhoneLink" href="https://wa.me/59899267964" target="_blank" class="text-white hover:text-emerald-300 font-bold flex items-center transition-colors">
           <svg class="w-3.5 h-3.5 mr-1 text-emerald-400 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-          <span id="topBarPhoneText">099 267 964</span>
+          <span id="topBarPhoneText" class="tracking-wide">099 267 964</span>
         </a>
       </div>
     </div>
   </div>
 
   <!-- MAIN HEADER / NAVBAR -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-slate-300/60 after:to-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- LOGO -->
-      <a href="#" onclick="showSection('home')" class="flex items-center space-x-3 group">
-        <img 
-          src="https://dcdn-us.mitiendanube.com/stores/006/928/264/themes/common/logo-181194398-1762700015-94b0fa67f112844366db85e70eafc4511762700015.jpg?0" 
-          alt="CARVLAK Automotora" 
-          class="h-12 w-auto object-contain rounded-lg border border-slate-200 shadow-sm group-hover:scale-105 transition-transform"
-        />
+      <a href="#" onclick="showSection('home')" class="flex items-center space-x-3.5 group">
+        <div class="p-1 rounded-xl bg-white border border-slate-200/90 shadow-2xs ring-1 ring-slate-100 group-hover:border-slate-300 transition-all">
+          <img 
+            src="https://dcdn-us.mitiendanube.com/stores/006/928/264/themes/common/logo-181194398-1762700015-94b0fa67f112844366db85e70eafc4511762700015.jpg?0" 
+            alt="CARVLAK Automotora" 
+            class="h-11 w-auto object-contain rounded-lg group-hover:scale-105 transition-transform"
+          />
+        </div>
         <div class="hidden sm:block">
-          <div class="flex items-baseline space-x-1">
+          <div class="flex items-baseline space-x-1.5">
             <span class="font-heading text-2xl font-bold tracking-tight text-[#2D3E46]">CARVLAK</span>
-            <span class="text-[10px] uppercase font-bold tracking-widest px-1.5 py-0.5 rounded bg-red-100 text-[#C0392B]">UY</span>
+            <span class="text-[9px] uppercase font-black tracking-widest px-1.5 py-0.5 rounded bg-red-100/80 text-[#C0392B] border border-red-200">UY</span>
           </div>
           <p class="text-[11px] text-slate-500 font-medium tracking-wide">Automotores, Eléctricos & Usados Seleccionados</p>
         </div>
@@ -144,29 +232,29 @@
 
       <!-- MENU DESKTOP CON LAS 4 CATEGORÍAS PRINCIPALES -->
       <nav class="hidden lg:flex items-center space-x-1 text-xs xl:text-sm font-semibold">
-        <button onclick="showSection('home')" class="nav-btn px-3 py-2 text-slate-700 hover:text-[#2D3E46] rounded-lg hover:bg-slate-100 transition-colors">
+        <button onclick="showSection('home')" class="nav-btn px-3.5 py-2 text-slate-700 hover:text-[#2D3E46] rounded-xl hover:bg-slate-100 transition-colors">
           Inicio
         </button>
-        <button onclick="selectCategory('usados')" class="nav-btn px-3 py-2 text-[#2D3E46] rounded-lg hover:bg-slate-100 transition-colors flex items-center gap-1.5">
+        <button onclick="selectCategory('usados')" class="nav-btn px-3 py-2 text-[#2D3E46] rounded-xl hover:bg-slate-100 transition-colors flex items-center gap-1.5">
           <span>Usados</span>
-          <span id="navCountUsados" class="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600 font-bold">38</span>
+          <span id="navCountUsados" class="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600 font-bold border border-slate-200">38</span>
         </button>
-        <button onclick="selectCategory('electricos')" class="nav-btn px-3 py-2 text-emerald-700 hover:text-emerald-900 rounded-lg hover:bg-emerald-50 transition-colors flex items-center gap-1.5">
+        <button onclick="selectCategory('electricos')" class="nav-btn px-3 py-2 text-emerald-700 hover:text-emerald-900 rounded-xl hover:bg-emerald-50 transition-colors flex items-center gap-1.5">
           <span>⚡ Eléctricos 0km</span>
-          <span id="navCountElec" class="text-[10px] px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-800 font-bold">4</span>
+          <span id="navCountElec" class="text-[10px] px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">4</span>
         </button>
-        <button onclick="selectCategory('motos')" class="nav-btn px-3 py-2 text-slate-700 hover:text-[#2D3E46] rounded-lg hover:bg-slate-100 transition-colors flex items-center gap-1.5">
+        <button onclick="selectCategory('motos')" class="nav-btn px-3 py-2 text-slate-700 hover:text-[#2D3E46] rounded-xl hover:bg-slate-100 transition-colors flex items-center gap-1.5">
           <span>🏍️ Motos</span>
-          <span id="navCountMotos" class="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600 font-bold">3</span>
+          <span id="navCountMotos" class="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600 font-bold border border-slate-200">3</span>
         </button>
-        <button onclick="selectCategory('todoterreno')" class="nav-btn px-3 py-2 text-slate-700 hover:text-[#2D3E46] rounded-lg hover:bg-slate-100 transition-colors flex items-center gap-1.5">
+        <button onclick="selectCategory('todoterreno')" class="nav-btn px-3 py-2 text-slate-700 hover:text-[#2D3E46] rounded-xl hover:bg-slate-100 transition-colors flex items-center gap-1.5">
           <span>🏔️ Todoterreno</span>
-          <span id="navCountTT" class="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600 font-bold">6</span>
+          <span id="navCountTT" class="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600 font-bold border border-slate-200">6</span>
         </button>
-        <button onclick="showSection('financing')" class="nav-btn px-3 py-2 text-slate-700 hover:text-[#2D3E46] rounded-lg hover:bg-slate-100 transition-colors">
+        <button onclick="showSection('financing')" class="nav-btn px-3 py-2 text-slate-700 hover:text-[#2D3E46] rounded-xl hover:bg-slate-100 transition-colors">
           Financiación
         </button>
-        <button onclick="showSection('tradein')" class="nav-btn px-3 py-2 text-slate-700 hover:text-[#2D3E46] rounded-lg hover:bg-slate-100 transition-colors">
+        <button onclick="showSection('tradein')" class="nav-btn px-3 py-2 text-slate-700 hover:text-[#2D3E46] rounded-xl hover:bg-slate-100 transition-colors">
           Tasá tu Usado
         </button>
       </nav>
@@ -175,7 +263,7 @@
       <div class="flex items-center space-x-2 sm:space-x-3">
         <button 
           onclick="handleAdminClick()" 
-          class="inline-flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-colors shadow-sm"
+          class="metallic-spec-pill inline-flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-[#2D3E46] transition-all shadow-2xs hover:scale-105 active:scale-95"
           title="Panel de Administración & CRM"
         >
           <span>⚙️ Backoffice</span>
@@ -183,7 +271,7 @@
         <a 
           href="https://carvlak.mitiendanube.com/usados-seleccionados/?sort_by=price-ascending" 
           target="_blank" 
-          class="hidden sm:inline-flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-[#2D3E46] border border-slate-300 hover:bg-slate-50 transition-colors"
+          class="hidden sm:inline-flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-[#2D3E46] border border-slate-300 hover:bg-slate-50 transition-colors"
           title="Ver Tiendanube original"
         >
           <span>Tienda Nube</span>
@@ -192,7 +280,7 @@
         <a 
           href="https://wa.me/59899267964?text=Hola%20CARVLAK,%20quisiera%20consultar%20sobre%20los%20vehículos%20del%20catálogo" 
           target="_blank" 
-          class="inline-flex items-center space-x-2 px-3 sm:px-4 py-2 rounded-lg bg-[#C0392B] hover:bg-[#A93226] text-white text-xs sm:text-sm font-bold shadow-md shadow-red-900/10 transition-all hover:scale-105"
+          class="metallic-ruby inline-flex items-center space-x-2 px-3.5 sm:px-4 py-2 rounded-xl text-white text-xs sm:text-sm font-bold shadow-md shadow-red-900/10 transition-all hover:scale-105 active:scale-95"
         >
           <span>Consultar Stock</span>
         </a>
@@ -201,24 +289,24 @@
   </header>
 
   <!-- MOBILE HORIZONTAL CATEGORY STRIP (SOLO MÓVIL/TABLET) -->
-  <div class="lg:hidden bg-white/95 backdrop-blur-md border-b border-slate-200 px-3 py-2 overflow-x-auto no-scrollbar flex items-center gap-1.5 sticky top-20 z-30 shadow-xs">
-    <button id="mobileCatAll" onclick="selectCategory('all')" class="mobile-cat-pill active px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors bg-[#2D3E46] text-white flex items-center gap-1">
+  <div class="lg:hidden metallic-surface backdrop-blur-lg border-b border-slate-200/90 px-3 py-2.5 overflow-x-auto no-scrollbar flex items-center gap-2 sticky top-20 z-30 shadow-2xs">
+    <button id="mobileCatAll" onclick="selectCategory('all')" class="mobile-cat-pill active px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors bg-[#2D3E46] text-white flex items-center gap-1.5 shadow-2xs">
       <span>🚗 Todos</span>
       <span id="mobileCountAll" class="text-[10px] opacity-90">(44)</span>
     </button>
-    <button id="mobileCatUsados" onclick="selectCategory('usados')" class="mobile-cat-pill px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-1">
+    <button id="mobileCatUsados" onclick="selectCategory('usados')" class="mobile-cat-pill metallic-pill px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors text-slate-700 flex items-center gap-1.5">
       <span>⭐ Usados</span>
       <span id="mobileCountUsados" class="text-[10px] opacity-75 font-bold">(38)</span>
     </button>
-    <button id="mobileCatElec" onclick="selectCategory('electricos')" class="mobile-cat-pill px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center gap-1">
+    <button id="mobileCatElec" onclick="selectCategory('electricos')" class="mobile-cat-pill px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors bg-emerald-50 text-emerald-800 border border-emerald-300 flex items-center gap-1.5">
       <span>⚡ Eléctricos 0km</span>
       <span id="mobileCountElec" class="text-[10px] opacity-75 font-bold">(4)</span>
     </button>
-    <button id="mobileCatMotos" onclick="selectCategory('motos')" class="mobile-cat-pill px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-1">
+    <button id="mobileCatMotos" onclick="selectCategory('motos')" class="mobile-cat-pill metallic-pill px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors text-slate-700 flex items-center gap-1.5">
       <span>🏍️ Motos</span>
       <span id="mobileCountMotos" class="text-[10px] opacity-75 font-bold">(3)</span>
     </button>
-    <button id="mobileCatTT" onclick="selectCategory('todoterreno')" class="mobile-cat-pill px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-1">
+    <button id="mobileCatTT" onclick="selectCategory('todoterreno')" class="mobile-cat-pill metallic-pill px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors text-slate-700 flex items-center gap-1.5">
       <span>🏔️ 4x4</span>
       <span id="mobileCountTT" class="text-[10px] opacity-75 font-bold">(6)</span>
     </button>
@@ -227,102 +315,108 @@
   <!-- MAIN CONTENT CONTAINER -->
   <main class="flex-1">
 
-    <!-- HERO SECTION -->
-    <section id="heroSection" class="relative bg-gradient-to-b from-white via-[#F4F6F8] to-[#EFF2EE] border-b border-slate-200 py-6 sm:py-10 lg:py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- HERO SECTION (SHOWROOM SPOTLIGHT & PEDESTAL) -->
+    <section id="heroSection" class="relative showroom-backdrop border-b border-slate-200/90 py-8 sm:py-12 lg:py-18 overflow-hidden">
+      <!-- Ambient Studio Spotlight Reflection -->
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(45,62,70,0.08),transparent)] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           <div class="lg:col-span-7 space-y-5 text-left">
-            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold badge-soft">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-bold metallic-spec-pill text-[#2D3E46] border border-slate-300/80 shadow-2xs">
               <span class="w-2 h-2 rounded-full bg-[#C0392B] animate-ping"></span>
-              <span id="heroTopBadge" class="text-[#2D3E46]">Catálogo 100% Actualizado • Reserva Online con Seña</span>
+              <span id="heroTopBadge">Catálogo 100% Actualizado • Reserva Online con Seña</span>
             </div>
-            <h1 id="heroMainTitle" class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#2D3E46] leading-[1.15]">
-              Tu próximo vehículo con la <span class="text-[#C0392B]">confianza CARVLAK</span>.
+            <h1 id="heroMainTitle" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#2D3E46] leading-[1.12]">
+              Tu próximo vehículo con la <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#C0392B] via-[#E74C3C] to-[#C0392B]">confianza CARVLAK</span>.
             </h1>
-            <p id="heroMainSubtitle" class="text-slate-600 text-base sm:text-lg max-w-xl">
+            <p id="heroMainSubtitle" class="text-slate-600 text-base sm:text-lg max-w-xl font-normal leading-relaxed">
               Usados seleccionados con inspección mecánica de 100 puntos, eléctricos 0km de última generación, motos y todoterrenos. Financiación bancaria hasta en 60 cuotas, toma de permutas y reserva digital con seña inmediata.
             </p>
             
             <div class="flex flex-wrap gap-3 pt-2">
-              <button onclick="selectCategory('all')" class="px-6 py-3.5 rounded-xl bg-[#2D3E46] hover:bg-[#1E2B31] text-white font-bold text-sm shadow-lg shadow-slate-900/10 transition-all flex items-center space-x-2">
+              <button onclick="selectCategory('all')" class="metallic-petrol px-6 py-3.5 rounded-xl text-white font-bold text-sm shadow-md transition-all flex items-center space-x-2">
                 <span>Explorar los <span id="heroCatalogCount">44</span> Vehículos</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </button>
-              <button onclick="showSection('financing')" class="px-6 py-3.5 rounded-xl bg-white border border-slate-300 hover:border-slate-400 text-[#2D3E46] font-semibold text-sm hover:bg-slate-50 transition-all">
+              <button onclick="showSection('financing')" class="metallic-pill px-6 py-3.5 rounded-xl text-[#2D3E46] font-semibold text-sm transition-all shadow-2xs">
                 Simular Financiación
               </button>
-              <button onclick="toggleAdvisorWidget(true)" class="px-5 py-3.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-800 font-bold text-sm hover:bg-emerald-100 transition-all flex items-center gap-1.5">
+              <button onclick="toggleAdvisorWidget(true)" class="px-5 py-3.5 rounded-xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-300 text-emerald-800 font-bold text-sm hover:bg-emerald-100 transition-all flex items-center gap-1.5 shadow-2xs">
                 <span>💬 Asesor IA</span>
               </button>
             </div>
 
-            <!-- TRUST PILLS -->
-            <div class="pt-4 grid grid-cols-3 gap-3 border-t border-slate-200/80 text-center sm:text-left">
-              <div>
-                <div class="text-xl font-extrabold text-[#2D3E46]"><span id="heroStatStock">44</span></div>
-                <div class="text-xs text-slate-500 font-medium">Unidades en Stock</div>
+            <!-- TRUST PILLS METÁLICOS -->
+            <div class="pt-5 grid grid-cols-3 gap-3 border-t border-slate-200/80">
+              <div class="metallic-spec-pill p-3 rounded-xl border border-slate-200 text-center sm:text-left shadow-2xs">
+                <div class="text-2xl font-extrabold text-[#2D3E46]"><span id="heroStatStock">44</span></div>
+                <div class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">Unidades en Stock</div>
               </div>
-              <div>
-                <div class="text-xl font-extrabold text-[#C0392B]">100%</div>
-                <div class="text-xs text-slate-500 font-medium">Financiables</div>
+              <div class="metallic-spec-pill p-3 rounded-xl border border-slate-200 text-center sm:text-left shadow-2xs">
+                <div class="text-2xl font-extrabold text-[#C0392B]">100%</div>
+                <div class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">Financiables</div>
               </div>
-              <div>
-                <div class="text-xl font-extrabold text-[#2D3E46]">Garantía</div>
-                <div class="text-xs text-slate-500 font-medium">Taller Propio Certificado</div>
+              <div class="metallic-spec-pill p-3 rounded-xl border border-slate-200 text-center sm:text-left shadow-2xs">
+                <div class="text-2xl font-extrabold text-[#2D3E46]">Garantía</div>
+                <div class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">Taller Certificado</div>
               </div>
             </div>
           </div>
 
-          <!-- HERO HIGHLIGHT CARD (MODIFICABLE EN VIVO) -->
+          <!-- HERO HIGHLIGHT CARD (PEDESTAL SHOWROOM METÁLICO) -->
           <div class="lg:col-span-5" id="heroFeaturedCardContainer">
-            <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xl shadow-slate-200/60 relative">
+            <div class="metallic-card bg-white/95 backdrop-blur-md rounded-2xl p-5 border border-slate-300/90 shadow-[0_15px_40px_-10px_rgba(45,62,70,0.18)] relative">
               
               <!-- BOTÓN DIRECTO PARA EDITAR DESTACADO -->
-              <div class="absolute -top-3 left-4">
+              <div class="absolute -top-3 left-4 z-20">
                 <button 
                   type="button"
                   onclick="openHeroFeaturedModal()" 
-                  class="bg-white/95 hover:bg-slate-100 text-[#2D3E46] text-[11px] font-bold px-3 py-1 rounded-full border border-slate-300 shadow-md flex items-center gap-1.5 transition-transform hover:scale-105"
+                  class="metallic-spec-pill hover:bg-slate-100 text-[#2D3E46] text-[11px] font-bold px-3 py-1 rounded-full border border-slate-300 shadow-sm flex items-center gap-1.5 transition-transform hover:scale-105 active:scale-95"
                   title="Modificar el vehículo destacado de la semana"
                 >
                   <span>✏️ Cambiar Destacado</span>
                 </button>
               </div>
 
-              <div id="heroBadgeText" class="absolute -top-3 right-6 bg-[#C0392B] text-white text-[11px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
+              <div id="heroBadgeText" class="absolute -top-3 right-6 metallic-ruby text-white text-[11px] font-extrabold px-3.5 py-1 rounded-full uppercase tracking-wider shadow-md z-20">
                 Destacado de la Semana
               </div>
               
-              <div id="heroCardClickable" class="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-100 mb-4 group cursor-pointer" onclick="handleHeroFeaturedCardClick()">
+              <div id="heroCardClickable" class="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-100 mb-4 group cursor-pointer border border-slate-200/80 shadow-inner" onclick="handleHeroFeaturedCardClick()">
                 <img 
                   id="heroCarImg" 
                   src="https://dcdn-us.mitiendanube.com/stores/006/928/264/products/whatsapp-image-2026-06-05-at-12-32-15-pm-3-7b3b4f91d09f7a40ca17889656461932-1024-1024.webp" 
                   alt="Chevrolet Celta LT 2016" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div id="heroImgSubtitle" class="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm text-white px-2.5 py-1 rounded text-xs font-semibold">
+                <div id="heroImgSubtitle" class="absolute bottom-3 left-3 bg-black/75 backdrop-blur-md text-white px-3 py-1 rounded-lg text-xs font-semibold border border-white/20 shadow-md">
                   Fotos Reales en Showroom
                 </div>
               </div>
 
               <div class="flex justify-between items-start mb-2">
                 <div>
-                  <h3 id="heroCarTitle" class="font-bold text-lg text-[#2D3E46]">Chevrolet Celta 1.0 LT</h3>
-                  <p id="heroCarSpecs" class="text-xs text-slate-500">2016 • 76.000 km • Hatchback 5P • Blanco</p>
-                  <div id="heroCarKeyBadges" class="flex flex-wrap gap-1.5 mt-1.5 text-[11px]"></div>
+                  <h3 id="heroCarTitle" class="font-heading font-bold text-xl text-[#2D3E46] tracking-tight">Chevrolet Celta 1.0 LT</h3>
+                  <p id="heroCarSpecs" class="text-xs text-slate-500 font-medium mt-0.5">2016 • 76.000 km • Hatchback 5P • Blanco</p>
+                  <div id="heroCarKeyBadges" class="flex flex-wrap gap-1.5 mt-2 text-[11px]"></div>
                 </div>
                 <div class="text-right">
-                  <div id="heroCarOldPrice" class="text-xs text-slate-400 line-through">USD 9.400</div>
-                  <div id="heroCarPrice" class="text-xl font-extrabold text-[#C0392B]">USD 8.900</div>
+                  <div id="heroCarOldPrice" class="text-xs text-slate-400 line-through font-medium">USD 9.400</div>
+                  <div class="flex items-baseline justify-end space-x-1">
+                    <span class="text-xs font-bold text-[#C0392B]">USD</span>
+                    <span id="heroCarPrice" class="text-2xl font-black text-[#C0392B] tracking-tight">8.900</span>
+                  </div>
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 gap-2 mt-4 pt-3 border-t border-slate-100">
-                <button id="heroBtnViewDetails" onclick="handleHeroFeaturedCardClick()" class="w-full py-2.5 rounded-lg bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold transition-colors">
+              <div class="grid grid-cols-2 gap-2.5 mt-4 pt-3 border-t border-slate-100">
+                <button id="heroBtnViewDetails" onclick="handleHeroFeaturedCardClick()" class="metallic-petrol w-full py-2.5 rounded-xl text-white text-xs font-bold transition-all shadow-sm">
                   Ver Ficha & 360°
                 </button>
-                <button id="heroBtnReserve" onclick="handleHeroFeaturedReserveClick()" class="w-full py-2.5 rounded-lg bg-[#C0392B] hover:bg-[#A93226] text-white text-xs font-bold text-center flex items-center justify-center space-x-1 transition-colors">
+                <button id="heroBtnReserve" onclick="handleHeroFeaturedReserveClick()" class="metallic-ruby w-full py-2.5 rounded-xl text-white text-xs font-bold text-center flex items-center justify-center space-x-1 transition-all shadow-sm">
                   <span>Reservar ($500)</span>
                 </button>
               </div>
@@ -331,18 +425,18 @@
               <button 
                 id="heroBtnShareStory"
                 onclick="handleShareFeaturedHeroStory()" 
-                class="w-full mt-2.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] hover:opacity-95 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-transform active:scale-[0.98]"
+                class="w-full mt-2.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] hover:opacity-95 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-transform active:scale-[0.98] border border-white/20"
                 title="Compartir ficha oficial en Historia de Instagram o Estado de WhatsApp"
               >
                 <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                <span>📲 Compartir en Historia (Instagram / WhatsApp)</span>
-              </button>
-            </div>
+              <span>📲 Compartir en Historia (Instagram / WhatsApp)</span>
+            </button>
           </div>
-
         </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- CATALOG SECTION (COMPLETE CATALOG WITH 4 MAIN CATEGORIES & NLP SEARCH) -->
     <section id="catalogSection" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -360,56 +454,56 @@
         </p>
       </div>
 
-      <!-- 4 MAIN CATEGORY TABS -->
-      <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-6">
+      <!-- 4 MAIN CATEGORY TABS (COCKPIT SWITCHES METÁLICOS) -->
+      <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-7">
         <button 
           id="tabCategoryAll" 
           onclick="selectCategory('all')" 
-          class="category-tab active px-4 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm font-semibold transition-all flex items-center gap-2"
+          class="category-tab active px-4 sm:px-5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shadow-sm"
         >
           <span>🚗 Todos</span>
-          <span id="tabCountAll" class="text-[11px] px-2 py-0.5 rounded-full bg-white/20 font-bold">51</span>
+          <span id="tabCountAll" class="text-[11px] px-2 py-0.5 rounded-full bg-white/20 font-extrabold">51</span>
         </button>
 
         <button 
           id="tabCategoryUsados" 
           onclick="selectCategory('usados')" 
-          class="category-tab px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-700 hover:border-[#2D3E46] text-xs sm:text-sm font-semibold transition-all flex items-center gap-2"
+          class="category-tab metallic-pill px-4 sm:px-5 py-2.5 rounded-xl border border-slate-300/90 text-slate-700 hover:border-[#2D3E46] text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 shadow-2xs hover:scale-105 active:scale-95"
         >
           <span>⭐ Usados Seleccionados</span>
-          <span id="tabCountUsados" class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-bold">38</span>
+          <span id="tabCountUsados" class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-bold border border-slate-200">38</span>
         </button>
 
         <button 
           id="tabCategoryElectricos" 
           onclick="selectCategory('electricos')" 
-          class="category-tab px-4 py-2.5 rounded-xl border border-emerald-300 bg-emerald-50/50 text-emerald-800 hover:bg-emerald-100 text-xs sm:text-sm font-semibold transition-all flex items-center gap-2"
+          class="category-tab px-4 sm:px-5 py-2.5 rounded-xl border border-emerald-300 bg-gradient-to-b from-emerald-50 to-teal-50 text-emerald-800 hover:bg-emerald-100 text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 shadow-2xs hover:scale-105 active:scale-95"
         >
           <span>⚡ Eléctricos 0km</span>
-          <span id="tabCountElectricos" class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-200 text-emerald-900 font-bold">4</span>
+          <span id="tabCountElectricos" class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-200 text-emerald-900 font-bold border border-emerald-300">4</span>
         </button>
 
         <button 
           id="tabCategoryMotos" 
           onclick="selectCategory('motos')" 
-          class="category-tab px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-700 hover:border-[#2D3E46] text-xs sm:text-sm font-semibold transition-all flex items-center gap-2"
+          class="category-tab metallic-pill px-4 sm:px-5 py-2.5 rounded-xl border border-slate-300/90 text-slate-700 hover:border-[#2D3E46] text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 shadow-2xs hover:scale-105 active:scale-95"
         >
           <span>🏍️ Motos Usadas</span>
-          <span id="tabCountMotos" class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-bold">3</span>
+          <span id="tabCountMotos" class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-bold border border-slate-200">3</span>
         </button>
 
         <button 
           id="tabCategoryTodoterreno" 
           onclick="selectCategory('todoterreno')" 
-          class="category-tab px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-700 hover:border-[#2D3E46] text-xs sm:text-sm font-semibold transition-all flex items-center gap-2"
+          class="category-tab metallic-pill px-4 sm:px-5 py-2.5 rounded-xl border border-slate-300/90 text-slate-700 hover:border-[#2D3E46] text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 shadow-2xs hover:scale-105 active:scale-95"
         >
           <span>🏔️ Todoterreno 4x4</span>
-          <span id="tabCountTodoterreno" class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-bold">6</span>
+          <span id="tabCountTodoterreno" class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-bold border border-slate-200">6</span>
         </button>
       </div>
 
-      <!-- FILTER CONTROLS & NLP SEARCH BAR -->
-      <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm mb-8 space-y-3">
+      <!-- FILTER CONTROLS & NLP SEARCH BAR (CONSOLA METÁLICA DE CONTROL) -->
+      <div class="metallic-card rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-md mb-8 space-y-3.5">
         
         <!-- SEARCH ROW -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
@@ -421,7 +515,7 @@
               id="searchInput" 
               oninput="handleSearchInput()" 
               placeholder="Búsqueda Inteligente: ej. 'SUV familiar hasta 25.000 USD' o 'automático poco uso'..." 
-              class="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2D3E46] text-sm text-slate-800 placeholder-slate-400 font-medium"
+              class="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2D3E46] text-sm text-slate-800 placeholder-slate-400 font-medium bg-[#FAFCFF] shadow-inner transition-all"
             />
             <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
             <button 
@@ -437,7 +531,7 @@
             <select 
               id="brandFilter" 
               onchange="applyFilters()" 
-              class="w-full px-3 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2D3E46] text-xs sm:text-sm text-slate-800 bg-white font-medium"
+              class="w-full px-3.5 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2D3E46] text-xs sm:text-sm text-slate-800 bg-white font-medium shadow-2xs"
             >
               <option value="all">Todas las Marcas</option>
             </select>
@@ -448,7 +542,7 @@
             <select 
               id="sortFilter" 
               onchange="applyFilters()" 
-              class="w-full px-3 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2D3E46] text-xs sm:text-sm text-slate-800 bg-white font-medium"
+              class="w-full px-3.5 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2D3E46] text-xs sm:text-sm text-slate-800 bg-white font-medium shadow-2xs"
             >
               <option value="custom" selected>⭐ Orden personalizado (Manual / Destacados)</option>
               <option value="price-asc">Precio: menor a mayor</option>
@@ -461,7 +555,7 @@
         </div>
 
         <!-- NLP INTERPRETED FILTERS BANNER (Visible when NLP active) -->
-        <div id="nlpActiveBanner" class="hidden bg-emerald-50 border border-emerald-200 rounded-xl p-2.5 text-xs text-emerald-800 flex flex-wrap items-center justify-between gap-2">
+        <div id="nlpActiveBanner" class="hidden bg-emerald-50 border border-emerald-300 rounded-xl p-2.5 text-xs text-emerald-800 flex flex-wrap items-center justify-between gap-2 shadow-2xs">
           <div class="flex items-center gap-1.5 flex-wrap">
             <span class="font-bold flex items-center gap-1">
               <span>🧠 Búsqueda Inteligente (NLP):</span>
@@ -476,27 +570,27 @@
         </div>
 
         <!-- QUICK NLP SUGGESTION CHIPS -->
-        <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100 text-xs">
-          <span class="text-slate-400 font-medium mr-1">Filtros rápidos:</span>
-          <button onclick="setQuickNlpQuery('hasta 10000 USD')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
+        <div class="flex flex-wrap items-center gap-1.5 pt-2.5 border-t border-slate-100 text-xs">
+          <span class="text-slate-400 font-medium mr-1 text-[11px] uppercase tracking-wider">Filtros rápidos:</span>
+          <button onclick="setQuickNlpQuery('hasta 10000 USD')" class="metallic-spec-pill px-3 py-1 rounded-full text-[#2D3E46] border border-slate-200 hover:bg-[#2D3E46] hover:text-white transition-all shadow-2xs">
             💰 Menos de USD 10k
           </button>
-          <button onclick="setQuickNlpQuery('hasta 15000 USD')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
+          <button onclick="setQuickNlpQuery('hasta 15000 USD')" class="metallic-spec-pill px-3 py-1 rounded-full text-[#2D3E46] border border-slate-200 hover:bg-[#2D3E46] hover:text-white transition-all shadow-2xs">
             💵 Hasta USD 15k
           </button>
-          <button onclick="setQuickNlpQuery('automático')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
+          <button onclick="setQuickNlpQuery('automático')" class="metallic-spec-pill px-3 py-1 rounded-full text-[#2D3E46] border border-slate-200 hover:bg-[#2D3E46] hover:text-white transition-all shadow-2xs">
             🕹️ Automáticos
           </button>
-          <button onclick="setQuickNlpQuery('4x4 todoterreno')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
+          <button onclick="setQuickNlpQuery('4x4 todoterreno')" class="metallic-spec-pill px-3 py-1 rounded-full text-[#2D3E46] border border-slate-200 hover:bg-[#2D3E46] hover:text-white transition-all shadow-2xs">
             🏔️ Pick-up / 4x4
           </button>
-          <button onclick="setQuickNlpQuery('poco uso')" class="px-2.5 py-1 rounded-full bg-[#EFF2EE] text-[#2D3E46] border border-[#DFE5DD] hover:bg-[#2D3E46] hover:text-white transition-colors">
+          <button onclick="setQuickNlpQuery('poco uso')" class="metallic-spec-pill px-3 py-1 rounded-full text-[#2D3E46] border border-slate-200 hover:bg-[#2D3E46] hover:text-white transition-all shadow-2xs">
             🛣️ Pocos Km (&lt;60k)
           </button>
-          <button onclick="setQuickNlpQuery('eléctrico 0km')" class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-600 hover:text-white transition-colors">
+          <button onclick="setQuickNlpQuery('eléctrico 0km')" class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-600 hover:text-white transition-all shadow-2xs">
             ⚡ 100% Eléctricos
           </button>
-          <button onclick="resetCatalogFilters()" class="ml-auto text-slate-500 hover:text-[#C0392B] font-semibold text-xs py-1">
+          <button onclick="resetCatalogFilters()" class="ml-auto text-slate-500 hover:text-[#C0392B] font-semibold text-xs py-1 transition-colors">
             Limpiar filtros
           </button>
         </div>
@@ -532,24 +626,24 @@
 
     </section>
 
-    <!-- FINANCING SIMULATOR (Branded in Slate Petrol & White) -->
-    <section id="financingSection" class="py-16 bg-[#EFF2EE] border-t border-b border-slate-200">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- FINANCING SIMULATOR (CONSOLA FINANCIERA AUTOMOTRIZ) -->
+    <section id="financingSection" class="py-16 showroom-backdrop border-t border-b border-slate-200/90 relative overflow-hidden">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-10">
           <span class="text-xs font-bold uppercase tracking-widest text-[#C0392B]">Facilidades Crediticias en Uruguay</span>
-          <h2 class="text-3xl sm:text-4xl font-bold text-[#2D3E46] mt-1">Simulador de Crédito Automotor</h2>
-          <p class="text-slate-600 text-sm max-w-xl mx-auto mt-2">
+          <h2 class="text-3xl sm:text-4xl font-bold text-[#2D3E46] mt-1 font-heading">Simulador de Crédito Automotor</h2>
+          <p class="text-slate-600 text-sm max-w-xl mx-auto mt-2 font-medium">
             Financiamos hasta el 100% de cualquier vehículo del stock en UI o Dólares mediante convenios bancarios o crédito de la casa.
           </p>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div class="metallic-card rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           
           <div class="md:col-span-7 space-y-5">
             <!-- VEHICLE SELECTOR -->
             <div>
-              <label class="block text-xs font-bold text-[#2D3E46] uppercase tracking-wider mb-2">Seleccionar Vehículo del Stock</label>
-              <select id="simVehicleSelect" onchange="updateSimulatorFromSelect()" class="w-full px-4 py-3 rounded-xl border border-slate-300 font-semibold text-slate-800 text-sm bg-white focus:ring-2 focus:ring-[#2D3E46]">
+              <label class="block text-xs font-extrabold text-[#2D3E46] uppercase tracking-wider mb-2">Seleccionar Vehículo del Stock</label>
+              <select id="simVehicleSelect" onchange="updateSimulatorFromSelect()" class="w-full px-4 py-3 rounded-xl border border-slate-300 font-semibold text-slate-800 text-sm bg-white focus:ring-2 focus:ring-[#2D3E46] shadow-2xs">
                 <!-- Opciones cargadas con JS -->
               </select>
             </div>
@@ -570,7 +664,7 @@
                 oninput="calculateFinancing()" 
                 class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#2D3E46]"
               />
-              <div class="flex justify-between text-[11px] text-slate-400 mt-1">
+              <div class="flex justify-between text-[11px] text-slate-400 mt-1 font-medium">
                 <span>0% (100% Financiado)</span>
                 <span>30%</span>
                 <span>Hasta 70%</span>
@@ -579,19 +673,19 @@
 
             <!-- INSTALLMENT TERM BUTTONS -->
             <div>
-              <label class="block text-xs font-bold text-[#2D3E46] uppercase tracking-wider mb-2">Plazo de Financiación</label>
+              <label class="block text-xs font-extrabold text-[#2D3E46] uppercase tracking-wider mb-2">Plazo de Financiación</label>
               <div class="grid grid-cols-4 gap-2">
-                <button type="button" onclick="setSimMonths(12)" class="sim-month-btn py-2.5 rounded-lg border text-xs font-bold text-slate-700 hover:border-[#2D3E46]" data-months="12">12 Cuotas</button>
-                <button type="button" onclick="setSimMonths(24)" class="sim-month-btn py-2.5 rounded-lg border text-xs font-bold text-slate-700 hover:border-[#2D3E46]" data-months="24">24 Cuotas</button>
-                <button type="button" onclick="setSimMonths(36)" class="sim-month-btn py-2.5 rounded-lg border text-xs font-bold bg-[#2D3E46] text-white" data-months="36">36 Cuotas</button>
-                <button type="button" onclick="setSimMonths(60)" class="sim-month-btn py-2.5 rounded-lg border text-xs font-bold text-slate-700 hover:border-[#2D3E46]" data-months="60">60 Cuotas</button>
+                <button type="button" onclick="setSimMonths(12)" class="sim-month-btn py-2.5 rounded-xl metallic-pill border border-slate-300/80 text-xs font-bold text-slate-700 hover:border-[#2D3E46] transition-all shadow-2xs" data-months="12">12 Cuotas</button>
+                <button type="button" onclick="setSimMonths(24)" class="sim-month-btn py-2.5 rounded-xl metallic-pill border border-slate-300/80 text-xs font-bold text-slate-700 hover:border-[#2D3E46] transition-all shadow-2xs" data-months="24">24 Cuotas</button>
+                <button type="button" onclick="setSimMonths(36)" class="sim-month-btn py-2.5 rounded-xl border text-xs font-bold metallic-petrol text-white shadow-xs" data-months="36">36 Cuotas</button>
+                <button type="button" onclick="setSimMonths(60)" class="sim-month-btn py-2.5 rounded-xl metallic-pill border border-slate-300/80 text-xs font-bold text-slate-700 hover:border-[#2D3E46] transition-all shadow-2xs" data-months="60">60 Cuotas</button>
               </div>
             </div>
 
             <!-- PLAN BANCARIO SELECTION -->
             <div>
-              <label class="block text-xs font-bold text-[#2D3E46] uppercase tracking-wider mb-1.5">Entidad Financiera</label>
-              <select id="simBankSelect" onchange="calculateFinancing()" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 font-medium bg-slate-50">
+              <label class="block text-xs font-extrabold text-[#2D3E46] uppercase tracking-wider mb-1.5">Entidad Financiera</label>
+              <select id="simBankSelect" onchange="calculateFinancing()" class="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-300 font-medium bg-slate-50 shadow-2xs">
                 <option value="santander">Banco Santander (Tasa 7.9% TEA • Hasta 60 meses)</option>
                 <option value="itau">Banco Itaú (Tasa 7.5% TEA • Bonificación Eléctricos 0km)</option>
                 <option value="bbva">BBVA Uruguay (Tasa 8.2% TEA • Hasta 75% Financiado)</option>
@@ -600,21 +694,21 @@
             </div>
           </div>
 
-          <!-- SUMMARY CARD -->
-          <div class="md:col-span-5 bg-[#2D3E46] text-white rounded-xl p-6 flex flex-col justify-between space-y-5">
+          <!-- SUMMARY CARD (PETRÓLEO METÁLICO) -->
+          <div class="md:col-span-5 metallic-petrol text-white rounded-2xl p-6 sm:p-7 flex flex-col justify-between space-y-5 border border-white/10 shadow-2xl">
             <div>
-              <span class="text-xs uppercase tracking-wider font-semibold text-slate-300">Cuota Mensual Estimada</span>
-              <div class="flex items-baseline space-x-1 mt-1">
+              <span class="text-xs uppercase tracking-wider font-bold text-slate-300">Cuota Mensual Estimada</span>
+              <div class="flex items-baseline space-x-1.5 mt-1.5">
                 <span class="text-xs text-slate-300 font-bold">USD</span>
-                <span id="simMonthlyQuota" class="text-4xl font-extrabold text-white">234</span>
+                <span id="simMonthlyQuota" class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">234</span>
                 <span class="text-xs text-slate-300">/ mes</span>
               </div>
-              <p class="text-[11px] text-slate-300 mt-1.5">
-                O aprox. <strong id="simMonthlyUi" class="text-emerald-300">10.450 UI</strong> con amortización en moneda nacional.
+              <p class="text-[11px] text-slate-300 mt-2">
+                O aprox. <strong id="simMonthlyUi" class="text-emerald-300 font-bold">10.450 UI</strong> con amortización en moneda nacional.
               </p>
             </div>
 
-            <div class="space-y-2 border-t border-slate-700 pt-3 text-xs text-slate-200">
+            <div class="space-y-2.5 border-t border-slate-600/60 pt-3.5 text-xs text-slate-200">
               <div class="flex justify-between">
                 <span class="text-slate-400">Precio Vehículo:</span>
                 <span id="simSummaryPrice" class="font-bold">USD 8.900</span>
@@ -633,7 +727,7 @@
               </div>
             </div>
 
-            <button onclick="requestFinancingWhatsApp()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-colors flex items-center justify-center space-x-2">
+            <button onclick="requestFinancingWhatsApp()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-bold text-xs shadow-md shadow-emerald-900/20 border border-white/20 transition-all flex items-center justify-center space-x-2 hover:scale-[1.02] active:scale-[0.98]">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
               <span>Solicitar Pre-Aprobación Bancaria</span>
             </button>
@@ -643,47 +737,46 @@
       </div>
     </section>
 
-
     <!-- AI TRADE-IN SECTION (TASACIÓN INTELIGENTE DE PERMUTAS) -->
     <section id="tradeinSection" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       <div class="text-center mb-10">
         <span class="text-xs font-bold uppercase tracking-widest text-[#C0392B]">Valuación Inmediata con Inteligencia Artificial</span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-[#2D3E46] mt-1">Tasá tu Usado como Parte de Pago</h2>
-        <p class="text-slate-600 text-sm max-w-xl mx-auto mt-2">
+        <h2 class="text-3xl sm:text-4xl font-bold text-[#2D3E46] mt-1 font-heading">Tasá tu Usado como Parte de Pago</h2>
+        <p class="text-slate-600 text-sm max-w-xl mx-auto mt-2 font-medium">
           Tomamos tu vehículo al mejor valor de plaza uruguayo para que te lleves tu próxima unidad sin trámites complicados.
         </p>
       </div>
 
-      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+      <div class="metallic-card rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xl space-y-6">
         
         <form id="tradeinForm" onsubmit="handleTradeinAiValuation(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nombre Completo *</label>
-            <input type="text" id="tiName" required placeholder="Ej: Juan Pérez" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46]">
+            <input type="text" id="tiName" required placeholder="Ej: Juan Pérez" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46] shadow-2xs">
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Celular / WhatsApp *</label>
-            <input type="tel" id="tiPhone" required placeholder="099 123 456" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46]">
+            <input type="tel" id="tiPhone" required placeholder="099 123 456" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46] shadow-2xs">
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Marca de tu Vehículo *</label>
-            <input type="text" id="tiBrand" required placeholder="Ej: Volkswagen, Chevrolet, Fiat" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46]">
+            <input type="text" id="tiBrand" required placeholder="Ej: Volkswagen, Chevrolet, Fiat" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46] shadow-2xs">
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Modelo y Versión *</label>
-            <input type="text" id="tiModel" required placeholder="Ej: Gol Trendline 1.6 5P" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46]">
+            <input type="text" id="tiModel" required placeholder="Ej: Gol Trendline 1.6 5P" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46] shadow-2xs">
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Año de Fabricación *</label>
-            <input type="number" id="tiYear" required min="2000" max="2026" value="2019" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46]">
+            <input type="number" id="tiYear" required min="2000" max="2026" value="2019" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46] shadow-2xs">
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Kilometraje Aproximado *</label>
-            <input type="number" id="tiMileage" required min="0" placeholder="Ej: 65000" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46]">
+            <input type="number" id="tiMileage" required min="0" placeholder="Ej: 65000" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46] shadow-2xs">
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Estado General del Vehículo</label>
-            <select id="tiCondition" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm bg-white focus:ring-2 focus:ring-[#2D3E46]">
+            <select id="tiCondition" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm bg-white focus:ring-2 focus:ring-[#2D3E46] shadow-2xs">
               <option value="excelente">Excelente (Poco uso, services oficiales, cubiertas nuevas)</option>
               <option value="muybueno" selected>Muy Bueno (Buen cuidado, detalles mínimos de uso normal)</option>
               <option value="bueno">Bueno (Funciona todo, detalles leves de chapa o pintura)</option>
@@ -692,10 +785,10 @@
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">¿Qué unidad de CARVLAK te interesa adquirir?</label>
-            <input type="text" id="tiInterest" placeholder="Ej: Suzuki Swift 2019 o ver stock disponible" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46]">
+            <input type="text" id="tiInterest" placeholder="Ej: Suzuki Swift 2019 o ver stock disponible" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-[#2D3E46] shadow-2xs">
           </div>
           <div class="sm:col-span-2 pt-2">
-            <button type="submit" class="w-full py-3.5 rounded-xl bg-[#2D3E46] hover:bg-[#1E2B31] text-white font-bold text-sm shadow-md transition-all flex items-center justify-center space-x-2">
+            <button type="submit" class="w-full py-4 rounded-xl metallic-petrol text-white font-bold text-sm shadow-md transition-all flex items-center justify-center space-x-2 hover:scale-[1.01] active:scale-[0.99]">
               <span>🧠 Calcular Tasación Estimada con IA & Recibir Oferta</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </button>
@@ -897,31 +990,31 @@
   <!-- ================================================================= -->
   <!-- MODAL: VEHICLE DETAIL & 360° GALLERY (Photos, Specs, Reserve, Test Drive) -->
   <!-- ================================================================= -->
-  <div id="vehicleModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-5 overflow-y-auto">
-    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[94vh] overflow-y-auto shadow-2xl border border-slate-200 relative my-auto">
+  <div id="vehicleModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden items-center justify-center p-3 sm:p-5 overflow-y-auto">
+    <div class="metallic-card bg-white rounded-3xl max-w-4xl w-full max-h-[94vh] overflow-y-auto shadow-2xl border border-slate-300/90 relative my-auto">
       
       <!-- CLOSE BUTTON -->
-      <button onclick="closeVehicleModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/95 shadow border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center justify-center font-bold text-lg transition-colors">
+      <button onclick="closeVehicleModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full metallic-pill shadow border border-slate-300 text-slate-700 hover:text-[#2D3E46] flex items-center justify-center font-bold text-lg transition-all hover:scale-105 active:scale-95">
         ✕
       </button>
 
       <div class="p-5 sm:p-8 space-y-6">
         
         <!-- HEADER MODAL -->
-        <div class="border-b border-slate-100 pb-4 pr-8">
+        <div class="border-b border-slate-200/80 pb-4 pr-8">
           <div class="flex items-center space-x-2 text-xs font-semibold text-slate-400 mb-1">
-            <span id="modalCategoryBadge" class="px-2 py-0.5 rounded-md bg-slate-100 text-[#2D3E46] font-bold">Usados Seleccionados</span>
+            <span id="modalCategoryBadge" class="px-2.5 py-0.5 rounded-lg metallic-spec-pill text-[#2D3E46] font-bold text-[11px] border border-slate-200">Usados Seleccionados</span>
             <span>•</span>
             <span id="modalLocation">Showroom Av. Giannattasio km 18.500</span>
           </div>
           <div class="flex flex-col sm:flex-row justify-between sm:items-baseline gap-2">
             <div>
-              <h2 id="modalTitle" class="text-2xl sm:text-3xl font-bold text-[#2D3E46]">Nombre del Auto</h2>
+              <h2 id="modalTitle" class="text-2xl sm:text-3xl font-bold text-[#2D3E46] font-heading tracking-tight">Nombre del Auto</h2>
               <p id="modalSubtitle" class="text-xs sm:text-sm text-slate-500 font-medium">Versión, motor y equipamiento</p>
             </div>
             <div class="text-left sm:text-right">
-              <div id="modalPrice" class="text-3xl font-extrabold text-[#C0392B]">USD 0.000</div>
-              <div id="modalStatusBadge" class="text-xs text-emerald-600 font-semibold">✓ Disponible para entrega inmediata</div>
+              <div id="modalPrice" class="text-3xl font-extrabold text-[#C0392B] tracking-tight">USD 0.000</div>
+              <div id="modalStatusBadge" class="text-xs text-emerald-600 font-bold">✓ Disponible para entrega inmediata</div>
             </div>
           </div>
         </div>
@@ -931,17 +1024,17 @@
           <!-- Gallery Mode Tabs & Quick Photo Manager Button -->
           <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-2 text-xs font-bold">
             <div class="flex items-center gap-2">
-              <button id="galleryTabPhotos" onclick="setGalleryMode('photos')" class="px-3 py-1.5 rounded-lg bg-[#2D3E46] text-white">
+              <button id="galleryTabPhotos" onclick="setGalleryMode('photos')" class="px-3.5 py-1.5 rounded-xl metallic-petrol text-white shadow-xs">
                 📷 Galería de Fotos
               </button>
-              <button id="galleryTab360" onclick="setGalleryMode('360')" class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-1.5">
+              <button id="galleryTab360" onclick="setGalleryMode('360')" class="px-3.5 py-1.5 rounded-xl metallic-pill text-slate-700 hover:bg-slate-200 flex items-center gap-1.5 shadow-2xs">
                 <span>🔄 Vista 360° Interactiva</span>
                 <span class="text-[9px] px-1.5 py-0.2 rounded bg-[#C0392B] text-white font-black uppercase">Simulador</span>
               </button>
             </div>
             <button 
               onclick="openPhotoManagerForCurrentModalCar()" 
-              class="px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1.5 shadow-sm transition-colors"
+              class="px-3.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1.5 shadow-2xs transition-colors"
               title="Cargar fotos manualmente desde tu PC y elegir el orden de portada"
             >
               <span>📸 Cargar Fotos / Elegir Orden</span>
@@ -984,53 +1077,53 @@
           </div>
         </div>
 
-        <!-- SPECS GRID -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-[#F8FAFC] p-4 rounded-xl border border-slate-200 text-xs">
-          <div>
-            <span class="text-slate-400 block font-medium">Año</span>
-            <span id="modalYear" class="font-bold text-slate-800 text-sm">2020</span>
+        <!-- SPECS GRID (PLACA TÉCNICA METÁLICA) -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 metallic-spec-pill p-4 rounded-2xl border border-slate-200/90 text-xs shadow-2xs">
+          <div class="bg-white/70 p-2.5 rounded-xl border border-slate-200/60">
+            <span class="text-slate-400 block font-semibold text-[10px] uppercase">Año</span>
+            <span id="modalYear" class="font-extrabold text-slate-800 text-sm">2020</span>
           </div>
-          <div>
-            <span class="text-slate-400 block font-medium">Kilometraje</span>
-            <span id="modalMileage" class="font-bold text-slate-800 text-sm">50.000 km</span>
+          <div class="bg-white/70 p-2.5 rounded-xl border border-slate-200/60">
+            <span class="text-slate-400 block font-semibold text-[10px] uppercase">Kilometraje</span>
+            <span id="modalMileage" class="font-extrabold text-slate-800 text-sm">50.000 km</span>
           </div>
-          <div>
-            <span class="text-slate-400 block font-medium">Transmisión</span>
-            <span id="modalTransmission" class="font-bold text-slate-800 text-sm">Manual</span>
+          <div class="bg-white/70 p-2.5 rounded-xl border border-slate-200/60">
+            <span class="text-slate-400 block font-semibold text-[10px] uppercase">Transmisión</span>
+            <span id="modalTransmission" class="font-extrabold text-slate-800 text-sm">Manual</span>
           </div>
-          <div>
-            <span class="text-slate-400 block font-medium">Combustible</span>
-            <span id="modalFuel" class="font-bold text-slate-800 text-sm">Nafta</span>
+          <div class="bg-white/70 p-2.5 rounded-xl border border-slate-200/60">
+            <span class="text-slate-400 block font-semibold text-[10px] uppercase">Combustible</span>
+            <span id="modalFuel" class="font-extrabold text-slate-800 text-sm">Nafta</span>
           </div>
-          <div>
-            <span class="text-slate-400 block font-medium">Carrocería</span>
-            <span id="modalBodyType" class="font-bold text-slate-800 text-sm">Hatchback</span>
+          <div class="bg-white/70 p-2.5 rounded-xl border border-slate-200/60">
+            <span class="text-slate-400 block font-semibold text-[10px] uppercase">Carrocería</span>
+            <span id="modalBodyType" class="font-extrabold text-slate-800 text-sm">Hatchback</span>
           </div>
-          <div>
-            <span class="text-slate-400 block font-medium">Color Exterior</span>
-            <span id="modalColor" class="font-bold text-slate-800 text-sm">Rojo</span>
+          <div class="bg-white/70 p-2.5 rounded-xl border border-slate-200/60">
+            <span class="text-slate-400 block font-semibold text-[10px] uppercase">Color Exterior</span>
+            <span id="modalColor" class="font-extrabold text-slate-800 text-sm">Rojo</span>
           </div>
-          <div>
-            <span class="text-slate-400 block font-medium">Consumo Mixto</span>
-            <span id="modalConsumo" class="font-bold text-slate-800 text-sm">--</span>
+          <div class="bg-white/70 p-2.5 rounded-xl border border-slate-200/60">
+            <span class="text-slate-400 block font-semibold text-[10px] uppercase">Consumo Mixto</span>
+            <span id="modalConsumo" class="font-extrabold text-slate-800 text-sm">--</span>
           </div>
-          <div>
-            <span class="text-slate-400 block font-medium">Patente Anual</span>
-            <span id="modalPatente" class="font-bold text-slate-800 text-sm">--</span>
+          <div class="bg-white/70 p-2.5 rounded-xl border border-slate-200/60">
+            <span class="text-slate-400 block font-semibold text-[10px] uppercase">Patente Anual</span>
+            <span id="modalPatente" class="font-extrabold text-slate-800 text-sm">--</span>
           </div>
-          <div>
-            <span class="text-slate-400 block font-medium">Inspección</span>
-            <span class="font-bold text-emerald-700 text-sm">100 Puntos OK</span>
+          <div class="bg-white/70 p-2.5 rounded-xl border border-slate-200/60">
+            <span class="text-slate-400 block font-semibold text-[10px] uppercase">Inspección</span>
+            <span class="font-extrabold text-emerald-700 text-sm">100 Puntos OK</span>
           </div>
-          <div>
-            <span class="text-slate-400 block font-medium">Garantía</span>
-            <span class="font-bold text-slate-800 text-sm">Taller Propio CARVLAK</span>
+          <div class="bg-white/70 p-2.5 rounded-xl border border-slate-200/60">
+            <span class="text-slate-400 block font-semibold text-[10px] uppercase">Garantía</span>
+            <span class="font-extrabold text-slate-800 text-sm">Taller Propio CARVLAK</span>
           </div>
         </div>
 
         <!-- FEATURES / EQUIPAMIENTO -->
         <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-[#2D3E46] mb-2">Equipamiento y Aspectos Destacados</h4>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[#2D3E46] mb-2 font-heading">Equipamiento y Aspectos Destacados</h4>
           <ul id="modalFeaturesList" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600">
             <!-- Items de características -->
           </ul>
@@ -1041,7 +1134,7 @@
           <button 
             id="modalReserveBtn" 
             onclick="triggerModalReservation()" 
-            class="flex-1 py-3.5 px-4 rounded-xl bg-[#C0392B] hover:bg-[#A93226] text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center space-x-2"
+            class="metallic-ruby flex-1 py-3.5 px-4 rounded-xl text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center space-x-2 hover:scale-[1.01] active:scale-[0.99]"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             <span>Reservar Unidad (Seña USD 500)</span>
@@ -1049,14 +1142,14 @@
 
           <button 
             onclick="triggerModalTestDrive()" 
-            class="flex-1 py-3.5 px-4 rounded-xl bg-[#2D3E46] hover:bg-[#1E2B31] text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center space-x-2"
+            class="metallic-petrol flex-1 py-3.5 px-4 rounded-xl text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center space-x-2 hover:scale-[1.01] active:scale-[0.99]"
           >
             <span>🚗 Agendar Prueba de Manejo</span>
           </button>
 
           <button 
             onclick="triggerModalFinancing()" 
-            class="py-3.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-colors"
+            class="metallic-pill py-3.5 px-4 rounded-xl text-[#2D3E46] font-bold text-xs sm:text-sm transition-all shadow-2xs hover:scale-105 active:scale-95"
             title="Simular cuotas de este auto"
           >
             <span>💳 Simular Crédito</span>
@@ -2496,24 +2589,9 @@
     </div>
   </div>
 
-  <!-- ================================================================= -->
-  <!-- BARRA FIJA INFERIOR MOBILE (SHOWROOM & CONSULTA DIRECTA) -->
-  <!-- ================================================================= -->
-  <div id="mobileStickyBar" class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-2 flex items-center justify-between gap-2 shadow-[0_-4px_12px_rgba(0,0,0,0.06)]">
-    <a 
-      href="https://wa.me/59899267964?text=Hola%20CARVLAK,%20quisiera%20consultar%20sobre%20los%20veh%C3%ADculos%20disponibles%20en%20el%20Showroom" 
-      target="_blank"
-      class="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-colors"
-    >
-      <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-      <span>WhatsApp Showroom</span>
-    </a>
-    <button 
-      onclick="selectCategory('all')" 
-      class="py-2.5 px-3 rounded-xl bg-[#2D3E46] hover:bg-[#1E2B31] text-white font-bold text-xs flex items-center justify-center gap-1 transition-colors"
-    >
-      <span>🚗 Ver <span id="mobileStickyStockCount">44</span> Autos</span>
-    </button>
+  <!-- mobileStickyBar (preservado como contenedor para sincronización de contador) -->
+  <div id="mobileStickyBar" class="hidden">
+    <span id="mobileStickyStockCount">44</span>
   </div>
 
   <!-- ================================================================= -->
@@ -3128,32 +3206,35 @@
         const is0km = car.mileage === 0;
 
         return `
-          <div class="car-card bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden flex flex-col justify-between group ${isSold ? 'opacity-70 grayscale' : ''}">
+          <div class="car-card metallic-card rounded-2xl overflow-hidden flex flex-col justify-between group relative ${isSold ? 'opacity-70 grayscale' : ''}">
             
+            <!-- REFLEJO DE LUZ SUPERIOR (SPECULAR HIGHLIGHT) -->
+            <div class="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent z-10 pointer-events-none"></div>
+
             <!-- IMAGE CONTAINER -->
-            <div class="relative overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer" onclick="openVehicleModal('${car.id}')">
+            <div class="relative overflow-hidden aspect-[4/3] bg-slate-100 cursor-pointer border-b border-slate-200/80" onclick="openVehicleModal('${car.id}')">
               <img 
                 src="${primaryImg}" 
                 alt="${car.brand} ${car.model} ${car.year}" 
                 loading="lazy" 
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onmouseover="this.src='${secondaryImg}'"
                 onmouseout="this.src='${primaryImg}'"
                 onerror="this.src='https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=75'"
               />
               
               <!-- BADGES TOP -->
-              <div class="absolute top-2.5 left-2.5 flex flex-col gap-1">
-                ${is0km ? '<span class="bg-emerald-600 text-white text-[10px] font-black px-2 py-0.5 rounded shadow-sm uppercase tracking-wider">0km Nuevo</span>' : `<span class="bg-[#2D3E46] text-white text-[11px] font-bold px-2 py-0.5 rounded shadow-sm">${car.year}</span>`}
-                ${isElectric ? '<span class="bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm uppercase tracking-wider">⚡ 100% Eléctrico</span>' : ''}
-                ${isMoto ? '<span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm uppercase tracking-wider">🏍️ Moto</span>' : ''}
-                ${isReserved ? '<span class="bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm uppercase tracking-wider animate-pulse">🟡 Reservado</span>' : ''}
-                ${isSold ? '<span class="bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm uppercase tracking-wider">🔴 Vendido</span>' : ''}
+              <div class="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10">
+                ${is0km ? '<span class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white text-[10px] font-black px-2.5 py-0.5 rounded shadow-sm uppercase tracking-wider border border-white/20">0km Nuevo</span>' : `<span class="bg-gradient-to-b from-[#384C56] to-[#24333A] text-white text-[11px] font-bold px-2.5 py-0.5 rounded shadow-sm border border-white/15">${car.year}</span>`}
+                ${isElectric ? '<span class="bg-gradient-to-r from-teal-600 to-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm uppercase tracking-wider border border-white/20">⚡ 100% Eléctrico</span>' : ''}
+                ${isMoto ? '<span class="bg-gradient-to-r from-purple-600 to-indigo-700 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm uppercase tracking-wider border border-white/20">🏍️ Moto</span>' : ''}
+                ${isReserved ? '<span class="bg-gradient-to-r from-amber-500 to-amber-700 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm uppercase tracking-wider animate-pulse border border-white/20">🟡 Reservado</span>' : ''}
+                ${isSold ? '<span class="bg-gradient-to-r from-red-600 to-red-800 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm uppercase tracking-wider border border-white/20">🔴 Vendido</span>' : ''}
               </div>
 
-              <div class="absolute top-2.5 right-2.5">
-                <span class="bg-white/90 backdrop-blur-sm text-slate-700 text-[10px] font-semibold px-2 py-0.5 rounded border border-slate-200">
-                  ${(car.images || []).length} fotos
+              <div class="absolute top-2.5 right-2.5 z-10">
+                <span class="bg-slate-900/60 backdrop-blur-md text-white text-[10px] font-semibold px-2 py-0.5 rounded border border-white/20 shadow-xs flex items-center gap-1">
+                  📷 ${(car.images || []).length}
                 </span>
               </div>
             </div>
@@ -3161,62 +3242,69 @@
             <!-- CONTENT INFO -->
             <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
               <div>
-                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-0.5 flex items-center justify-between">
+                <div class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-0.5 flex items-center justify-between">
                   <span>${car.brand}</span>
-                  <span class="text-[9px] text-emerald-700 font-semibold">Garantía CARVLAK</span>
+                  <span class="text-[9px] text-emerald-700 font-bold bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200">Garantía CARVLAK</span>
                 </div>
-                <h3 class="font-bold text-[#2D3E46] text-base leading-tight group-hover:text-[#C0392B] transition-colors cursor-pointer" onclick="openVehicleModal('${car.id}')">
+                <h3 class="font-heading font-bold text-[#2D3E46] text-lg leading-tight group-hover:text-[#C0392B] transition-colors cursor-pointer tracking-tight" onclick="openVehicleModal('${car.id}')">
                   ${car.brand} ${car.model}
                 </h3>
-                <p class="text-xs text-slate-500 truncate mt-0.5">
+                <p class="text-xs text-slate-500 truncate mt-0.5 font-medium">
                   ${car.version || ''}
                 </p>
               </div>
 
-              <!-- SPECS MINI BADGES -->
-              <div class="grid grid-cols-2 gap-1.5 text-[11px] text-slate-600 bg-[#F8FAFC] p-2 rounded-lg border border-slate-100">
-                <div class="flex items-center space-x-1">
-                  <span>🛣️ ${is0km ? '0 km (Nuevo)' : `${formattedMileage} km`}</span>
+              <!-- SPECS MINI BADGES (4 CUADRANTES METÁLICOS) -->
+              <div class="grid grid-cols-2 gap-1.5 text-[11px] text-slate-700 p-2 rounded-xl metallic-spec-pill border border-slate-200/90 shadow-2xs font-medium">
+                <div class="flex items-center space-x-1.5 truncate">
+                  <span class="text-slate-400 text-xs">🛣️</span>
+                  <span class="truncate font-semibold">${is0km ? '0 km (Nuevo)' : `${formattedMileage} km`}</span>
                 </div>
-                <div class="flex items-center space-x-1">
-                  <span>🕹️ ${car.transmission}</span>
+                <div class="flex items-center space-x-1.5 truncate">
+                  <span class="text-slate-400 text-xs">🕹️</span>
+                  <span class="truncate font-semibold">${car.transmission}</span>
                 </div>
-                <div class="flex items-center space-x-1">
-                  <span>⛽ ${car.fuel}</span>
+                <div class="flex items-center space-x-1.5 truncate">
+                  <span class="text-slate-400 text-xs">⛽</span>
+                  <span class="truncate font-semibold">${car.fuel}</span>
                 </div>
-                <div class="flex items-center space-x-1">
-                  <span>🚙 ${car.bodyType}</span>
+                <div class="flex items-center space-x-1.5 truncate">
+                  <span class="text-slate-400 text-xs">🚙</span>
+                  <span class="truncate font-semibold">${car.bodyType}</span>
                 </div>
               </div>
 
               <!-- PRICE & ACTION BUTTONS -->
-              <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+              <div class="pt-2.5 border-t border-slate-100 flex items-center justify-between">
                 <div>
-                  <span class="text-[10px] text-slate-400 font-semibold block uppercase">Precio Contado</span>
-                  <span class="text-lg font-extrabold text-[#C0392B]">
-                    USD ${formattedPrice}
-                  </span>
+                  <span class="text-[9px] text-slate-400 font-extrabold block uppercase tracking-widest">Precio Contado</span>
+                  <div class="flex items-baseline space-x-0.5">
+                    <span class="text-xs font-bold text-[#C0392B] mr-0.5">USD</span>
+                    <span class="text-xl font-extrabold text-[#C0392B] tracking-tight">
+                      ${formattedPrice}
+                    </span>
+                  </div>
                 </div>
                 
                 <div class="flex items-center space-x-1.5">
                   <a 
                     href="https://wa.me/59899267964?text=${encodeURIComponent('Hola CARVLAK, me interesa consultar por el ' + car.brand + ' ' + car.model + ' ' + car.year + ' (USD ' + formattedPrice + '). ¿Sigue disponible?')}" 
-                    target="_blank"
-                    class="p-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white border border-emerald-200 transition-colors flex items-center justify-center"
+                    target="_blank" 
+                    class="p-2 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white border border-emerald-300 shadow-2xs transition-all flex items-center justify-center hover:scale-105 active:scale-95"
                     title="Consultar por WhatsApp"
                   >
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                   </a>
                   <button 
                     onclick="openVehicleModal('${car.id}')" 
-                    class="px-2.5 py-1.5 rounded-lg bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold transition-colors"
+                    class="px-3 py-2 rounded-lg metallic-petrol text-white text-xs font-bold transition-all hover:scale-105 active:scale-95 shadow-sm"
                   >
                     Ficha
                   </button>
                   ${!isSold ? `
                     <button 
                       onclick="openReservationCheckout('${car.id}')" 
-                      class="px-2.5 py-1.5 rounded-lg bg-[#C0392B] hover:bg-[#A93226] text-white text-xs font-bold transition-colors flex items-center gap-1 shadow-sm"
+                      class="px-3 py-2 rounded-lg metallic-ruby text-white text-xs font-bold transition-all flex items-center gap-1 hover:scale-105 active:scale-95 shadow-sm"
                       title="Reservar con seña de USD 500"
                     >
                       <span>Seña</span>
@@ -6095,49 +6183,49 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
   </script>
 
   <!-- ================================================================= -->
-  <!-- BARRA DE NAVEGACIÓN INFERIOR PARA CELULARES (MOBILE BOTTOM BAR) -->
+  <!-- BARRA DE NAVEGACIÓN INFERIOR PARA CELULARES (MOBILE BOTTOM BAR - NANO BANANA PRO) -->
   <!-- ================================================================= -->
-  <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-2 py-2 shadow-[0_-4px_25px_rgba(0,0,0,0.08)] flex items-center justify-around">
+  <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-40 metallic-surface backdrop-blur-xl border-t border-slate-200/90 px-2 py-2 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] flex items-center justify-around relative after:content-[''] after:absolute after:top-0 after:left-0 after:right-0 after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-white after:to-transparent">
     
     <!-- 1. CATÁLOGO -->
-    <button type="button" onclick="mobileNavGoCatalog()" class="flex flex-col items-center justify-center py-1 px-2.5 text-[#2D3E46] active:scale-95 transition-all">
+    <button type="button" onclick="mobileNavGoCatalog()" class="flex flex-col items-center justify-center py-1 px-3 text-[#2D3E46] active:scale-95 transition-all">
       <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
       </svg>
-      <span class="text-[10px] font-bold tracking-tight">Catálogo</span>
+      <span class="text-[10px] font-extrabold tracking-tight">Catálogo</span>
     </button>
 
     <!-- 2. BUSCAR -->
-    <button type="button" onclick="mobileNavFocusSearch()" class="flex flex-col items-center justify-center py-1 px-2.5 text-slate-600 hover:text-[#2D3E46] active:scale-95 transition-all">
+    <button type="button" onclick="mobileNavFocusSearch()" class="flex flex-col items-center justify-center py-1 px-3 text-slate-600 hover:text-[#2D3E46] active:scale-95 transition-all">
       <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
       </svg>
-      <span class="text-[10px] font-medium tracking-tight">Buscar</span>
+      <span class="text-[10px] font-bold tracking-tight">Buscar</span>
     </button>
 
     <!-- 3. DESTACADO DE LA SEMANA -->
-    <button type="button" onclick="mobileNavGoFeatured()" class="flex flex-col items-center justify-center py-1 px-2.5 text-amber-600 active:scale-95 transition-all">
-      <svg class="w-5 h-5 mb-0.5 fill-amber-500 text-amber-500" viewBox="0 0 20 20">
+    <button type="button" onclick="mobileNavGoFeatured()" class="flex flex-col items-center justify-center py-1 px-3 text-[#C0392B] active:scale-95 transition-all">
+      <svg class="w-5 h-5 mb-0.5 fill-[#C0392B] text-[#C0392B]" viewBox="0 0 20 20">
         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
       </svg>
-      <span class="text-[10px] font-bold tracking-tight">Destacado</span>
+      <span class="text-[10px] font-extrabold tracking-tight">Destacado</span>
     </button>
 
     <!-- 4. GESTIÓN ADMIN / BACKOFFICE -->
-    <button type="button" onclick="handleAdminClick()" class="flex flex-col items-center justify-center py-1 px-2.5 text-slate-700 hover:text-[#2D3E46] active:scale-95 transition-all">
+    <button type="button" onclick="handleAdminClick()" class="flex flex-col items-center justify-center py-1 px-3 text-slate-700 hover:text-[#2D3E46] active:scale-95 transition-all">
       <svg class="w-5 h-5 mb-0.5 text-[#2D3E46]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
       </svg>
-      <span class="text-[10px] font-bold tracking-tight">Admin</span>
+      <span class="text-[10px] font-extrabold tracking-tight">Admin</span>
     </button>
 
     <!-- 5. WHATSAPP -->
-    <a href="https://wa.me/59899267964?text=Hola%20CARVLAK,%20quisiera%20consultar%20sobre%20los%20vehículos" target="_blank" class="flex flex-col items-center justify-center py-1 px-2.5 text-emerald-600 active:scale-95 transition-all">
+    <a href="https://wa.me/59899267964?text=Hola%20CARVLAK,%20quisiera%20consultar%20sobre%20los%20vehículos" target="_blank" class="flex flex-col items-center justify-center py-1 px-3 text-emerald-600 active:scale-95 transition-all">
       <svg class="w-5 h-5 mb-0.5 fill-current text-emerald-500" viewBox="0 0 24 24">
         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
       </svg>
-      <span class="text-[10px] font-bold text-emerald-700 tracking-tight">WhatsApp</span>
+      <span class="text-[10px] font-extrabold text-emerald-700 tracking-tight">WhatsApp</span>
     </a>
 
   </nav>
