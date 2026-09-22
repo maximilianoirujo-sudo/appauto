@@ -46,8 +46,13 @@
     }
   </script>
 
-  <!-- Catálogo oficial de 46 vehículos CARVLAK -->
+  <!-- Catálogo oficial de 44 vehículos CARVLAK -->
   <script src="vehicles.js"></script>
+
+  <!-- Supabase JS SDK (CDN) & SaaS Cloud Store (Etapa 1) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabaseClient.js"></script>
+  <script src="cloudStore.js"></script>
 
   <style>
     body { font-family: 'Instrument Sans', sans-serif; }
@@ -1446,17 +1451,62 @@
   <!-- BACKOFFICE ADMIN MODALS: PIN, DASHBOARD & CRM TABS -->
   <!-- ================================================================= -->
 
-  <!-- 1. MODAL PIN DE SEGURIDAD -->
-  <div id="adminPinModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 text-center relative">
-      <div class="w-12 h-12 rounded-full bg-slate-100 text-[#2D3E46] flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
-        🔒
-      </div>
-      <h3 class="text-lg font-bold text-[#2D3E46] mb-1">Acceso Administrativo CARVLAK</h3>
-      <p class="text-xs text-slate-500 mb-4">Ingresá el PIN comercial para gestionar inventario, CRM de señas y consultas.</p>
-      
-      <form onsubmit="verifyAdminPin(event)" class="space-y-4">
+  <!-- 1. MODAL DE ACCESO CORPORATIVO Y LOGIN MULTI-TENANT (ETAPA 1) -->
+  <div id="adminPinModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 text-left relative">
+      <div class="flex items-center space-x-3 pb-4 border-b border-slate-100">
+        <div class="w-12 h-12 rounded-xl bg-[#2D3E46] text-white flex items-center justify-center text-xl shadow-md">
+          🛡️
+        </div>
         <div>
+          <h3 class="text-base font-bold text-[#2D3E46]">Acceso Backoffice Comercial</h3>
+          <p class="text-xs text-slate-500">Plataforma SaaS Centralizada • CARVLAK</p>
+        </div>
+        <button onclick="closeAdminPinModal()" class="ml-auto w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold">✕</button>
+      </div>
+
+      <!-- TABS LOGIN (CORPORATIVO / PIN) -->
+      <div class="flex border-b border-slate-200 mt-4 text-xs font-bold">
+        <button id="authTabCorporateBtn" type="button" onclick="switchAuthTab('corporate')" class="flex-1 py-2 text-center border-b-2 border-[#2D3E46] text-[#2D3E46]">
+          🔑 Login Corporativo
+        </button>
+        <button id="authTabPinBtn" type="button" onclick="switchAuthTab('pin')" class="flex-1 py-2 text-center border-b-2 border-transparent text-slate-400 hover:text-slate-600">
+          🔢 PIN de Respaldo
+        </button>
+      </div>
+
+      <!-- FORMULARIO 1: LOGIN CORPORATIVO CON EMAIL & PASSWORD (SUPABASE CLOUD) -->
+      <form id="authCorporateForm" onsubmit="handleCorporateLogin(event)" class="space-y-3.5 pt-4">
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Email Corporativo</label>
+          <input 
+            type="email" 
+            id="adminLoginEmail" 
+            placeholder="admin@carvlak.uy" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2D3E46] text-xs font-semibold"
+            autocomplete="email"
+          />
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Contraseña</label>
+          <input 
+            type="password" 
+            id="adminLoginPassword" 
+            placeholder="••••••••" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2D3E46] text-xs font-semibold"
+            autocomplete="current-password"
+          />
+        </div>
+        <p id="adminLoginError" class="text-xs text-red-500 font-semibold hidden"></p>
+        <button type="submit" id="adminLoginSubmitBtn" class="w-full py-2.5 rounded-xl bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold transition-all shadow-md flex items-center justify-center gap-2">
+          <span>Iniciar Sesión en la Nube</span>
+        </button>
+      </form>
+
+      <!-- FORMULARIO 2: PIN DE RESPALDO (OFFLINE / BYPASS) -->
+      <form id="authPinForm" onsubmit="verifyAdminPin(event)" class="space-y-4 pt-4 hidden">
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1 text-center">PIN Rápido de Emergencia</label>
           <input 
             type="password" 
             id="adminPinInput" 
@@ -1464,19 +1514,13 @@
             placeholder="PIN (1234)" 
             maxlength="10"
             class="w-full text-center text-xl tracking-widest px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#2D3E46] font-bold"
-            autofocus
           />
-          <p id="adminPinError" class="text-xs text-red-500 font-semibold mt-1.5 hidden">PIN incorrecto. Intenta de nuevo.</p>
-          <p class="text-[11px] text-slate-400 mt-1.5">PIN por defecto: <strong class="text-slate-600">1234</strong></p>
+          <p id="adminPinError" class="text-xs text-red-500 font-semibold mt-1.5 hidden text-center">PIN incorrecto. Intenta de nuevo.</p>
+          <p class="text-[11px] text-slate-400 mt-1.5 text-center">PIN por defecto: <strong class="text-slate-600">1234</strong></p>
         </div>
-        <div class="flex space-x-2">
-          <button type="button" onclick="closeAdminPinModal()" class="flex-1 py-2.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-50 text-xs font-bold transition-colors">
-            Cancelar
-          </button>
-          <button type="submit" class="flex-1 py-2.5 rounded-xl bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold transition-colors shadow-sm">
-            Ingresar
-          </button>
-        </div>
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold transition-all shadow-sm">
+          Ingresar con PIN
+        </button>
       </form>
     </div>
   </div>
@@ -1485,7 +1529,7 @@
   <div id="adminModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-0 sm:p-4 overflow-y-auto">
     <div class="bg-white sm:rounded-2xl max-w-6xl w-full h-full sm:h-auto sm:max-h-[95vh] flex flex-col shadow-2xl border-0 sm:border border-slate-200 overflow-hidden my-auto">
       
-      <!-- HEADER ADMIN -->
+      <!-- HEADER ADMIN CON INDICADORES EN TIEMPO REAL -->
       <div class="bg-[#2D3E46] text-white px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#1E2B31]">
         <div class="flex items-center space-x-3">
           <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-xl">
@@ -1494,14 +1538,27 @@
           <div>
             <div class="flex items-center space-x-2">
               <h2 class="text-base sm:text-lg font-bold">Backoffice Comercial • CARVLAK</h2>
-              <span class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-semibold">Online</span>
+              <span id="adminSyncBadge" class="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-semibold flex items-center gap-1.5 shadow-xs">
+                <span id="adminSyncDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span id="adminSyncText">Nube Conectada</span>
+              </span>
             </div>
-            <p class="text-xs text-slate-300">Gestión de stock, CRM de reservas con seña, leads de permuta y métricas.</p>
+            <p class="text-xs text-slate-300">Gestión multi-tenant de stock centralizado, CRM de reservas con seña y métricas en vivo.</p>
           </div>
         </div>
 
         <div class="flex items-center space-x-2 text-xs">
-          <button onclick="closeAdminPanel()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm ml-2 transition-colors" title="Cerrar Panel">
+          <!-- BADGE DE USUARIO / ROL -->
+          <div id="adminUserContainer" class="flex items-center gap-1.5 bg-black/20 px-3 py-1.5 rounded-lg border border-white/10">
+            <span class="text-xs">👤</span>
+            <span id="adminUserName" class="font-bold text-slate-200">Dueño</span>
+            <span id="adminUserRoleBadge" class="text-[9px] px-1.5 py-0.2 rounded bg-amber-500/30 text-amber-200 font-extrabold uppercase tracking-wide">OWNER</span>
+          </div>
+
+          <button onclick="handleAdminLogout()" class="px-3 py-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-200 border border-red-500/30 font-bold text-xs transition-colors" title="Cerrar Sesión">
+            Salir
+          </button>
+          <button onclick="closeAdminPanel()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center font-bold text-sm ml-1 transition-colors" title="Cerrar Panel">
             ✕
           </button>
         </div>
@@ -2107,6 +2164,42 @@
             </div>
           </div>
 
+          <!-- SECCIÓN 6: CONEXIÓN CLOUD SUPABASE & MULTI-TENANT (ETAPA 1) -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div class="flex items-center space-x-2">
+                <span class="text-xl">☁️</span>
+                <div>
+                  <h3 class="text-sm font-bold text-[#2D3E46]">Conexión Base de Datos Cloud (Supabase Multi-Tenant)</h3>
+                  <p class="text-xs text-slate-500">Permite sincronizar en tiempo real el catálogo para todos los clientes y dispositivos.</p>
+                </div>
+              </div>
+              <span id="cloudStatusBadgeTab" class="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">
+                ⚪ Verificando...
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Supabase Project URL</label>
+                <input type="text" id="cfgSupabaseUrl" placeholder="https://tu-proyecto.supabase.co" class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-mono">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-slate-600 mb-1">Supabase Anon Key (Public Key)</label>
+                <input type="password" id="cfgSupabaseKey" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." class="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 bg-white font-mono">
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100">
+              <span class="text-[11px] text-slate-500">
+                Script SQL con los 44 autos listo para ejecutar en Supabase: <code class="bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded font-bold">supabase_setup.sql</code>
+              </span>
+              <button type="button" onclick="testAndSaveSupabaseConfig()" class="px-4 py-2 rounded-xl bg-[#2D3E46] hover:bg-[#1E2B31] text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1.5">
+                <span>⚡ Guardar y Probar Conexión Cloud</span>
+              </button>
+            </div>
+          </div>
+
           <!-- ACCIONES FOOTER TAB UI -->
           <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
             <button type="button" onclick="resetUiSettingsToDefault()" class="px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-red-50 hover:text-red-700 text-slate-600 text-xs font-bold transition-colors">
@@ -2594,6 +2687,57 @@
       updateBrandFilterOptions();
       updateAdminStats();
       if (typeof applyUiSettings === 'function') applyUiSettings();
+
+      // Sincronización en la Nube (Supabase Cloud Multi-Tenant)
+      syncCatalogWithCloud();
+    }
+
+    // Sincronización asíncrona y suscripción en tiempo real
+    function syncCatalogWithCloud() {
+      if (!window.CloudStore) return;
+
+      // Carga en vivo desde la base de datos cloud
+      window.CloudStore.fetchCatalog('carvlak').then(cloudVehicles => {
+        if (cloudVehicles && Array.isArray(cloudVehicles) && cloudVehicles.length > 0) {
+          console.log(`☁️ CARVLAK: Sincronizados ${cloudVehicles.length} vehículos desde Supabase Cloud.`);
+          stockData = cloudVehicles;
+          try { localStorage.setItem('carvlak_stock_v6', JSON.stringify(stockData)); } catch(e) {}
+          updateAllCatalogCounters();
+          updateBrandFilterOptions();
+          updateAdminStats();
+          applyFilters();
+          filterAdminVehicles();
+          if (typeof applyUiSettings === 'function') applyUiSettings();
+        }
+      });
+
+      // Carga de configuración de interfaz desde la nube
+      if (window.CloudStore.fetchUiSettings) {
+        window.CloudStore.fetchUiSettings('carvlak').then(cloudSettings => {
+          if (cloudSettings) {
+            uiSettings = Object.assign({}, DEFAULT_UI_SETTINGS, cloudSettings);
+            try { localStorage.setItem('carvlak_ui_settings_v1', JSON.stringify(uiSettings)); } catch(e) {}
+            if (typeof applyUiSettings === 'function') applyUiSettings(uiSettings);
+          }
+        });
+      }
+
+      // Suscripción a cambios WebSockets en tiempo real
+      window.CloudStore.subscribeToRealtime('carvlak', payload => {
+        console.log('⚡ Cambio en tiempo real detectado en Supabase:', payload.eventType);
+        window.CloudStore.fetchCatalog('carvlak').then(cloudVehicles => {
+          if (cloudVehicles && Array.isArray(cloudVehicles)) {
+            stockData = cloudVehicles;
+            try { localStorage.setItem('carvlak_stock_v6', JSON.stringify(stockData)); } catch(e) {}
+            updateAllCatalogCounters();
+            updateBrandFilterOptions();
+            updateAdminStats();
+            applyFilters();
+            filterAdminVehicles();
+            if (typeof applyUiSettings === 'function') applyUiSettings();
+          }
+        });
+      });
     }
 
     function saveStockToStorage() {
@@ -3757,9 +3901,10 @@
     }
 
     // ========================================================
-    // BACKOFFICE ADMIN & CRM PANEL (PIN: 1234)
+    // BACKOFFICE ADMIN & CRM PANEL (MULTI-TENANT & AUTENTICACIÓN)
     // ========================================================
     let isAdminAuthenticated = false;
+    let currentAdminUser = null;
     const ADMIN_PIN = '1234';
 
     function handleAdminClick() {
@@ -3770,13 +3915,49 @@
       }
     }
 
+    function switchAuthTab(tab) {
+      const corpForm = document.getElementById('authCorporateForm');
+      const pinForm = document.getElementById('authPinForm');
+      const corpBtn = document.getElementById('authTabCorporateBtn');
+      const pinBtn = document.getElementById('authTabPinBtn');
+
+      if (tab === 'corporate') {
+        if (corpForm) corpForm.classList.remove('hidden');
+        if (pinForm) pinForm.classList.add('hidden');
+        if (corpBtn) {
+          corpBtn.classList.add('border-b-2', 'border-[#2D3E46]', 'text-[#2D3E46]');
+          corpBtn.classList.remove('border-transparent', 'text-slate-400');
+        }
+        if (pinBtn) {
+          pinBtn.classList.remove('border-b-2', 'border-[#2D3E46]', 'text-[#2D3E46]');
+          pinBtn.classList.add('border-transparent', 'text-slate-400');
+        }
+      } else {
+        if (corpForm) corpForm.classList.add('hidden');
+        if (pinForm) pinForm.classList.remove('hidden');
+        if (pinBtn) {
+          pinBtn.classList.add('border-b-2', 'border-[#2D3E46]', 'text-[#2D3E46]');
+          pinBtn.classList.remove('border-transparent', 'text-slate-400');
+        }
+        if (corpBtn) {
+          corpBtn.classList.remove('border-b-2', 'border-[#2D3E46]', 'text-[#2D3E46]');
+          corpBtn.classList.add('border-transparent', 'text-slate-400');
+        }
+      }
+    }
+
     function openAdminPinModal() {
       const modal = document.getElementById('adminPinModal');
-      document.getElementById('adminPinInput').value = '';
-      document.getElementById('adminPinError').classList.add('hidden');
+      const errEl = document.getElementById('adminLoginError');
+      if (errEl) errEl.classList.add('hidden');
+      document.getElementById('adminPinError')?.classList.add('hidden');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
-      setTimeout(() => document.getElementById('adminPinInput').focus(), 100);
+      switchAuthTab('corporate');
+      setTimeout(() => {
+        const emailInput = document.getElementById('adminLoginEmail');
+        if (emailInput) emailInput.focus();
+      }, 100);
     }
 
     function closeAdminPinModal() {
@@ -3785,15 +3966,152 @@
       modal.classList.remove('flex');
     }
 
+    async function handleCorporateLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('adminLoginEmail').value.trim();
+      const password = document.getElementById('adminLoginPassword').value;
+      const errEl = document.getElementById('adminLoginError');
+      const submitBtn = document.getElementById('adminLoginSubmitBtn');
+
+      if (!email || !password) {
+        if (errEl) {
+          errEl.textContent = 'Por favor ingresá tu email y contraseña.';
+          errEl.classList.remove('hidden');
+        }
+        return;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Verificando credenciales...</span>';
+      }
+
+      const res = await window.CloudStore.login(email, password);
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Iniciar Sesión en la Nube</span>';
+      }
+
+      if (res && res.success) {
+        isAdminAuthenticated = true;
+        currentAdminUser = res.user || { email, role: 'OWNER', fullName: 'Dueño' };
+        try { localStorage.setItem('carvlak_current_user_v1', JSON.stringify(currentAdminUser)); } catch(e) {}
+        updateAdminUserUI();
+        closeAdminPinModal();
+        openAdminPanel();
+        showAdminToast(`👋 ¡Bienvenido ${currentAdminUser.fullName || currentAdminUser.email}! Sesión iniciada.`);
+      } else {
+        if (errEl) {
+          errEl.textContent = res.error || 'Credenciales incorrectas o error de conexión.';
+          errEl.classList.remove('hidden');
+        }
+      }
+    }
+
     function verifyAdminPin(e) {
       e.preventDefault();
       const pin = document.getElementById('adminPinInput').value.trim();
       if (pin === ADMIN_PIN || pin === 'carvlak' || pin === 'admin') {
         isAdminAuthenticated = true;
+        currentAdminUser = {
+          email: 'admin@carvlak.uy',
+          role: 'OWNER',
+          fullName: 'Administrador (PIN)'
+        };
+        try { localStorage.setItem('carvlak_current_user_v1', JSON.stringify(currentAdminUser)); } catch(e) {}
+        updateAdminUserUI();
         closeAdminPinModal();
         openAdminPanel();
+        showAdminToast('🔑 Acceso con PIN concedido en modo administrador.');
       } else {
-        document.getElementById('adminPinError').classList.remove('hidden');
+        document.getElementById('adminPinError')?.classList.remove('hidden');
+      }
+    }
+
+    async function handleAdminLogout() {
+      if (window.CloudStore) {
+        await window.CloudStore.logout();
+      }
+      isAdminAuthenticated = false;
+      currentAdminUser = null;
+      closeAdminPanel();
+      showAdminToast('👋 Sesión cerrada correctamente.');
+    }
+
+    function updateAdminUserUI() {
+      const nameEl = document.getElementById('adminUserName');
+      const badgeEl = document.getElementById('adminUserRoleBadge');
+      if (currentAdminUser) {
+        if (nameEl) nameEl.textContent = currentAdminUser.fullName || currentAdminUser.email;
+        if (badgeEl) {
+          badgeEl.textContent = currentAdminUser.role || 'OWNER';
+          if (currentAdminUser.role === 'OWNER') {
+            badgeEl.className = 'text-[9px] px-1.5 py-0.2 rounded bg-amber-500/30 text-amber-200 font-extrabold uppercase tracking-wide';
+          } else {
+            badgeEl.className = 'text-[9px] px-1.5 py-0.2 rounded bg-blue-500/30 text-blue-200 font-extrabold uppercase tracking-wide';
+          }
+        }
+      }
+    }
+
+    function updateSyncIndicator(state) {
+      const textEl = document.getElementById('adminSyncText');
+      const dotEl = document.getElementById('adminSyncDot');
+      const badgeTab = document.getElementById('cloudStatusBadgeTab');
+
+      if (state === 'connected') {
+        if (textEl) textEl.textContent = 'Nube Conectada';
+        if (dotEl) dotEl.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
+        if (badgeTab) {
+          badgeTab.textContent = '🟢 Conectado a Supabase Cloud';
+          badgeTab.className = 'text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200';
+        }
+      } else if (state === 'syncing') {
+        if (textEl) textEl.textContent = 'Sincronizando...';
+        if (dotEl) dotEl.className = 'w-2 h-2 rounded-full bg-amber-400 animate-spin';
+        if (badgeTab) {
+          badgeTab.textContent = '🟡 Sincronizando datos...';
+          badgeTab.className = 'text-xs font-bold px-2.5 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200';
+        }
+      } else {
+        if (textEl) textEl.textContent = 'Modo Local';
+        if (dotEl) dotEl.className = 'w-2 h-2 rounded-full bg-slate-400';
+        if (badgeTab) {
+          badgeTab.textContent = '⚪ Modo Local / Respaldo';
+          badgeTab.className = 'text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200';
+        }
+      }
+    }
+
+    // Inicializar listener de estado de sincronización
+    if (window.CloudStore) {
+      window.CloudStore.onSyncStateChange(updateSyncIndicator);
+    }
+
+    function testAndSaveSupabaseConfig() {
+      const url = document.getElementById('cfgSupabaseUrl')?.value.trim();
+      const key = document.getElementById('cfgSupabaseKey')?.value.trim();
+
+      if (!url || !key) {
+        showAdminToast('⚠️ Por favor completá la URL y la Anon Key de Supabase.');
+        return;
+      }
+
+      const ok = window.SupabaseAdapter.saveConfig(url, key);
+      if (ok) {
+        showAdminToast('⚡ Conectando con Supabase Cloud...');
+        window.CloudStore.fetchCatalog('carvlak').then(cars => {
+          if (cars && Array.isArray(cars)) {
+            showAdminToast(`🎉 ¡Conexión exitosa! ${cars.length} vehículos en la nube.`);
+            updateSyncIndicator('connected');
+            syncCatalogWithCloud();
+          } else {
+            showAdminToast('⚠️ Configuración guardada. Recordá ejecutar supabase_setup.sql en Supabase.');
+          }
+        });
+      } else {
+        showAdminToast('❌ Error al inicializar el cliente de Supabase.');
       }
     }
 
@@ -3961,6 +4279,11 @@
         saveStockToStorage();
         applyFilters();
         showAdminToast(`Estado de ${car.brand} ${car.model} cambiado a: ${newStatus.toUpperCase()}`);
+        if (window.CloudStore) {
+          window.CloudStore.saveVehicle(car, 'carvlak').then(res => {
+            if (res && res.success) console.log('☁️ Estado sincronizado en Supabase Cloud');
+          });
+        }
       }
     }
 
@@ -3976,6 +4299,11 @@
         initSimulator();
         filterAdminVehicles();
         showAdminToast(`🗑️ ${car.brand} ${car.model} fue eliminado del catálogo.`);
+        if (window.CloudStore) {
+          window.CloudStore.deleteVehicle(id, 'carvlak').then(res => {
+            if (res && res.success) console.log('☁️ Vehículo eliminado de Supabase Cloud');
+          });
+        }
       }
     }
 
@@ -4279,6 +4607,11 @@
           car.images = images;
           car.features = features;
           showAdminToast(`✅ Vehículo "${brand} ${model}" actualizado correctamente.`);
+          if (window.CloudStore) {
+            window.CloudStore.saveVehicle(car, 'carvlak').then(res => {
+              if (res && res.success) console.log('☁️ Vehículo actualizado en Supabase Cloud');
+            });
+          }
         }
       } else {
         const newCar = {
@@ -4302,6 +4635,11 @@
         };
         stockData.unshift(newCar);
         showAdminToast(`🎉 ¡Nuevo vehículo "${brand} ${model}" agregado al catálogo!`);
+        if (window.CloudStore) {
+          window.CloudStore.saveVehicle(newCar, 'carvlak').then(res => {
+            if (res && res.success) console.log('☁️ Nuevo vehículo creado en Supabase Cloud');
+          });
+        }
       }
 
       saveStockToStorage();
@@ -4508,6 +4846,12 @@
       saveStockToStorage();
       applyFilters();
       filterAdminVehicles();
+
+      if (window.CloudStore) {
+        window.CloudStore.saveVehicle(car, 'carvlak').then(res => {
+          if (res && res.success) console.log('☁️ Fotos actualizadas en Supabase Cloud');
+        });
+      }
 
       if (currentModalCar && currentModalCar.id === pmCarId) {
         currentModalCar.images = [...car.images];
@@ -4902,6 +5246,12 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
         console.error('Error al guardar configuración de interfaz:', e);
       }
       applyUiSettings(uiSettings);
+
+      if (window.CloudStore && window.CloudStore.saveUiSettings) {
+        window.CloudStore.saveUiSettings(uiSettings, 'carvlak').then(res => {
+          if (res && res.success) console.log('☁️ Configuración de interfaz guardada en Supabase Cloud');
+        });
+      }
     }
 
     function applyUiSettings(cfg) {
@@ -5183,6 +5533,17 @@ window.CARVLAK_OFFICIAL_CATALOG = ${JSON.stringify(stockData, null, 2)};
 
       const tAdv = document.getElementById('uiToggleAdvisor');
       if (tAdv) tAdv.checked = cfg.showAdvisor !== false;
+
+      // Cargar credenciales de Supabase si existen
+      if (window.SupabaseAdapter) {
+        const supCfg = window.SupabaseAdapter.getConfig();
+        if (supCfg) {
+          const urlInput = document.getElementById('cfgSupabaseUrl');
+          const keyInput = document.getElementById('cfgSupabaseKey');
+          if (urlInput && !urlInput.value) urlInput.value = supCfg.url || '';
+          if (keyInput && !keyInput.value) keyInput.value = supCfg.anonKey || '';
+        }
+      }
 
       syncUiFeaturedPreview();
     }
