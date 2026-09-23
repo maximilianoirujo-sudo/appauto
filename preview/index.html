@@ -647,30 +647,64 @@
 
     <!-- FINANCING SIMULATOR (CONSOLA FINANCIERA AUTOMOTRIZ) -->
     <section id="financingSection" class="py-16 showroom-backdrop border-t border-b border-slate-200/90 relative overflow-hidden">
+    <!-- FINANCING SIMULATOR (CONSOLA FINANCIERA AUTOMOTRIZ REAL CARVLAK) -->
+    <section id="financingSection" class="py-16 showroom-backdrop border-t border-b border-slate-200/90 relative overflow-hidden">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-10">
-          <span class="text-xs font-bold uppercase tracking-widest text-[#C0392B]">Facilidades Crediticias en Uruguay</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#C0392B]">Opciones de Financiación Oficiales CARVLAK</span>
           <h2 class="text-3xl sm:text-4xl font-bold text-[#2D3E46] mt-1 font-heading">Simulador de Crédito Automotor</h2>
           <p class="text-slate-600 text-sm max-w-xl mx-auto mt-2 font-medium">
-            Financiamos hasta el 100% de cualquier vehículo del stock en UI o Dólares mediante convenios bancarios o crédito de la casa.
+            Elige entre nuestra línea bancaria preferencial con Banco Santander (hasta 100% financiado y hasta 60 cuotas) o la Financiación de la Casa (con 70% de entrega y saldo en hasta 36 cuotas).
           </p>
         </div>
 
         <div class="metallic-card rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           
           <div class="md:col-span-7 space-y-5">
-            <!-- VEHICLE SELECTOR -->
+            <!-- 1. SELECTOR DE MODALIDAD (SANTANDER VS CASA) -->
             <div>
-              <label class="block text-xs font-extrabold text-[#2D3E46] uppercase tracking-wider mb-2">Seleccionar Vehículo del Stock</label>
+              <label class="block text-xs font-extrabold text-[#2D3E46] uppercase tracking-wider mb-2">1. Seleccionar Modalidad de Financiación</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <button 
+                  type="button" 
+                  id="btnPlanSantander" 
+                  onclick="setFinancingType('santander')" 
+                  class="p-3.5 rounded-2xl border-2 text-left transition-all border-[#2D3E46] bg-[#2D3E46] text-white shadow-sm flex flex-col justify-between cursor-pointer"
+                >
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="font-extrabold text-xs tracking-tight">🏦 Banco Santander</span>
+                    <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-400/30">Hasta 100%</span>
+                  </div>
+                  <p class="text-[11px] opacity-90 leading-tight">Hasta 60 cuotas • Tasa 7% a 13% según perfil crediticio</p>
+                </button>
+
+                <button 
+                  type="button" 
+                  id="btnPlanCasa" 
+                  onclick="setFinancingType('casa')" 
+                  class="p-3.5 rounded-2xl border-2 text-left transition-all border-slate-300 bg-white text-slate-700 hover:border-[#2D3E46] shadow-2xs flex flex-col justify-between cursor-pointer"
+                >
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="font-extrabold text-xs tracking-tight">🏢 Financiación de la Casa</span>
+                    <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-bold border border-amber-300">A sola firma</span>
+                  </div>
+                  <p class="text-[11px] opacity-80 leading-tight">Entrega inicial 70% • 12, 24 o 36 cuotas • Tasa 24% anual</p>
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. VEHICLE SELECTOR -->
+            <div>
+              <label class="block text-xs font-extrabold text-[#2D3E46] uppercase tracking-wider mb-2">2. Seleccionar Vehículo del Stock</label>
               <select id="simVehicleSelect" onchange="updateSimulatorFromSelect()" class="w-full px-4 py-3 rounded-xl border border-slate-300 font-semibold text-slate-800 text-sm bg-white focus:ring-2 focus:ring-[#2D3E46] shadow-2xs">
                 <!-- Opciones cargadas con JS -->
               </select>
             </div>
 
-            <!-- DOWN PAYMENT SLIDER -->
+            <!-- 3. DOWN PAYMENT SLIDER -->
             <div>
               <div class="flex justify-between text-sm font-semibold mb-2">
-                <span class="text-slate-600">Entrega Inicial (Anticipo / Permuta):</span>
+                <span class="text-slate-600">3. Entrega Inicial (Efectivo / Permuta de tu Usado):</span>
                 <span id="simDownPaymentLabel" class="text-[#2D3E46] font-bold">USD 2.000 (22%)</span>
               </div>
               <input 
@@ -683,32 +717,38 @@
                 oninput="calculateFinancing()" 
                 class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#2D3E46]"
               />
-              <div class="flex justify-between text-[11px] text-slate-400 mt-1 font-medium">
-                <span>0% (100% Financiado)</span>
-                <span>30%</span>
-                <span>Hasta 70%</span>
+              <div class="flex justify-between text-[11px] text-slate-400 mt-1 font-medium" id="simRangeLabels">
+                <span id="simMinRangeText">0% (100% Financiado Santander)</span>
+                <span>50%</span>
+                <span id="simMaxRangeText">Hasta 80%</span>
+              </div>
+              <div id="casaInfoNotice" class="hidden mt-2 p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-center gap-2">
+                <span class="text-base">ℹ️</span>
+                <span><strong>Requisito Crédito de la Casa:</strong> Entrega inicial mínima obligatoria del 70% en efectivo o entregando tu vehículo usado. El saldo restante (hasta 30%) se financia directamente a sola firma.</span>
               </div>
             </div>
 
-            <!-- INSTALLMENT TERM BUTTONS -->
+            <!-- 4. INSTALLMENT TERM BUTTONS -->
             <div>
-              <label class="block text-xs font-extrabold text-[#2D3E46] uppercase tracking-wider mb-2">Plazo de Financiación</label>
+              <div class="flex justify-between items-baseline mb-2">
+                <label class="block text-xs font-extrabold text-[#2D3E46] uppercase tracking-wider">4. Plazo de Financiación</label>
+                <span id="simTermNotice" class="text-[11px] text-slate-400 font-medium">Santander: hasta 60 meses • Casa: hasta 36 meses</span>
+              </div>
               <div class="grid grid-cols-4 gap-2">
                 <button type="button" onclick="setSimMonths(12)" class="sim-month-btn py-2.5 rounded-xl metallic-pill border border-slate-300/80 text-xs font-bold text-slate-700 hover:border-[#2D3E46] transition-all shadow-2xs" data-months="12">12 Cuotas</button>
                 <button type="button" onclick="setSimMonths(24)" class="sim-month-btn py-2.5 rounded-xl metallic-pill border border-slate-300/80 text-xs font-bold text-slate-700 hover:border-[#2D3E46] transition-all shadow-2xs" data-months="24">24 Cuotas</button>
                 <button type="button" onclick="setSimMonths(36)" class="sim-month-btn py-2.5 rounded-xl border text-xs font-bold metallic-petrol text-white shadow-xs" data-months="36">36 Cuotas</button>
-                <button type="button" onclick="setSimMonths(60)" class="sim-month-btn py-2.5 rounded-xl metallic-pill border border-slate-300/80 text-xs font-bold text-slate-700 hover:border-[#2D3E46] transition-all shadow-2xs" data-months="60">60 Cuotas</button>
+                <button type="button" id="simTerm60Btn" onclick="setSimMonths(60)" class="sim-month-btn py-2.5 rounded-xl metallic-pill border border-slate-300/80 text-xs font-bold text-slate-700 hover:border-[#2D3E46] transition-all shadow-2xs" data-months="60">60 Cuotas</button>
               </div>
             </div>
 
-            <!-- PLAN BANCARIO SELECTION -->
-            <div>
-              <label class="block text-xs font-extrabold text-[#2D3E46] uppercase tracking-wider mb-1.5">Entidad Financiera</label>
-              <select id="simBankSelect" onchange="calculateFinancing()" class="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-300 font-medium bg-slate-50 shadow-2xs">
-                <option value="santander">Banco Santander (Tasa 7.9% TEA • Hasta 60 meses)</option>
-                <option value="itau">Banco Itaú (Tasa 7.5% TEA • Bonificación Eléctricos 0km)</option>
-                <option value="bbva">BBVA Uruguay (Tasa 8.2% TEA • Hasta 75% Financiado)</option>
-                <option value="carvlak">Crédito Directo CARVLAK (Sin banco • A sola firma con 50% entrega)</option>
+            <!-- 5. TASA SELECTOR (SOLO PARA SANTANDER: RANGO 7% A 13%) -->
+            <div id="santanderRateRow">
+              <label class="block text-xs font-extrabold text-[#2D3E46] uppercase tracking-wider mb-1.5">Perfil Crediticio Santander (Tasa de Interés)</label>
+              <select id="simSantanderRateSelect" onchange="calculateFinancing()" class="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-300 font-medium bg-slate-50 shadow-2xs">
+                <option value="0.07">Perfil Preferencial / Convenio Nómina (Tasa 7% anual)</option>
+                <option value="0.10" selected>Perfil Estándar / Buen Historial Crediticio (Tasa 10% anual media)</option>
+                <option value="0.13">Perfil Inicial / Aprobación Básica (Tasa 13% anual)</option>
               </select>
             </div>
           </div>
@@ -716,7 +756,10 @@
           <!-- SUMMARY CARD (PETRÓLEO METÁLICO) -->
           <div class="md:col-span-5 metallic-petrol text-white rounded-2xl p-6 sm:p-7 flex flex-col justify-between space-y-5 border border-white/10 shadow-2xl">
             <div>
-              <span class="text-xs uppercase tracking-wider font-bold text-slate-300">Cuota Mensual Estimada</span>
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase tracking-wider font-bold text-slate-300">Cuota Mensual Estimada</span>
+                <span id="simSummaryPlanBadge" class="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-white/20 text-white border border-white/20">Santander</span>
+              </div>
               <div class="flex items-baseline space-x-1.5 mt-1.5">
                 <span class="text-xs text-slate-300 font-bold">USD</span>
                 <span id="simMonthlyQuota" class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">234</span>
@@ -729,8 +772,12 @@
 
             <div class="space-y-2.5 border-t border-slate-600/60 pt-3.5 text-xs text-slate-200">
               <div class="flex justify-between">
-                <span class="text-slate-400">Precio Vehículo:</span>
+                <span class="text-slate-400">Precio de Lista:</span>
                 <span id="simSummaryPrice" class="font-bold">USD 8.900</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Entrega Estimada:</span>
+                <span id="simSummaryDown" class="font-bold">USD 2.000 (22%)</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-slate-400">Saldo a Financiar:</span>
@@ -741,14 +788,18 @@
                 <span id="simSummaryTerm" class="font-bold">36 meses</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-slate-400">Requisitos Mínimos:</span>
-                <span class="text-slate-300">C.I. + 3 últimos recibos</span>
+                <span class="text-slate-400">Tasa Aplicada:</span>
+                <span id="simSummaryRate" class="font-bold text-amber-300">10.0% anual</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Requisitos:</span>
+                <span id="simSummaryRequirements" class="text-slate-300 font-medium">C.I. + 3 últimos recibos</span>
               </div>
             </div>
 
-            <button onclick="requestFinancingWhatsApp()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-bold text-xs shadow-md shadow-emerald-900/20 border border-white/20 transition-all flex items-center justify-center space-x-2 hover:scale-[1.02] active:scale-[0.98]">
+            <button onclick="requestFinancingWhatsApp()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-bold text-xs shadow-md shadow-emerald-900/20 border border-white/20 transition-all flex items-center justify-center space-x-2 hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-              <span>Solicitar Pre-Aprobación Bancaria</span>
+              <span id="simBtnActionText">Solicitar Pre-Aprobación Santander</span>
             </button>
           </div>
 
@@ -3908,8 +3959,11 @@
     }
 
     // ========================================================
-    // SIMULADOR DE CRÉDITO AUTOMOTOR
+    // SIMULADOR DE CRÉDITO AUTOMOTOR (SANTANDER & CASA)
     // ========================================================
+    let currentFinancingType = 'santander'; // 'santander' | 'casa'
+    let currentSimMonths = 36;
+
     function initSimulator() {
       const select = document.getElementById('simVehicleSelect');
       if (!select) return;
@@ -3922,6 +3976,64 @@
       updateSimulatorFromSelect();
     }
 
+    function setFinancingType(type) {
+      currentFinancingType = type;
+      const btnSantander = document.getElementById('btnPlanSantander');
+      const btnCasa = document.getElementById('btnPlanCasa');
+      const term60Btn = document.getElementById('simTerm60Btn');
+      const santanderRateRow = document.getElementById('santanderRateRow');
+      const casaInfoNotice = document.getElementById('casaInfoNotice');
+      const planBadge = document.getElementById('simSummaryPlanBadge');
+      const minRangeText = document.getElementById('simMinRangeText');
+      const maxRangeText = document.getElementById('simMaxRangeText');
+      const range = document.getElementById('simDownPaymentRange');
+      const select = document.getElementById('simVehicleSelect');
+      const price = select && select.options.length ? (Number(select.options[select.selectedIndex].getAttribute('data-price')) || 10000) : 10000;
+
+      if (type === 'santander') {
+        if (btnSantander) {
+          btnSantander.className = 'p-3.5 rounded-2xl border-2 text-left transition-all border-[#2D3E46] bg-[#2D3E46] text-white shadow-sm flex flex-col justify-between cursor-pointer';
+        }
+        if (btnCasa) {
+          btnCasa.className = 'p-3.5 rounded-2xl border-2 text-left transition-all border-slate-300 bg-white text-slate-700 hover:border-[#2D3E46] shadow-2xs flex flex-col justify-between cursor-pointer';
+        }
+        if (term60Btn) term60Btn.classList.remove('hidden');
+        if (santanderRateRow) santanderRateRow.classList.remove('hidden');
+        if (casaInfoNotice) casaInfoNotice.classList.add('hidden');
+        if (planBadge) planBadge.textContent = 'Banco Santander';
+        if (minRangeText) minRangeText.textContent = '0% (100% Financiado Santander)';
+        if (maxRangeText) maxRangeText.textContent = 'Hasta 80%';
+
+        range.min = 0;
+        range.max = Math.round(price * 0.8);
+        range.step = 500;
+        range.value = Math.round(price * 0.2); // Default 20% entrega
+      } else {
+        if (btnCasa) {
+          btnCasa.className = 'p-3.5 rounded-2xl border-2 text-left transition-all border-[#2D3E46] bg-[#2D3E46] text-white shadow-sm flex flex-col justify-between cursor-pointer';
+        }
+        if (btnSantander) {
+          btnSantander.className = 'p-3.5 rounded-2xl border-2 text-left transition-all border-slate-300 bg-white text-slate-700 hover:border-[#2D3E46] shadow-2xs flex flex-col justify-between cursor-pointer';
+        }
+        if (term60Btn) term60Btn.classList.add('hidden');
+        if (currentSimMonths === 60) {
+          setSimMonths(36);
+        }
+        if (santanderRateRow) santanderRateRow.classList.add('hidden');
+        if (casaInfoNotice) casaInfoNotice.classList.remove('hidden');
+        if (planBadge) planBadge.textContent = 'Crédito de la Casa';
+        if (minRangeText) minRangeText.textContent = 'Mínimo 70% entrega';
+        if (maxRangeText) maxRangeText.textContent = 'Hasta 90%';
+
+        range.min = Math.round(price * 0.7);
+        range.max = Math.round(price * 0.95);
+        range.step = 250;
+        range.value = Math.round(price * 0.7); // Mínimo 70%
+      }
+
+      calculateFinancing();
+    }
+
     function updateSimulatorFromSelect() {
       const select = document.getElementById('simVehicleSelect');
       if (!select || select.options.length === 0) return;
@@ -3929,13 +4041,25 @@
       const price = Number(selectedOption.getAttribute('data-price')) || 10000;
 
       const range = document.getElementById('simDownPaymentRange');
-      range.max = Math.round(price * 0.7);
-      range.value = Math.round(price * 0.25);
+      if (currentFinancingType === 'santander') {
+        range.min = 0;
+        range.max = Math.round(price * 0.8);
+        range.step = 500;
+        range.value = Math.round(price * 0.2);
+      } else {
+        range.min = Math.round(price * 0.7);
+        range.max = Math.round(price * 0.95);
+        range.step = 250;
+        range.value = Math.round(price * 0.7);
+      }
 
       calculateFinancing();
     }
 
     function setSimMonths(m) {
+      if (currentFinancingType === 'casa' && m > 36) {
+        m = 36;
+      }
       currentSimMonths = m;
       document.querySelectorAll('.sim-month-btn').forEach(btn => {
         if (Number(btn.getAttribute('data-months')) === m) {
@@ -3955,24 +4079,62 @@
       const selectedOption = select.options[select.selectedIndex];
       const price = Number(selectedOption.getAttribute('data-price')) || 10000;
 
-      const downPayment = Number(document.getElementById('simDownPaymentRange').value);
+      const range = document.getElementById('simDownPaymentRange');
+      let downPayment = Number(range.value);
+
+      if (currentFinancingType === 'casa' && downPayment < price * 0.7) {
+        downPayment = Math.round(price * 0.7);
+        range.value = downPayment;
+      }
+
       const financed = Math.max(0, price - downPayment);
       const downPercent = Math.round((downPayment / price) * 100);
 
-      document.getElementById('simDownPaymentLabel').textContent = `USD $${downPayment.toLocaleString('es-UY')} (${downPercent}%)`;
-      document.getElementById('simSummaryPrice').textContent = `USD $${price.toLocaleString('es-UY')}`;
-      document.getElementById('simSummaryFinanced').textContent = `USD $${financed.toLocaleString('es-UY')}`;
-      document.getElementById('simSummaryTerm').textContent = `${currentSimMonths} meses`;
+      const downLabel = document.getElementById('simDownPaymentLabel');
+      if (downLabel) downLabel.textContent = `USD $${downPayment.toLocaleString('es-UY')} (${downPercent}%)`;
 
-      // Cálculo cuota con tasa anual aproximada 7.9% TEA
-      const monthlyRate = 0.079 / 12;
+      const summaryPrice = document.getElementById('simSummaryPrice');
+      if (summaryPrice) summaryPrice.textContent = `USD $${price.toLocaleString('es-UY')}`;
+
+      const summaryDown = document.getElementById('simSummaryDown');
+      if (summaryDown) summaryDown.textContent = `USD $${downPayment.toLocaleString('es-UY')} (${downPercent}%)`;
+
+      const summaryFinanced = document.getElementById('simSummaryFinanced');
+      if (summaryFinanced) summaryFinanced.textContent = `USD $${financed.toLocaleString('es-UY')}`;
+
+      const summaryTerm = document.getElementById('simSummaryTerm');
+      if (summaryTerm) summaryTerm.textContent = `${currentSimMonths} meses`;
+
+      let annualRate = 0.10;
+      if (currentFinancingType === 'santander') {
+        const rateSelect = document.getElementById('simSantanderRateSelect');
+        annualRate = rateSelect ? Number(rateSelect.value) : 0.10;
+        const summaryRate = document.getElementById('simSummaryRate');
+        if (summaryRate) summaryRate.textContent = `${(annualRate * 100).toFixed(0)}% anual (Santander 7%-13%)`;
+        const summaryReq = document.getElementById('simSummaryRequirements');
+        if (summaryReq) summaryReq.textContent = 'C.I. + 3 últimos recibos';
+        const btnText = document.getElementById('simBtnActionText');
+        if (btnText) btnText.textContent = 'Solicitar Pre-Aprobación Santander';
+      } else {
+        annualRate = 0.24; // 24% anual fija
+        const summaryRate = document.getElementById('simSummaryRate');
+        if (summaryRate) summaryRate.textContent = '24.0% anual fija (de la Casa)';
+        const summaryReq = document.getElementById('simSummaryRequirements');
+        if (summaryReq) summaryReq.textContent = 'Entrega 70% + C.I. (A sola firma)';
+        const btnText = document.getElementById('simBtnActionText');
+        if (btnText) btnText.textContent = 'Consultar Financiación de la Casa';
+      }
+
+      // Cálculo cuota sistema francés
+      const monthlyRate = annualRate / 12;
       let quota = 0;
       if (financed > 0 && currentSimMonths > 0) {
         quota = Math.round((financed * monthlyRate * Math.pow(1 + monthlyRate, currentSimMonths)) / (Math.pow(1 + monthlyRate, currentSimMonths) - 1));
       }
 
-      document.getElementById('simMonthlyQuota').textContent = quota.toLocaleString('es-UY');
-      
+      const monthlyQuotaEl = document.getElementById('simMonthlyQuota');
+      if (monthlyQuotaEl) monthlyQuotaEl.textContent = quota.toLocaleString('es-UY');
+
       // UI aprox (1 USD ~ 44.5 UI)
       const uiQuota = Math.round(quota * 44.5);
       const elUi = document.getElementById('simMonthlyUi');
@@ -3983,12 +4145,15 @@
       const select = document.getElementById('simVehicleSelect');
       if (!select || select.options.length === 0) return;
       const selectedCar = select.options[select.selectedIndex].text;
-      const quota = document.getElementById('simMonthlyQuota').textContent;
-      const downPayment = document.getElementById('simDownPaymentLabel').textContent;
-      const term = document.getElementById('simSummaryTerm').textContent;
-      const bank = document.getElementById('simBankSelect').value;
+      const quota = document.getElementById('simMonthlyQuota')?.textContent || '0';
+      const downPayment = document.getElementById('simDownPaymentLabel')?.textContent || '0';
+      const term = document.getElementById('simSummaryTerm')?.textContent || '36 meses';
+      const financed = document.getElementById('simSummaryFinanced')?.textContent || '0';
+      const planName = currentFinancingType === 'santander' 
+        ? 'Banco Santander (hasta 100% financiado • plazo hasta 60 meses • tasa 7% al 13%)' 
+        : 'Financiación de la Casa CARVLAK (entrega mínima 70% • plazo hasta 36 meses • tasa 24% anual)';
 
-      const msg = encodeURIComponent(`Hola CARVLAK, realicé una simulación de crédito automotor:\nVehículo: ${selectedCar}\nEntrega inicial: ${downPayment}\nPlazo: ${term}\nCuota estimada: USD $${quota}/mes (${bank.toUpperCase()}).\n¿Podrían indicarme qué requisitos presentar para la pre-aprobación?`);
+      const msg = encodeURIComponent(`Hola CARVLAK, realicé una simulación de crédito automotor en la web:\n🚗 Vehículo: ${selectedCar}\n📋 Modalidad: ${planName}\n💵 Entrega inicial: ${downPayment}\n💳 Saldo a financiar: ${financed}\n⏱️ Plazo: ${term}\n📈 Cuota estimada: USD $${quota}/mes\n\n¿Podrían indicarme qué documentación presentar para avanzar?`);
       window.open(`https://wa.me/59899267964?text=${msg}`, '_blank');
     }
 
